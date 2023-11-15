@@ -15,7 +15,6 @@
 				trigger: '.about > h2',
 				toggleActions: 'restart none none none',
 				scrub: 1,
-				markers: true,
 				end: 'bottom-=100px top'
 			},
 			y: 200,

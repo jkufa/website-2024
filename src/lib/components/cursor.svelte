@@ -18,5 +18,5 @@
 <div
 	bind:this={el}
 	role="presentation"
-	class="absolute h-14 w-14 rounded-full border border-off-black"
+	class="fixed h-14 w-14 rounded-full border border-off-black"
 ></div>
