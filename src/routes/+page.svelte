@@ -6,20 +6,22 @@
 	import { onMount } from 'svelte';
 
 	let lenis: Lenis;
+  let follow = false;
+  let cursor: HTMLDivElement;
 
 	onMount(() => {
 		lenis = new Lenis({
 			lerp: 0.075
 		});
 
-		lenis.on('scroll', (e: number) => {
-			console.log(e);
-		});
-
 		function raf(time: number) {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
 		}
+
+		lenis.on('scroll', (e: number) => {
+      lenis.progress > .5 ? follow = true : follow = false;
+		});
 
 		requestAnimationFrame(raf);
 
@@ -29,7 +31,8 @@
 	});
 </script>
 
-<Cursor />
-<Landing />
+
+<Cursor bind:follow={follow} bind:el={cursor}/>
+<Landing/>
 <About />
 <!-- <div class="h-screen"></div> -->
