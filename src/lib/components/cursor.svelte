@@ -23,15 +23,15 @@
 			if (!hasMoved) {
 				gsap.from(el, {
 					top: 0,
-					duration: 2
+					duration: 1.2
 				});
 				hasMoved = true;
 			}
 			gsap.to(el, {
-				x: e.clientX - 500,
-				y: e.clientY - 450,
+				x: e.clientX,
+				y: e.clientY,
 				scale: 0.25,
-				duration: hasMoved ? 1.2 : 0,
+				duration: 1.2,
 				ease: 'expo.out'
 			});
 		}
@@ -50,7 +50,7 @@
 
 <svelte:window on:mousemove={handleMouse} />
 <div class="flex h-screen items-center justify-center">
-	<div bind:this={el} class={follow && hasMoved ? 'fixed' : ''} data-sevenup="{name}.png"></div>
+	<div bind:this={el} class={follow && hasMoved ? 'fixed top-0 left-0' : ''} data-sevenup="{name}.png"></div>
 </div>
 
 <style>
@@ -61,6 +61,8 @@
 		background-image: url('$lib/imgs/sprites.png');
 		background-size: 1536px 1536px;
 		filter: grayscale();
+    /* Keep scaling relative to left/top of box  */
+    transform-origin: left top;
 	}
 	[data-sevenup='mug0.png'] {
 		width: 512px;
