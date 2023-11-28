@@ -32,6 +32,6 @@
 </script>
 
 <Cursor bind:follow bind:el={cursor} />
-<Landing />
-<About />
-<!-- <div class="h-screen"></div> -->
+<!-- <Landing /> -->
+<!-- <About /> -->
+<div class="h-screen"></div>

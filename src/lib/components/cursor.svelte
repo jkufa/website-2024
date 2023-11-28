@@ -58,7 +58,7 @@
     border: 1px solid red;
   } */
 	[data-sevenup] {
-		background-image: url('./sprites.png');
+		background-image: url('$lib/imgs/sprites.png');
 		background-size: 1536px 1536px;
 		filter: grayscale();
 	}
