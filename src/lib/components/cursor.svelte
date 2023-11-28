@@ -50,7 +50,11 @@
 
 <svelte:window on:mousemove={handleMouse} />
 <div class="flex h-screen items-center justify-center">
-	<div bind:this={el} class={follow && hasMoved ? 'fixed top-0 left-0' : ''} data-sevenup="{name}.png"></div>
+	<div
+		bind:this={el}
+		class={follow && hasMoved ? 'fixed left-0 top-0' : ''}
+		data-sevenup="{name}.png"
+	></div>
 </div>
 
 <style>
@@ -61,8 +65,8 @@
 		background-image: url('$lib/imgs/sprites.png');
 		background-size: 1536px 1536px;
 		filter: grayscale();
-    /* Keep scaling relative to left/top of box  */
-    transform-origin: left top;
+		/* Keep scaling relative to left/top of box  */
+		transform-origin: left top;
 	}
 	[data-sevenup='mug0.png'] {
 		width: 512px;
