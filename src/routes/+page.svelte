@@ -2,7 +2,6 @@
 	import About from '$lib/components/about.svelte';
 	import Cursor from '$lib/components/cursor.svelte';
 	import Landing from '$lib/components/landing.svelte';
-	import { createScene } from '$lib/scene';
 	import Lenis from '@studio-freight/lenis';
 	import { onMount } from 'svelte';
 
@@ -10,9 +9,13 @@
 	let follow = false;
 	let cursor: HTMLDivElement;
 	let el: HTMLCanvasElement;
+  let createScene;
 
-	onMount(() => {
-		createScene(el);
+	onMount(async () => {
+    // ensures window exists
+  	createScene = (await import('$lib/scene')).createScene;
+
+    createScene(el);
 		lenis = new Lenis({
 			lerp: 0.075
 		});
