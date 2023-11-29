@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
+	import { cubicOut } from 'svelte/easing';
 
 	export let follow = false;
 	export let el: HTMLDivElement;
@@ -16,6 +17,13 @@
 		const interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);
+    gsap.from(el, {
+      opacity: 0,
+      scale: 0,
+      duration: 2,
+      delay: 1,
+      ease: cubicOut
+    })
 		return () => clearInterval(interval);
 	});
 	function handleMouse(e: MouseEvent) {
@@ -52,7 +60,7 @@
 <div class="flex h-screen items-center justify-center">
 	<div
 		bind:this={el}
-		class={follow && hasMoved ? 'fixed left-0 top-0' : ''}
+		class={follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : ''}
 		data-sevenup="{name}.png"
 	></div>
 </div>
@@ -65,8 +73,6 @@
 		background-image: url('$lib/imgs/sprites.png');
 		background-size: 1536px 1536px;
 		filter: grayscale();
-		/* Keep scaling relative to left/top of box  */
-		transform-origin: left top;
 	}
 	[data-sevenup='mug0.png'] {
 		width: 512px;

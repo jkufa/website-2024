@@ -9,10 +9,10 @@
 	let lenis: Lenis;
 	let follow = false;
 	let cursor: HTMLDivElement;
-  let el:HTMLCanvasElement;
+	let el: HTMLCanvasElement;
 
 	onMount(() => {
-    createScene(el);
+		createScene(el);
 		lenis = new Lenis({
 			lerp: 0.075
 		});
@@ -34,7 +34,8 @@
 	});
 </script>
 
-<canvas bind:this={el} class="fixed" />
+<canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full"/>
+<!-- <canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full" class:opacity-20={follow}/> -->
 <Cursor bind:follow bind:el={cursor} />
 <!-- <Landing /> -->
 <!-- <About /> -->
