@@ -17,13 +17,13 @@
 		const interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);
-    gsap.from(el, {
-      opacity: 0,
-      scale: 0,
-      duration: 2,
-      delay: 1,
-      ease: cubicOut
-    })
+		gsap.from(el, {
+			opacity: 0,
+			scale: 0,
+			duration: 2,
+			delay: 1,
+			ease: cubicOut
+		});
 		return () => clearInterval(interval);
 	});
 	function handleMouse(e: MouseEvent) {

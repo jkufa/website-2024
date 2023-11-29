@@ -9,13 +9,13 @@
 	let follow = false;
 	let cursor: HTMLDivElement;
 	let el: HTMLCanvasElement;
-  let createScene;
+	let createScene;
 
 	onMount(async () => {
-    // ensures window exists
-  	createScene = (await import('$lib/scene')).createScene;
+		// ensures window exists
+		createScene = (await import('$lib/scene')).createScene;
 
-    createScene(el);
+		createScene(el);
 		lenis = new Lenis({
 			lerp: 0.075
 		});
@@ -37,7 +37,7 @@
 	});
 </script>
 
-<canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full"/>
+<canvas bind:this={el} id="container" class="fixed h-full w-full transition-opacity" />
 <!-- <canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full" class:opacity-20={follow}/> -->
 <Cursor bind:follow bind:el={cursor} />
 <!-- <Landing /> -->

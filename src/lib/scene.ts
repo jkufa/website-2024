@@ -91,7 +91,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 void main() {
   mainImage(gl_FragColor, gl_FragCoord.xy);
 }
-`
+`;
 const uniforms = {
 	iTime: { value: 0 },
 	iResolution: { value: new Vector3() },
@@ -100,7 +100,7 @@ const uniforms = {
 	sharpness: { value: params.sharpness },
 	scale: { value: params.scale },
 	color1: { type: 'vec3', value: new Color(params.color1) },
-	color2: { type: 'vec3', value: new Color(params.color2) },
+	color2: { type: 'vec3', value: new Color(params.color2) }
 };
 const material = new ShaderMaterial({
 	fragmentShader,
@@ -113,16 +113,16 @@ scene.add(new Mesh(plane, material));
 
 let renderer: WebGLRenderer;
 const camera = new OrthographicCamera(
- -1, // left
+	-1, // left
 	1, // right
-  1, // top
- -1, // bottom
- -1, // near,
-  1 // far
+	1, // top
+	-1, // bottom
+	-1, // near,
+	1 // far
 );
 
 const animate = () => {
-  const delta = clock.getDelta();
+	const delta = clock.getDelta();
 	time += delta * params.speed;
 
 	uniforms.iTime.value = time;
@@ -136,10 +136,13 @@ const resize = () => {
 };
 
 export const createScene = (el: HTMLCanvasElement) => {
-
-  renderer = new WebGLRenderer({ antialias: true, canvas: el });
+	renderer = new WebGLRenderer({ antialias: true, canvas: el });
 	renderer.setPixelRatio(window.devicePixelRatio);
-  uniforms.iResolution.value.set(el.clientWidth * window.devicePixelRatio, el.clientHeight * window.devicePixelRatio, 1);
+	uniforms.iResolution.value.set(
+		el.clientWidth * window.devicePixelRatio,
+		el.clientHeight * window.devicePixelRatio,
+		1
+	);
 
 	resize();
 	animate();
