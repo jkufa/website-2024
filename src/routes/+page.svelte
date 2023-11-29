@@ -6,20 +6,28 @@
 	import { onMount } from 'svelte';
 
 	let lenis: Lenis;
+	let follow = false;
+	let cursor: HTMLDivElement;
+	let el: HTMLCanvasElement;
+	let createScene;
 
-	onMount(() => {
+	onMount(async () => {
+		// ensures window exists
+		createScene = (await import('$lib/scene')).createScene;
+
+		createScene(el);
 		lenis = new Lenis({
 			lerp: 0.075
-		});
-
-		lenis.on('scroll', (e: number) => {
-			console.log(e);
 		});
 
 		function raf(time: number) {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
 		}
+
+		lenis.on('scroll', (e: number) => {
+			lenis.progress > 0.3 ? (follow = true) : (follow = false);
+		});
 
 		requestAnimationFrame(raf);
 
@@ -29,7 +37,9 @@
 	});
 </script>
 
-<Cursor />
-<Landing />
-<About />
-<!-- <div class="h-screen"></div> -->
+<canvas bind:this={el} id="container" class="fixed h-full w-full transition-opacity" />
+<!-- <canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full" class:opacity-20={follow}/> -->
+<Cursor bind:follow bind:el={cursor} />
+<!-- <Landing /> -->
+<!-- <About /> -->
+<div class="h-screen"></div>
