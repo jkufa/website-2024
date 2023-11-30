@@ -1,7 +1,5 @@
 <script lang="ts">
-	import About from '$lib/components/about.svelte';
-	import Cursor from '$lib/components/cursor.svelte';
-	import Landing from '$lib/components/landing.svelte';
+	import Mug from '$lib/components/Mug.svelte';
 	import Lenis from '@studio-freight/lenis';
 	import { onMount } from 'svelte';
 
@@ -37,9 +35,16 @@
 	});
 </script>
 
-<canvas bind:this={el} id="container" class="fixed h-full w-full transition-opacity" />
+<canvas bind:this={el} id="container" class="fixed -z-10 h-full w-full transition-opacity" />
 <!-- <canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full" class:opacity-20={follow}/> -->
-<Cursor bind:follow bind:el={cursor} />
+<div class="flex h-screen flex-col items-center justify-center gap-10">
+	<Mug bind:follow bind:el={cursor} />
+	<h1
+		class="leading-90 absolute bottom-12 max-w-5xl text-center text-6xl font-black tracking-tighter text-white md:text-9xl md:leading-9 md:tracking-tightest"
+	>
+		HIRE JACK KUFA
+	</h1>
+</div>
 <!-- <Landing /> -->
 <!-- <About /> -->
 <div class="h-screen"></div>

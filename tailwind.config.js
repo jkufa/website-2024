@@ -3,7 +3,11 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			sans: ['DM sans, Helvetica, Arial, sans-serif']
+			sans: ['Archivo Expanded, Helvetica, Arial, sans-serif']
+		},
+		letterSpacing: {
+			tightest: '-.75rem',
+			tighter: '-.25rem'
 		},
 		extend: {
 			backgroundColor: {
@@ -11,6 +15,12 @@ export default {
 			},
 			colors: {
 				'off-black': '#0C0C17'
+			},
+			fontSize: {
+				'text-10xl': '10rem'
+			},
+			lineHeight: {
+				11: '3rem'
 			}
 		}
 	},

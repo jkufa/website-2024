@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
-	import { cubicOut } from 'svelte/easing';
+	import { elasticOut } from 'svelte/easing';
 
 	export let follow = false;
 	export let el: HTMLDivElement;
 
 	let hasMoved = false;
+	// const names = ['mug0'];
 	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
 
 	let current = 0;
 	$: name = names[current];
-	$: if (!follow && el) resetPos();
+	$: if (el && !follow) resetPos();
 
 	onMount(() => {
 		const interval = setInterval(() => {
@@ -19,19 +20,20 @@
 		}, 120);
 		gsap.from(el, {
 			opacity: 0,
-			scale: 0,
-			duration: 2,
+			// TODO: figure out how to fix this. The issue is reset() is also running on render in parallel
+			// so the animation is messed up
+			// scale: 0,
+			duration: 5,
 			delay: 1,
-			ease: cubicOut
+			ease: elasticOut
 		});
 		return () => clearInterval(interval);
 	});
 	function handleMouse(e: MouseEvent) {
 		if (follow) {
 			if (!hasMoved) {
-				gsap.from(el, {
-					top: 0,
-					duration: 1.2
+				gsap.set(el, {
+					top: 0
 				});
 				hasMoved = true;
 			}
@@ -45,68 +47,61 @@
 		}
 	}
 	function resetPos() {
+		console.log('resetPos');
 		gsap.to(el, {
 			x: 0,
 			y: 0,
 			scale: 1,
-			duration: hasMoved ? 1.2 : 0,
-			ease: 'expo.out'
+			duration: 2.5,
+			ease: elasticOut
 		});
 		hasMoved = false;
 	}
 </script>
 
 <svelte:window on:mousemove={handleMouse} />
-<div class="flex h-screen items-center justify-center">
-	<div
-		bind:this={el}
-		class={follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : ''}
-		data-sevenup="{name}.png"
-	></div>
-</div>
+<div
+	bind:this={el}
+	class="{follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : ''} md:mug-md lg:mug-lg"
+	data-sevenup="{name}.png"
+></div>
 
 <style>
 	/* * {
     border: 1px solid red;
   } */
 	[data-sevenup] {
+		--scale: 3;
+		--x: 0;
+		--y: 0;
+
 		background-image: url('$lib/imgs/sprites.png');
-		background-size: 1536px 1536px;
+		background-size: calc(192px * var(--scale));
 		filter: grayscale();
+		width: calc(64px * var(--scale));
+		height: calc(64px * var(--scale));
+		background-position: var(--x) var(--y);
 	}
-	[data-sevenup='mug0.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: 0px 0px;
-	}
+	/* 'mug0.png starts at' (0, 0) */
+
 	[data-sevenup='mug1.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: -512px 0px;
+		--x: calc(-64px * var(--scale));
 	}
 	[data-sevenup='mug2.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: 0px -512px;
+		--y: calc(-64px * var(--scale));
 	}
 	[data-sevenup='mug3.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: -512px -512px;
+		--x: calc(-64px * var(--scale));
+		--y: calc(-64px * var(--scale));
 	}
 	[data-sevenup='mug4.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: -1024px 0px;
+		--x: calc(-128px * var(--scale));
 	}
 	[data-sevenup='mug5.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: -1024px -512px;
+		--x: calc(-128px * var(--scale));
+		--y: calc(-64px * var(--scale));
 	}
 	[data-sevenup='mug6.png'] {
-		width: 512px;
-		height: 512px;
-		background-position: 0px -1024px;
+		--y: calc(-128px * var(--scale));
 	}
 </style>
