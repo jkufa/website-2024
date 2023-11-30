@@ -14,7 +14,8 @@ export default {
 				'off-white': '#F4F2F7'
 			},
 			colors: {
-				'off-black': '#0C0C17'
+				'off-black': '#0C0C17',
+				'off-white': '#F4F2F7'
 			},
 			fontSize: {
 				'text-10xl': '10rem'

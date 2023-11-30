@@ -1,3 +1,5 @@
+/// TODO: Make this file readable
+
 import {
 	Mesh,
 	OrthographicCamera,
@@ -16,9 +18,11 @@ const params = {
 	warp: 0.6,
 	exponent: 0.8,
 	sharpness: 0.92,
-	color1: '#000',
-	color2: '#fff'
+	color1: '#0C0C17',
+	color2: '#F4F2F7'
 };
+// #F4F2F7
+// #0C0C17
 
 const scene = new Scene();
 const plane = new PlaneGeometry(2, 2); // TODO: figure out what this does lol
@@ -107,11 +111,19 @@ const camera = new OrthographicCamera(
 	1 // far
 );
 
+let c: HTMLCanvasElement;
+
 const animate = () => {
 	const delta = clock.getDelta();
 	time += delta * params.speed;
 
+	resize();
 	uniforms.iTime.value = time;
+  uniforms.iResolution.value.set(
+		c.clientWidth * window.devicePixelRatio,
+		c.clientHeight * window.devicePixelRatio,
+		1
+	);
 
 	renderer.render(scene, camera);
 	requestAnimationFrame(animate);
@@ -122,16 +134,12 @@ const resize = () => {
 };
 
 export const createScene = (el: HTMLCanvasElement) => {
+  c = el;
 	renderer = new WebGLRenderer({ antialias: true, canvas: el });
 	renderer.setPixelRatio(window.devicePixelRatio);
-	uniforms.iResolution.value.set(
-		el.clientWidth * window.devicePixelRatio,
-		el.clientHeight * window.devicePixelRatio,
-		1
-	);
 
-	resize();
 	animate();
+	requestAnimationFrame(animate);
 };
 
 window.addEventListener('resize', resize);
