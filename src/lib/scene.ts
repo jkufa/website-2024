@@ -146,4 +146,8 @@ export const createScene = (el: HTMLCanvasElement) => {
 	animate();
 };
 
+export const setScale = (i: number) => {
+  uniforms.scale.value = i
+}
+
 // window.addEventListener('resize', resize);

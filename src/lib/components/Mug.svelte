@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
-	import { elasticOut } from 'svelte/easing';
 
-	export let follow = false;
+	export let follow: boolean | undefined;
 	export let el: HTMLDivElement;
 
 	let hasMoved = false;
@@ -12,57 +11,52 @@
 
 	let current = 0;
 	$: name = names[current];
-	$: if (el && !follow) resetPos();
+	$: if (el && follow === false) resetPos();
+
 
 	onMount(() => {
+    // spin mug
 		const interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);
-		gsap.from(el, {
-			opacity: 0,
-			// TODO: figure out how to fix this. The issue is reset() is also running on render in parallel
-			// so the animation is messed up
-			// scale: 0,
-			duration: 5,
-			delay: 1,
-			ease: 'elastic.out(1,0.2)'
-		});
 		return () => clearInterval(interval);
 	});
 	function handleMouse(e: MouseEvent) {
 		if (follow) {
 			if (!hasMoved) {
 				gsap.set(el, {
-					top: 0
+          top: 0,
+          left: window.innerWidth / 2,
 				});
 				hasMoved = true;
 			}
 			gsap.to(el, {
 				x: e.clientX,
 				y: e.clientY,
+        left: 0,
 				scale: 0.25,
 				duration: 1.2,
-				ease: 'expo.out'
+				ease: 'expo.out',
 			});
 		}
 	}
 	function resetPos() {
-		console.log('resetPos');
-		gsap.to(el, {
+    gsap.to(el, {
 			x: 0,
 			y: 0,
 			scale: 1,
 			duration: 2,
-			ease: 'elastic.out(.75,0.75)'
+			ease: 'elastic.out(0.75,0.5)',
 		});
 		hasMoved = false;
 	}
+	// class="md:mug-md lg:mug-lg z-10 relative"
 </script>
 
 <svelte:window on:mousemove={handleMouse} />
 <div
 	bind:this={el}
-	class="{follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : ''} md:mug-md lg:mug-lg"
+	class="{follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : 'relative'}  md:mug-md lg:mug-lg z-10"
 	data-sevenup="{name}.png"
 ></div>
 
