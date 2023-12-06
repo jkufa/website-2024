@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-	.text-10xl {
-		font-size: 14rem;
-		line-height: 0.85;
-	}
+@font-face {
+	font-family: 'Archivo2';
+	src: url('/fonts/archivo.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
 
+@layer components {
 	.mug-md {
 		--scale: 5 !important;
 	}
@@ -16,7 +18,7 @@
 		--scale: 6 !important;
 	}
 
-	.leading-90 {
+	.leading-85 {
 		line-height: 0.85 !important;
 	}
 }

@@ -25,7 +25,7 @@
 			// scale: 0,
 			duration: 5,
 			delay: 1,
-			ease: elasticOut
+			ease: 'elastic.out(1,0.2)'
 		});
 		return () => clearInterval(interval);
 	});
@@ -52,8 +52,8 @@
 			x: 0,
 			y: 0,
 			scale: 1,
-			duration: 2.5,
-			ease: elasticOut
+			duration: 2,
+			ease: 'elastic.out(.75,0.75)'
 		});
 		hasMoved = false;
 	}

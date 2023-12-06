@@ -112,6 +112,8 @@ const camera = new OrthographicCamera(
 );
 
 let c: HTMLCanvasElement;
+// set this to avoid issues when moving browser window across different screen types
+let pixelRatio: number;
 
 const animate = () => {
 	const delta = clock.getDelta();
@@ -119,13 +121,14 @@ const animate = () => {
 
 	resize();
 	uniforms.iTime.value = time;
-  uniforms.iResolution.value.set(
-		c.clientWidth * window.devicePixelRatio,
-		c.clientHeight * window.devicePixelRatio,
+	uniforms.iResolution.value.set(
+		c.clientWidth * pixelRatio,
+		c.clientHeight * pixelRatio,
 		1
 	);
 
 	renderer.render(scene, camera);
+	// TODO: don't request this on mobile unless with changes
 	requestAnimationFrame(animate);
 };
 
@@ -134,12 +137,13 @@ const resize = () => {
 };
 
 export const createScene = (el: HTMLCanvasElement) => {
-  c = el;
+	c = el;
 	renderer = new WebGLRenderer({ antialias: true, canvas: el });
-	renderer.setPixelRatio(window.devicePixelRatio);
+
+  pixelRatio = window.devicePixelRatio;
+	renderer.setPixelRatio(pixelRatio);
 
 	animate();
-	requestAnimationFrame(animate);
 };
 
-window.addEventListener('resize', resize);
+// window.addEventListener('resize', resize);
