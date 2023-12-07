@@ -13,9 +13,8 @@
 	$: name = names[current];
 	$: if (el && follow === false) resetPos();
 
-
 	onMount(() => {
-    // spin mug
+		// spin mug
 		const interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);
@@ -25,28 +24,28 @@
 		if (follow) {
 			if (!hasMoved) {
 				gsap.set(el, {
-          top: 0,
-          left: window.innerWidth / 2,
+					top: 0,
+					left: window.innerWidth / 2
 				});
 				hasMoved = true;
 			}
 			gsap.to(el, {
 				x: e.clientX,
 				y: e.clientY,
-        left: 0,
+				left: 0,
 				scale: 0.25,
 				duration: 1.2,
-				ease: 'expo.out',
+				ease: 'expo.out'
 			});
 		}
 	}
 	function resetPos() {
-    gsap.to(el, {
+		gsap.to(el, {
 			x: 0,
 			y: 0,
 			scale: 1,
 			duration: 2,
-			ease: 'elastic.out(0.75,0.5)',
+			ease: 'elastic.out(0.75,0.5)'
 		});
 		hasMoved = false;
 	}
@@ -56,7 +55,9 @@
 <svelte:window on:mousemove={handleMouse} />
 <div
 	bind:this={el}
-	class="{follow && hasMoved ? 'fixed left-0 top-0 origin-top-left' : 'relative'}  md:mug-md lg:mug-lg z-10"
+	class="{follow && hasMoved
+		? 'fixed left-0 top-0 origin-top-left'
+		: 'relative'}  md:mug-md lg:mug-lg z-10"
 	data-sevenup="{name}.png"
 ></div>
 

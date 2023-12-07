@@ -18,7 +18,7 @@ export default {
 				'off-white': '#F4F2F7'
 			},
 			fontSize: {
-				'10xl': '9.5rem',
+				'10xl': '9.5rem'
 			},
 			lineHeight: {
 				11: '3rem'

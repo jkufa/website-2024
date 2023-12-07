@@ -9,16 +9,18 @@ import {
 	Color,
 	Vector3,
 	ShaderMaterial,
-	Clock
+	Clock,
+	ColorManagement
 } from 'three';
 
 const params = {
 	speed: 0.05,
 	scale: 150.0,
-	warp: 0.6,
-	exponent: 0.8,
-	sharpness: 0.92,
-	color1: '#0C0C17',
+	animateScale: false,
+	warp: 0.75,
+	exponent: 0.9,
+	sharpness: 0.9,
+	color1: '#121227',
 	color2: '#F4F2F7'
 };
 // #F4F2F7
@@ -26,6 +28,7 @@ const params = {
 
 const scene = new Scene();
 const plane = new PlaneGeometry(2, 2); // TODO: figure out what this does lol
+ColorManagement.enabled = true;
 
 // const currentScriptPath = import.meta.url;
 // const currentScriptDirectory = currentScriptPath.substring(0, currentScriptPath.lastIndexOf('/'));
@@ -41,7 +44,6 @@ uniform float sharpness;
 uniform float scale;
 uniform vec3 color1;
 uniform vec3 color2;
-// uniform vec3 color3;
 
 float easeOutExp(float k) { // good
   return k == 1.0 ? 1.0 : 1.0 - pow( 2.0, - 10.0 * k );
@@ -96,10 +98,11 @@ const material = new ShaderMaterial({
 	fragmentShader,
 	uniforms
 });
-const clock = new Clock();
-let time = 0;
 
 scene.add(new Mesh(plane, material));
+
+const clock = new Clock();
+let time = 0;
 
 let renderer: WebGLRenderer;
 const camera = new OrthographicCamera(
@@ -121,12 +124,7 @@ const animate = () => {
 
 	resize();
 	uniforms.iTime.value = time;
-	uniforms.iResolution.value.set(
-		c.clientWidth * pixelRatio,
-		c.clientHeight * pixelRatio,
-		1
-	);
-
+	uniforms.iResolution.value.set(c.clientWidth * pixelRatio, c.clientHeight * pixelRatio, 1);
 	renderer.render(scene, camera);
 	// TODO: don't request this on mobile unless with changes
 	requestAnimationFrame(animate);
@@ -140,14 +138,13 @@ export const createScene = (el: HTMLCanvasElement) => {
 	c = el;
 	renderer = new WebGLRenderer({ antialias: true, canvas: el });
 
-  pixelRatio = window.devicePixelRatio;
+	pixelRatio = window.devicePixelRatio;
 	renderer.setPixelRatio(pixelRatio);
+	renderer.autoClearColor = false;
 
 	animate();
 };
 
 export const setScale = (i: number) => {
-  uniforms.scale.value = i
-}
-
-// window.addEventListener('resize', resize);
+	uniforms.scale.value = i;
+};
