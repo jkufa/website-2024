@@ -11,11 +11,11 @@ export default {
 		},
 		extend: {
 			backgroundColor: {
-				'off-white': '#F4F2F7'
+				'off-white': '#FBFFF5'
 			},
 			colors: {
-				'off-black': '#0C0C17',
-				'off-white': '#F4F2F7'
+				'off-black': '#0A0903',
+				'off-white': '#FBFFF5'
 			},
 			fontSize: {
 				'10xl': '9.5rem'

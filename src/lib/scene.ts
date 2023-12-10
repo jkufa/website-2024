@@ -20,8 +20,8 @@ const params = {
 	warp: 0.75,
 	exponent: 0.9,
 	sharpness: 0.9,
-	color1: '#121227',
-	color2: '#F4F2F7'
+	color1: 0x0A0903,
+	color2: 0xFBFFF5
 };
 // #F4F2F7
 // #0C0C17
@@ -91,8 +91,8 @@ const uniforms = {
 	exponent: { value: params.exponent },
 	sharpness: { value: params.sharpness },
 	scale: { value: params.scale },
-	color1: { type: 'vec3', value: new Color(params.color1) },
-	color2: { type: 'vec3', value: new Color(params.color2) }
+	color1: { type: 'vec3', value: new Color(params.color1).convertLinearToSRGB() },
+	color2: { type: 'vec3', value: new Color(params.color2).convertLinearToSRGB() }
 };
 const material = new ShaderMaterial({
 	fragmentShader,
