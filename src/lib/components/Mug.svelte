@@ -6,7 +6,6 @@
 	export let el: HTMLDivElement;
 
 	let hasMoved = false;
-	// const names = ['mug0'];
 	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
 
 	let current = 0;
@@ -49,7 +48,6 @@
 		});
 		hasMoved = false;
 	}
-	// class="md:mug-md lg:mug-lg z-10 relative"
 </script>
 
 <svelte:window on:mousemove={handleMouse} />
@@ -57,7 +55,7 @@
 	bind:this={el}
 	class="{follow && hasMoved
 		? 'fixed left-0 top-0 origin-top-left'
-		: 'relative'}  md:mug-md lg:mug-lg z-10"
+		: 'relative'} md:mug-md lg:mug-lg z-10"
 	data-sevenup="{name}.png"
 ></div>
 
