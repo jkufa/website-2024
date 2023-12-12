@@ -8,7 +8,6 @@ uniform float sharpness;
 uniform float scale;
 uniform vec3 color1;
 uniform vec3 color2;
-// uniform vec3 color3;
 
 float easeOutExp(float k) { // good
   return k == 1.0 ? 1.0 : 1.0 - pow( 2.0, - 10.0 * k );

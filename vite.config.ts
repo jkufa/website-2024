@@ -10,7 +10,7 @@ export default defineConfig({
 			filename: 'stats.html'
 		}) as PluginOption
 	],
-	build: {
-		target: 'esnext'
+	ssr: {
+		noExternal: ['three']
 	}
 });
