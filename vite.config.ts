@@ -7,6 +7,7 @@ export default defineConfig({
 		sveltekit(),
 		visualizer({
 			emitFile: true,
+			brotliSize: true,
 			filename: 'stats.html'
 		}) as PluginOption
 	],

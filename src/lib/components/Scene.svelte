@@ -5,7 +5,7 @@
 
 	export let w: number;
 	export let h: number;
-  export let scale: number;
+	export let scale: number;
 
 	let time = 0;
 
@@ -32,11 +32,11 @@
 	};
 	const geometry = new PlaneGeometry(w, h);
 
-  useTask((delta) => {
+	useTask((delta) => {
 		time += delta * params.speed;
 		uniforms.iTime.value = time;
-    uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1);
-    uniforms.scale.value = scale;
+		uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1);
+		uniforms.scale.value = scale;
 	});
 </script>
 

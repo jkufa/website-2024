@@ -14,16 +14,16 @@
 
 	const scale = tweened(0, { duration: 5000, easing: cubicInOut });
 
-  onMount(() => {
-    gsap.set(title, {
+	onMount(() => {
+		gsap.set(title, {
 			opacity: 0,
 			y: 200
 		});
-    gsap.set(mug, {
+		gsap.set(mug, {
 			opacity: 0,
 			scale: 0
 		});
-    scale.set(150).then(() => {
+		scale.set(150).then(() => {
 			gsap.to(title, {
 				opacity: 1,
 				y: 0,
@@ -39,26 +39,26 @@
 				ease: 'elastic.out(.75,0.4)'
 			});
 		});
-  })
+	});
 
-  function scroll() {
-    // Set mug to follow cursor
-    const bot = title.getBoundingClientRect().bottom;
-    follow ? follow = bot < $scrollPosition : follow = bot <= 0;
-  }
+	function scroll() {
+		// Set mug to follow cursor
+		const bot = title.getBoundingClientRect().bottom;
+		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 0);
+	}
 </script>
 
-<LenisContext scroll={scroll}>
-  <Background bind:follow bind:scale={$scale} />
-<div class="flex h-screen flex-col items-center justify-center gap-10">
-	<Mug bind:follow bind:el={mug} />
-	<h1
-		bind:this={title}
-		class="leading-85 absolute bottom-4 text-center font-black tracking-tighter text-6xl md:text-8xl text-off-white md:leading-9 lg:text-9xl"
-	>
-		<span class="block min-[1340px]:inline">HIRE</span> JACK KUFA
-	</h1>
-</div>
-<div class="wrapper h-screen w-screen"></div>
-<section class="hscreen"></section>
+<LenisContext {scroll}>
+	<Background bind:follow bind:scale={$scale} />
+	<div class="flex h-screen flex-col items-center justify-center gap-10">
+		<Mug bind:follow bind:el={mug} />
+		<h1
+			bind:this={title}
+			class="leading-85 absolute bottom-4 text-center text-6xl font-black tracking-tighter text-off-white md:text-8xl md:leading-9 lg:text-9xl"
+		>
+			<span class="block min-[1340px]:inline">HIRE</span> JACK KUFA
+		</h1>
+	</div>
+	<div class="wrapper h-screen w-screen"></div>
+	<section class="hscreen"></section>
 </LenisContext>

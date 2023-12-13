@@ -5,7 +5,7 @@
 <slot />
 
 <style lang="postcss">
-  :global(body) {
+	:global(body) {
 		margin: 0;
 	}
 </style>

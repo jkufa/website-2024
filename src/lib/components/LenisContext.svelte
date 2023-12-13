@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 
 	let lenis: Lenis;
-  export let scroll: () => unknown;
+	export let scroll: () => unknown;
 
 	// Handle Lenis
 	onMount(() => {
@@ -15,7 +15,7 @@
 		lenis.on('scroll', () => {
 			scrollPosition.set(lenis.animatedScroll);
 
-      scroll(); // do stuff from other components
+			scroll(); // do stuff from other components
 		});
 
 		function raf(time: number) {
