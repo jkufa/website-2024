@@ -2,8 +2,9 @@
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
 
-	let wrapper: HTMLDivElement;
 	export let follow: boolean;
+  export let scale: number;
+	let wrapper: HTMLDivElement;
   let w: number;
   let h: number;
 
@@ -20,7 +21,7 @@
     
 	>
 		<Canvas>
-			<Scene bind:w bind:h />
+			<Scene bind:w bind:h bind:scale />
 		</Canvas>
 	</div>
 </div>

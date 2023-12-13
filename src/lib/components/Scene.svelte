@@ -5,6 +5,7 @@
 
 	export let w: number;
 	export let h: number;
+  export let scale: number;
 
 	let time = 0;
 
@@ -34,7 +35,8 @@
   useTask((delta) => {
 		time += delta * params.speed;
 		uniforms.iTime.value = time;
-    uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1); 
+    uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1);
+    uniforms.scale.value = scale;
 	});
 </script>
 
