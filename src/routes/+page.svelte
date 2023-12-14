@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
+	import MotionPath from '$lib/components/MotionPath.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -44,7 +45,7 @@
 	function scroll() {
 		// Set mug to follow cursor
 		const bot = title.getBoundingClientRect().bottom;
-		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 0);
+		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
 	}
 </script>
 
@@ -54,11 +55,13 @@
 		<Mug bind:follow bind:el={mug} />
 		<h1
 			bind:this={title}
-			class="leading-85 absolute bottom-4 text-center text-6xl font-black tracking-tighter text-off-white md:text-8xl md:leading-9 lg:text-9xl"
+			class="leading-85 absolute bottom-4 text-8xl font-black tracking-tighter left-4 text-off-white md:text-8xl md:leading-9 lg:text-10xl"
 		>
-			<span class="block min-[1340px]:inline">HIRE</span> JACK KUFA
+			<span class="block">HIRE</span> JACK KUFA
 		</h1>
 	</div>
-	<div class="wrapper h-screen w-screen"></div>
-	<section class="hscreen"></section>
+	<section class="mx-4 flex h-screen flex-col gap-12 justify-end">
+		<MotionPath />
+	</section>
+	<section class="mx-4 flex h-screen flex-col gap-12"></section>
 </LenisContext>

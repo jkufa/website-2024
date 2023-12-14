@@ -12,6 +12,6 @@ export default defineConfig({
 		}) as PluginOption
 	],
 	ssr: {
-		noExternal: ['three']
+		noExternal: ['three', 'gsap']
 	}
 });

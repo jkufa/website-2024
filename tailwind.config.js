@@ -11,11 +11,11 @@ export default {
 		},
 		extend: {
 			backgroundColor: {
-				'off-white': '#FBFFF5'
+				'off-white': '#fbfff5'
 			},
 			colors: {
-				'off-black': '#0A0903',
-				'off-white': '#FBFFF5'
+				'off-black': '#0b0903',
+				'off-white': '#fbfff5'
 			},
 			fontSize: {
 				'10xl': '9.5rem'
@@ -27,3 +27,6 @@ export default {
 	},
 	plugins: []
 };
+
+// color1: 0x080500,
+// color2: 0xB2B99F

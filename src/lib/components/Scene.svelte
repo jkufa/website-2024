@@ -16,7 +16,7 @@
 		animateScale: false,
 		warp: 0.75,
 		exponent: 0.9,
-		sharpness: 0.9,
+		sharpness: 0.7,
 		color1: 0x0b0903,
 		color2: 0xfbfff5
 	};
