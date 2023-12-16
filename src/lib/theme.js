@@ -32,6 +32,9 @@ export const theme = {
 		},
 		lineHeight: {
 			11: '3rem'
+		},
+		margin: {
+			'half-screen': '50vh'
 		}
 	}
 };

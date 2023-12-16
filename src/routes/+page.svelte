@@ -50,6 +50,7 @@
 </script>
 
 <LenisContext {scroll}>
+	<!-- Landing -->
 	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10">
 		<Mug bind:follow bind:el={mug} />
@@ -60,7 +61,8 @@
 			<span class="block">HIRE</span> JACK KUFA
 		</h1>
 	</div>
-	<section class="mx-4 flex h-screen flex-col justify-end gap-12">
+	<!-- About -->
+	<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 		<AboutItem
 			title="Developer First"
 			content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer

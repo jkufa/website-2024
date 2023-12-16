@@ -8,7 +8,6 @@
 	export let content: string;
 	export let animate = true;
 
-	
 	let containerRef: HTMLDivElement;
 	let titleRef: HTMLHeadingElement;
 	let contentRef: HTMLParagraphElement;
@@ -37,27 +36,24 @@
 				ease: 'sine.out'
 			}
 		});
-
-		// TODO: how can we apply this to both items simultaneously while still referencing the elements themselves?
-		animateRef(titleRef);
-		animateRef(contentRef);
+		animateRefs([titleRef, contentRef]);
 	});
 
-	function animateRef(ref: HTMLElement) {
+	function animateRefs(refs: HTMLElement[]) {
 		timeline
-			?.from(ref, {
+			?.from(refs, {
 				rotateX: `-${rotateX}deg`,
 				opacity: 0,
 				scale: scale,
 				stagger: stagger
 			})
-			.to(ref, {
+			.to(refs, {
 				rotateX: 0,
 				opacity: 1,
 				scale: 1
 			})
-			.to(ref, {
-				rotateX: '60eg',
+			.to(refs, {
+				rotateX: `${rotateX}deg`,
 				opacity: 0,
 				scale: scale,
 				stagger: 0.1
