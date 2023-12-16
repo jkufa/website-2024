@@ -15,9 +15,9 @@
 					start: 'center-=50px bottom-=100px',
 					end: 'center+=200px end'
 				},
-        defaults: {
-          ease: "sine.out"
-        }
+				defaults: {
+					ease: 'sine.out'
+				}
 			})
 			.from('#box > div > *', {
 				rotateX: '-60deg',
@@ -28,7 +28,7 @@
 			.to('#box > div > *', {
 				rotateX: 0,
 				opacity: 1,
-				scale: 1,
+				scale: 1
 			})
 			.to('#box > div > *', {
 				rotateX: '60eg',
@@ -39,9 +39,7 @@
 	});
 </script>
 
-<!-- <div class="translate-x-16"> -->
-
-<div id="box" class="flex w-fit max-w-3xl flex-col gap-6 p-2 text-off-white">
+<div id="box" class="text-tea-green flex w-fit max-w-3xl flex-col gap-6 p-2">
 	<div class="perspective">
 		<h2 class="text-8xl font-bold tracking-tighter">DEVELOPER FIRST</h2>
 	</div>
@@ -56,7 +54,7 @@
 <style>
 	p {
 		margin-top: 1rem;
-		font-family: 'Archivo';
+		font-family: 'Clear Sans';
 	}
 	.perspective {
 		perspective: 1200px;

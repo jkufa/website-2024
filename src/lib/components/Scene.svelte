@@ -2,6 +2,7 @@
 	import { T, useTask } from '@threlte/core';
 	import { Color, PlaneGeometry, Vector3 } from 'three';
 	import fragmentShader from '$lib/shaders/spiral.glsl?raw';
+	import { colors } from '$lib/theme';
 
 	export let w: number;
 	export let h: number;
@@ -17,8 +18,8 @@
 		warp: 0.75,
 		exponent: 0.9,
 		sharpness: 0.7,
-		color1: 0x0b0903,
-		color2: 0xfbfff5
+		color1: colors['off-black'],
+		color2: colors['tea-green']
 	};
 	const uniforms = {
 		iTime: { value: time },

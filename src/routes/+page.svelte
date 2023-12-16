@@ -55,12 +55,12 @@
 		<Mug bind:follow bind:el={mug} />
 		<h1
 			bind:this={title}
-			class="leading-85 absolute bottom-4 text-8xl font-black tracking-tighter left-4 text-off-white md:text-8xl md:leading-9 lg:text-10xl"
+			class="leading-85 absolute bottom-4 left-4 text-8xl font-black tracking-tighter text-tea-green md:text-8xl md:leading-9 lg:text-huge"
 		>
 			<span class="block">HIRE</span> JACK KUFA
 		</h1>
 	</div>
-	<section class="mx-4 flex h-screen flex-col gap-12 justify-end">
+	<section class="mx-4 flex h-screen flex-col justify-end gap-12">
 		<MotionPath />
 	</section>
 	<section class="mx-4 flex h-screen flex-col gap-12"></section>

@@ -1,32 +1,11 @@
+// This is a dummy tailwind config file used to provide intellisense.
+// To configure your global tailwind settings, modify the imported theme object.
+import { theme } from './src/lib/theme';
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		fontFamily: {
-			sans: ['Archivo Expanded, Helvetica, Arial, sans-serif']
-		},
-		letterSpacing: {
-			tightest: '-.75rem',
-			tighter: '-.25rem'
-		},
-		extend: {
-			backgroundColor: {
-				'off-white': '#fbfff5'
-			},
-			colors: {
-				'off-black': '#0b0903',
-				'off-white': '#fbfff5'
-			},
-			fontSize: {
-				'10xl': '9.5rem'
-			},
-			lineHeight: {
-				11: '3rem'
-			}
-		}
-	},
-	plugins: []
+		...theme
+	}
 };
-
-// color1: 0x080500,
-// color2: 0xB2B99F
