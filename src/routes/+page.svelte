@@ -7,7 +7,7 @@
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
-	import MotionPath from '$lib/components/MotionPath.svelte';
+	import AboutItem from '$lib/components/AboutItem.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -61,7 +61,11 @@
 		</h1>
 	</div>
 	<section class="mx-4 flex h-screen flex-col justify-end gap-12">
-		<MotionPath />
+		<AboutItem
+			title="Developer First"
+			content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
+    Science and Computer Engineering."
+		/>
 	</section>
 	<section class="mx-4 flex h-screen flex-col gap-12"></section>
 </LenisContext>
