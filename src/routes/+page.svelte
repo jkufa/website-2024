@@ -12,32 +12,27 @@
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
 	let follow: boolean;
+	let loaded: boolean;
 
 	const scale = tweened(0, { duration: 5000, easing: cubicInOut });
 
 	onMount(() => {
-		gsap.set(title, {
-			opacity: 0,
-			y: 200
-		});
-		gsap.set(mug, {
-			opacity: 0,
-			scale: 0
-		});
 		scale.set(150).then(() => {
-			gsap.to(title, {
-				opacity: 1,
-				y: 0,
+			loaded = true;
+			console.log(title, mug);
+			gsap.from(title, {
+				opacity: 0,
+				y: 200,
 				delay: 0.5,
 				duration: 2,
 				ease: 'power4.out'
 			});
-			gsap.to(mug, {
-				opacity: 1,
-				scale: 1,
+			gsap.from(mug, {
+				opacity: 0,
+				scale: 0,
 				duration: 5,
 				delay: 1,
-				ease: 'elastic.out(.75,0.4)'
+				ease: 'elastic.out(0.75,0.4)'
 			});
 		});
 	});
@@ -52,11 +47,11 @@
 <LenisContext {scroll}>
 	<!-- Landing -->
 	<Background bind:follow bind:scale={$scale} />
-	<div class="flex h-screen flex-col items-center justify-center gap-10">
+	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>
 		<Mug bind:follow bind:el={mug} />
 		<h1
 			bind:this={title}
-			class="leading-85 absolute bottom-4 left-4 text-8xl font-black tracking-tighter text-tea-green md:text-8xl md:leading-9 lg:text-huge"
+			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-tea-green md:leading-9"
 		>
 			<span class="block">HIRE</span> JACK KUFA
 		</h1>
@@ -71,3 +66,9 @@
 	</section>
 	<section class="mx-4 flex h-screen flex-col gap-12"></section>
 </LenisContext>
+
+<style>
+	h1 {
+		font-size: clamp(4rem, 12vw, 13rem);
+	}
+</style>

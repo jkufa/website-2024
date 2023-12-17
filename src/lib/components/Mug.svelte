@@ -32,7 +32,7 @@
 				x: e.clientX,
 				y: e.clientY,
 				left: 0,
-				scale: 0.25,
+				scale: 0.33,
 				duration: 1.2,
 				ease: 'expo.out'
 			});
