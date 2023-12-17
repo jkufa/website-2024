@@ -69,6 +69,6 @@
 
 <style>
 	h1 {
-		font-size: clamp(4rem, 12vw, 13rem);
+		font-size: clamp(4rem, 13vw, 13rem);
 	}
 </style>
