@@ -51,7 +51,7 @@
 		<Mug bind:follow bind:el={mug} />
 		<h1
 			bind:this={title}
-			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-tea-green md:leading-9"
+			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
 		>
 			<span class="block">HIRE</span> JACK KUFA
 		</h1>

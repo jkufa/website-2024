@@ -64,7 +64,7 @@
 <!-- Container -->
 <div
 	bind:this={containerRef}
-	class="flex w-fit max-w-full flex-col gap-3 p-2 text-tea-green md:max-w-3xl md:gap-6"
+	class="flex w-fit max-w-full flex-col gap-3 p-2 text-pistachio md:max-w-3xl md:gap-6"
 >
 	<!-- Perspective wrapper -->
 	<div class="perspective">

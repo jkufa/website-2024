@@ -19,7 +19,7 @@
 		exponent: 0.9,
 		sharpness: 0.7,
 		color1: colors['off-black'],
-		color2: colors['tea-green']
+		color2: colors['pistachio']
 	};
 	const uniforms = {
 		iTime: { value: time },
