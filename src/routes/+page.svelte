@@ -8,11 +8,14 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import AboutItem from '$lib/components/AboutItem.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
 	let follow: boolean;
 	let loaded: boolean;
+	let animations = true;
+	let intro = true;
 
 	const scale = tweened(0, { duration: 5000, easing: cubicInOut });
 
@@ -45,6 +48,7 @@
 </script>
 
 <LenisContext {scroll}>
+	<Navbar bind:animations bind:intro />
 	<!-- Landing -->
 	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>

@@ -5,7 +5,7 @@
  */
 export const colors = {
 	'off-black': '#0B0904',
-	'pistachio': '#B2B99F'
+	pistachio: '#B2B99F'
 };
 
 /** @type {import('tailwindcss').Config['theme']} */
