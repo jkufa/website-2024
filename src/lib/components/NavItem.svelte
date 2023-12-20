@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { quintOut } from "svelte/easing";
-	import { slide } from "svelte/transition";
+	import { quintOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 
 	export let active = false;
 	export let href: string;
