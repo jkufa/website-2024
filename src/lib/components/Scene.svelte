@@ -3,6 +3,7 @@
 	import { Color, PlaneGeometry, Vector3 } from 'three';
 	import fragmentShader from '$lib/shaders/spiral.glsl?raw';
 	import { colors } from '$lib/theme';
+	import { userSettings } from '$lib/stores/userSettings';
 
 	export let w: number;
 	export let h: number;
@@ -34,6 +35,8 @@
 	const geometry = new PlaneGeometry(w, h);
 
 	useTask((delta) => {
+		if (!$userSettings.animationsOn) return;
+
 		time += delta * params.speed;
 		uniforms.iTime.value = time;
 		uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1);

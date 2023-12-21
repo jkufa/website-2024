@@ -9,6 +9,7 @@
 	import { cubicInOut } from 'svelte/easing';
 	import AboutItem from '$lib/components/AboutItem.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import { userSettings } from '$lib/stores/userSettings';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -17,27 +18,34 @@
 	let animations = true;
 	let intro = true;
 
-	const scale = tweened(0, { duration: 5000, easing: cubicInOut });
+	const scale = tweened(0, {
+		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
+		easing: cubicInOut,
+	});
 
 	onMount(() => {
-		scale.set(150).then(() => {
-			loaded = true;
-			console.log(title, mug);
-			gsap.from(title, {
-				opacity: 0,
-				y: 200,
-				delay: 0.5,
-				duration: 2,
-				ease: 'power4.out',
+		if ($userSettings.introOn) {
+			scale.set(150).then(() => {
+				loaded = true;
+				gsap.from(title, {
+					opacity: 0,
+					y: 200,
+					delay: 0.5,
+					duration: 2,
+					ease: 'power4.out',
+				});
+				gsap.from(mug, {
+					opacity: 0,
+					scale: 0,
+					duration: 5,
+					delay: 1,
+					ease: 'elastic.out(0.75,0.4)',
+				});
 			});
-			gsap.from(mug, {
-				opacity: 0,
-				scale: 0,
-				duration: 5,
-				delay: 1,
-				ease: 'elastic.out(0.75,0.4)',
-			});
-		});
+			return;
+		}
+		scale.set(150);
+		loaded = true;
 	});
 
 	function scroll() {

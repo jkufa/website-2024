@@ -6,6 +6,7 @@
 	import Hamburger from './Hamburger.svelte';
 	import { tweened } from 'svelte/motion';
 	import { onMount } from 'svelte';
+	import { userSettings } from '$lib/stores/userSettings';
 
 	export let animations = true;
 	export let intro = true;
@@ -16,7 +17,6 @@
 		h: 0,
 	};
 	let wh = tweened(init);
-	let ref: HTMLDivElement;
 
 	function expand() {
 		showMenu = true;
@@ -51,7 +51,6 @@
 	{#if showMenu}
 		<div
 			class="container flex h-full flex-col justify-between overflow-hidden border-solid bg-off-black"
-			bind:this={ref}
 		>
 			<div class="nav-items flex flex-col text-end">
 				<NavItem href="#">
@@ -63,10 +62,21 @@
 			</div>
 			<div class="settings flex flex-col gap-4 p-4">
 				<div class="flex items-center justify-between text-3xl text-pistachio">
-					<Switch bind:checked={animations} id="anim" label="Animations" />
+					<Switch
+						bind:checked={animations}
+						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
+						id="anim"
+						label="Animations"
+					/>
 				</div>
 				<div class="flex items-center justify-between text-3xl text-pistachio">
-					<Switch bind:checked={intro} id="intro" label="Intro" disabled={!animations} />
+					<Switch
+						bind:checked={intro}
+						id="intro"
+						label="Intro"
+						onToggle={() => ($userSettings.introOn = !$userSettings.introOn)}
+						disabled={!animations}
+					/>
 				</div>
 			</div>
 		</div>

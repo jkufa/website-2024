@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
+	import { userSettings } from '$lib/stores/userSettings';
 
 	export let follow: boolean | undefined;
 	export let el: HTMLDivElement;
@@ -9,17 +10,25 @@
 	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
 
 	let current = 0;
+	let interval: number;
 	$: name = names[current];
 	$: if (el && follow === false) resetPos();
+	$: $userSettings.animationsOn ? spin() : pause();
 
-	onMount(() => {
-		// spin mug
-		const interval = setInterval(() => {
+	function pause() {
+		clearInterval(interval);
+		resetPos();
+	}
+
+	function spin() {
+		interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);
 		return () => clearInterval(interval);
-	});
+	}
+
 	function handleMouse(e: MouseEvent) {
+		if (!$userSettings.animationsOn) return;
 		if (follow) {
 			if (!hasMoved) {
 				gsap.set(el, {
@@ -53,7 +62,7 @@
 <svelte:window on:mousemove={handleMouse} />
 <div
 	bind:this={el}
-	class="{follow && hasMoved
+	class="{follow && hasMoved && $userSettings.animationsOn
 		? 'fixed left-0 top-0 origin-top-left'
 		: 'relative'} md:mug-md lg:mug-lg z-10"
 	data-sevenup="{name}.png"

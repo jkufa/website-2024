@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
+	import { userSettings } from '$lib/stores/userSettings';
 
 	export let follow: boolean;
 	export let scale: number;
@@ -16,7 +17,7 @@
 		bind:clientWidth={w}
 		bind:clientHeight={h}
 		class="-z-10 h-full w-full transition-opacity duration-500"
-		class:opacity-30={follow}
+		class:opacity-30={follow || !$userSettings.animationsOn}
 	>
 		<Canvas>
 			<Scene bind:w bind:h bind:scale />

@@ -8,6 +8,7 @@
 	export let checked: boolean = false;
 	export let disabled = false;
 	export let tabIndex = 0;
+	export let onToggle: Function;
 
 	let handleRef: HTMLDivElement;
 	const off = {
@@ -47,6 +48,7 @@
 			});
 			checked = true;
 		}
+		onToggle();
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
