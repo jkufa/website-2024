@@ -9,7 +9,7 @@
 	// Handle Lenis
 	onMount(() => {
 		lenis = new Lenis({
-			lerp: 0.075
+			lerp: 0.075,
 		});
 
 		lenis.on('scroll', () => {

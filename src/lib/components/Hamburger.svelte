@@ -1,19 +1,79 @@
 <script lang="ts">
 	export let onClick: Function;
+	export let height: number;
+	export let width: number;
+	let topBun: SVGPathElement;
+	let botBun: SVGPathElement;
+	let patty: SVGPathElement;
+	export let toX: boolean;
 </script>
 
 <button
-	class="z-50 flex w-fit justify-end p-8 text-pistachio transition-all focus-within:outline-none"
-	on:click={onClick()}
+	bind:clientWidth={width}
+	bind:clientHeight={height}
+	class="
+  sca z-50 flex w-fit justify-end p-8 text-pistachio transition-all
+  focus-within:outline-none
+  "
+	on:click={() => {
+		onClick();
+	}}
 >
+	<!-- {#if hamburger} -->
 	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
-		width="21"
-		height="21"
-		fill="currentColor"
 		class="scale-150"
-		><path d="M0 18.384 18.384 0l2.122 2.121L2.12 20.506 0 18.384Z" /><path
-			d="m2.242 0 18.385 18.384-2.121 2.122L.12 2.12 2.242 0Z"
-		/></svg
 	>
+		<path
+			bind:this={topBun}
+			id="t-bun"
+			d="M0 2.5L24 2.5L24 5.5L-1.31134e-07 5.5L0 2.5Z"
+			fill="currentColor"
+			class:x={toX}
+		/>
+		<path
+			bind:this={patty}
+			id="patty"
+			d="M0 10.5L24 10.5L24 13.5L-1.31134e-07 13.5L0 10.5Z"
+			fill="currentColor"
+			class:x={toX}
+		/>
+		<path
+			bind:this={botBun}
+			id="b-bun"
+			d="M0 18.5L24 18.5L24 21.5L-1.31134e-07 21.5L0 18.5Z"
+			fill="currentColor"
+			class:x={toX}
+		/>
+	</svg>
 </button>
+
+<style lang="scss">
+	button:focus-visible {
+		box-shadow: 0px 0px 0px 0.25rem rgba(178, 185, 159, 0.4);
+		outline: none;
+	}
+	svg {
+		transition: transform 300ms 100ms ease;
+	}
+	path {
+		transform-origin: center;
+		transition: transform 300ms ease;
+	}
+	button:hover svg {
+		transform: scale(1.75) !important;
+	}
+	#t-bun.x {
+		transform: rotateZ(-45deg) translate(0px, 8px);
+	}
+	#b-bun.x {
+		transform: rotateZ(45deg) translate(0px, -8px);
+	}
+	#patty.x {
+		transform: rotateZ(45deg);
+	}
+</style>

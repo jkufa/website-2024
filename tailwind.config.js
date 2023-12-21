@@ -6,6 +6,6 @@ import { theme } from './src/lib/theme';
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		...theme
-	}
+		...theme,
+	},
 };

@@ -5,58 +5,55 @@
 	import { cubicInOut, linear, quintInOut } from 'svelte/easing';
 	import Hamburger from './Hamburger.svelte';
 	import { tweened } from 'svelte/motion';
+	import { onMount } from 'svelte';
 
 	export let animations = true;
 	export let intro = true;
 	export let showMenu = false;
 
 	const init = {
-		w: 85,
-		h: 85
+		w: 0,
+		h: 0,
 	};
-	let wh = tweened(init, { duration: 600, easing: cubicInOut });
-
-	// function slideIn(node, { duration }) {
-	// 	return {
-	// 		duration,
-	// 		css: (t) => {
-	// 			const ease = cubicInOut(t);
-	// 			console.log('t', t);
-	// 			return `
-	//         min-width: 87px;
-	//         min-height: 87px;
-	//         width: ${ease * 100}%;
-	//         height: ${ease * 100}%;
-	//       `;
-	// 		}
-	// 	};
-	// }
+	let wh = tweened(init);
+	let ref: HTMLDivElement;
 
 	function expand() {
-		console.log('here');
 		showMenu = true;
-		wh.set({ w: 384, h: 480 });
+		wh.set({ w: $wh.w * 4.5, h: $wh.w * 5.5 });
 	}
 	function shrink() {
 		wh.set(init).then(() => (showMenu = false));
 	}
+
+	onMount(() => {
+		wh = tweened(init, { duration: 600, easing: cubicInOut });
+	});
 </script>
 
 <nav
 	class="
     fixed end-4 top-4 z-40 flex flex-col items-end
-    border border-solid border-pistachio
-    hover:opacity-100 md:end-8 md:top-8
+    border border-solid border-pistachio bg-off-black
+    transition-opacity
+    focus-within:opacity-100 hover:opacity-100 md:end-8
+    md:top-8
     "
 	class:opacity-60={!showMenu}
 	style="width: {$wh.w}px; height: {$wh.h}px;"
 >
-	<Hamburger onClick={() => (showMenu ? shrink() : expand())} />
+	<Hamburger
+		bind:height={init.h}
+		bind:width={init.w}
+		bind:toX={showMenu}
+		onClick={() => (showMenu ? shrink() : expand())}
+	/>
 	{#if showMenu}
 		<div
 			class="container flex h-full flex-col justify-between overflow-hidden border-solid bg-off-black"
+			bind:this={ref}
 		>
-			<div class="nav-items flex flex-col gap-4 text-end">
+			<div class="nav-items flex flex-col text-end">
 				<NavItem href="#">
 					<span class="text-5xl font-bold">HOME</span>
 				</NavItem>

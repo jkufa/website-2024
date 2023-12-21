@@ -28,14 +28,14 @@
 				y: 200,
 				delay: 0.5,
 				duration: 2,
-				ease: 'power4.out'
+				ease: 'power4.out',
 			});
 			gsap.from(mug, {
 				opacity: 0,
 				scale: 0,
 				duration: 5,
 				delay: 1,
-				ease: 'elastic.out(0.75,0.4)'
+				ease: 'elastic.out(0.75,0.4)',
 			});
 		});
 	});
@@ -50,7 +50,7 @@
 <LenisContext {scroll}>
 	<Navbar bind:animations bind:intro />
 	<!-- Landing -->
-	<!-- <Background bind:follow bind:scale={$scale} />
+	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>
 		<Mug bind:follow bind:el={mug} />
 		<h1
@@ -59,16 +59,16 @@
 		>
 			<span class="block">HIRE</span> JACK KUFA
 		</h1>
-	</div> -->
+	</div>
 	<!-- About -->
-	<!-- <section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+	<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 		<AboutItem
 			title="Developer First"
 			content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
     Science and Computer Engineering."
 		/>
 	</section>
-	<section class="mx-4 flex h-screen flex-col gap-12"></section> -->
+	<section class="mx-4 flex h-screen flex-col gap-12"></section>
 </LenisContext>
 
 <style>

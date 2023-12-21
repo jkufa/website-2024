@@ -8,10 +8,10 @@ export default defineConfig({
 		visualizer({
 			emitFile: true,
 			brotliSize: true,
-			filename: 'stats.html'
-		}) as PluginOption
+			filename: 'stats.html',
+		}) as PluginOption,
 	],
 	ssr: {
-		noExternal: ['three', 'gsap']
-	}
+		noExternal: ['three', 'gsap'],
+	},
 });

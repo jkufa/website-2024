@@ -24,7 +24,7 @@
 			if (!hasMoved) {
 				gsap.set(el, {
 					top: 0,
-					left: window.innerWidth / 2
+					left: window.innerWidth / 2,
 				});
 				hasMoved = true;
 			}
@@ -34,7 +34,7 @@
 				left: 0,
 				scale: 0.33,
 				duration: 1.2,
-				ease: 'expo.out'
+				ease: 'expo.out',
 			});
 		}
 	}
@@ -44,7 +44,7 @@
 			y: 0,
 			scale: 1,
 			duration: 2,
-			ease: 'elastic.out(0.75,0.5)'
+			ease: 'elastic.out(0.75,0.5)',
 		});
 		hasMoved = false;
 	}

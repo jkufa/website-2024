@@ -13,12 +13,12 @@
 	const off = {
 		x: 0,
 		offset: 0,
-		opacity: 0.6
+		opacity: 0.6,
 	};
 	const on = {
 		x: 100,
 		offset: 0.5,
-		opacity: 1
+		opacity: 1,
 	};
 
 	let tweens = tweened(checked && !disabled ? on : off, { duration: 300, easing: quartInOut }); // in %
@@ -36,14 +36,14 @@
 			tweens.set({
 				x: 0,
 				offset: 0,
-				opacity: 0.6
+				opacity: 0.6,
 			});
 			checked = false;
 		} else {
 			tweens.set({
 				x: 100,
 				offset: 0.5,
-				opacity: 1
+				opacity: 1,
 			});
 			checked = true;
 		}

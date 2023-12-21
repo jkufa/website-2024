@@ -17,7 +17,7 @@
 		markers: false,
 		scale: 0.75,
 		stagger: 0.5,
-		rotateX: 60 // number in degrees
+		rotateX: 60, // number in degrees
 	};
 
 	onMount(() => {
@@ -30,11 +30,11 @@
 				scrub: 1.5,
 				markers: markers,
 				start: 'center-=50px bottom-=100px',
-				end: 'center+=100px end'
+				end: 'center+=100px end',
 			},
 			defaults: {
-				ease: 'sine.out'
-			}
+				ease: 'sine.out',
+			},
 		});
 		animateRefs([titleRef, contentRef]);
 	});
@@ -45,18 +45,18 @@
 				rotateX: `-${rotateX}deg`,
 				opacity: 0,
 				scale: scale,
-				stagger: stagger
+				stagger: stagger,
 			})
 			.to(refs, {
 				rotateX: 0,
 				opacity: 1,
-				scale: 1
+				scale: 1,
 			})
 			.to(refs, {
 				rotateX: `${rotateX}deg`,
 				opacity: 0,
 				scale: scale,
-				stagger: 0.1
+				stagger: 0.1,
 			});
 	}
 </script>

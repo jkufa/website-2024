@@ -19,7 +19,7 @@
 		exponent: 0.9,
 		sharpness: 0.7,
 		color1: colors['off-black'],
-		color2: colors['pistachio']
+		color2: colors['pistachio'],
 	};
 	const uniforms = {
 		iTime: { value: time },
@@ -29,7 +29,7 @@
 		sharpness: { value: params.sharpness },
 		scale: { value: params.scale },
 		color1: { type: 'vec3', value: new Color(params.color1).convertLinearToSRGB() },
-		color2: { type: 'vec3', value: new Color(params.color2).convertLinearToSRGB() }
+		color2: { type: 'vec3', value: new Color(params.color2).convertLinearToSRGB() },
 	};
 	const geometry = new PlaneGeometry(w, h);
 
