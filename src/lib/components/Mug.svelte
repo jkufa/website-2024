@@ -7,10 +7,12 @@
 	export let el: HTMLDivElement;
 
 	let hasMoved = false;
-	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
-
 	let current = 0;
 	let interval: number;
+	let spinning = false;
+
+	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
+
 	$: name = names[current];
 	$: if (el && follow === false) resetPos();
 	$: $userSettings.animationsOn ? spin() : pause();
@@ -18,9 +20,13 @@
 	function pause() {
 		clearInterval(interval);
 		resetPos();
+		spinning = false;
 	}
 
 	function spin() {
+		if (spinning) return;
+
+		spinning = true;
 		interval = setInterval(() => {
 			current = (current + 1) % names.length;
 		}, 120);

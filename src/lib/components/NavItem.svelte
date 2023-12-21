@@ -9,7 +9,7 @@
 <a
 	{href}
 	draggable="false"
-	class="my-1 p-4
+	class="mx-4 my-1 p-4
   text-pistachio
   transition-all
   focus-within:bg-pistachio focus-within:text-off-black focus-within:outline-none hover:bg-pistachio
