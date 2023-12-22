@@ -8,8 +8,6 @@
 	import { onMount } from 'svelte';
 	import { userSettings } from '$lib/stores/userSettings';
 
-	export let animations = true;
-	export let intro = true;
 	export let showMenu = false;
 
 	const init = {
@@ -63,7 +61,7 @@
 			<div class="settings flex flex-col gap-4 p-4">
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={animations}
+						bind:checked={$userSettings.animationsOn}
 						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
 						id="anim"
 						label="Animations"
@@ -71,11 +69,11 @@
 				</div>
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={intro}
+						bind:checked={$userSettings.introOn}
 						id="intro"
 						label="Intro"
 						onToggle={() => ($userSettings.introOn = !$userSettings.introOn)}
-						disabled={!animations}
+						disabled={!$userSettings.animationsOn}
 					/>
 				</div>
 			</div>
