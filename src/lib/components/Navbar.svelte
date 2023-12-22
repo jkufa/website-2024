@@ -20,7 +20,7 @@
 
 	function expand() {
 		showMenu = true;
-		wh.set({ w: $wh.w * 4.5, h: $wh.w * 5.5 });
+		wh.set({ w: $wh.w * 4.5, h: $wh.h * 5.5 });
 	}
 	function shrink() {
 		wh.set(init).then(() => (showMenu = false));
@@ -54,14 +54,14 @@
 		>
 			<div class="nav-items flex flex-col text-end">
 				<NavItem href="#">
-					<span class="text-5xl font-bold">HOME</span>
+					<span class="text-3xl font-bold md:text-5xl">HOME</span>
 				</NavItem>
 				<NavItem href="#about">
-					<span class="text-5xl font-bold">ABOUT</span>
+					<span class="text-3xl font-bold md:text-5xl">ABOUT</span>
 				</NavItem>
 			</div>
 			<div class="settings flex flex-col gap-4 p-4">
-				<div class="flex items-center justify-between text-3xl text-pistachio">
+				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
 						bind:checked={animations}
 						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
@@ -69,7 +69,7 @@
 						label="Animations"
 					/>
 				</div>
-				<div class="flex items-center justify-between text-3xl text-pistachio">
+				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
 						bind:checked={intro}
 						id="intro"

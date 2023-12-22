@@ -9,11 +9,11 @@
 <a
 	{href}
 	draggable="false"
-	class="mx-4 my-1 p-4
-  text-pistachio
+	class="mx-4 p-4 text-pistachio
   transition-all
-  focus-within:bg-pistachio focus-within:text-off-black focus-within:outline-none hover:bg-pistachio
-  hover:text-off-black active:bg-pistachio active:text-off-black
+  focus-within:bg-pistachio
+  focus-within:text-off-black focus-within:outline-none hover:bg-pistachio hover:text-off-black
+  active:bg-pistachio active:text-off-black md:my-1
   "
 >
 	<slot />

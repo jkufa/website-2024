@@ -12,7 +12,7 @@
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	class="
-  sca z-50 flex w-fit justify-end p-8 text-pistachio transition-all
+  z-50 flex w-fit justify-end p-8 text-pistachio transition-all
   focus-within:outline-none
   "
 	on:click={() => {
@@ -21,12 +21,10 @@
 >
 	<!-- {#if hamburger} -->
 	<svg
-		width="24"
-		height="24"
 		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
-		class="scale-150"
+		class="h-4 w-4 scale-150 md:h-6 md:w-6"
 	>
 		<path
 			bind:this={topBun}
