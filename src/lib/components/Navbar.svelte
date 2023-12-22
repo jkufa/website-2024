@@ -8,6 +8,8 @@
 	import { onMount } from 'svelte';
 	import { userSettings } from '$lib/stores/userSettings';
 
+	export let animations = true;
+	export let intro = true;
 	export let showMenu = false;
 
 	const init = {
@@ -25,6 +27,9 @@
 	}
 
 	onMount(() => {
+    animations = $userSettings.animationsOn;
+    intro = $userSettings.introOn;
+
 		wh = tweened(init, { duration: 600, easing: cubicInOut });
 	});
 </script>
@@ -61,7 +66,7 @@
 			<div class="settings flex flex-col gap-4 p-4">
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={$userSettings.animationsOn}
+						bind:checked={animations}
 						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
 						id="anim"
 						label="Animations"
@@ -69,11 +74,11 @@
 				</div>
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={$userSettings.introOn}
+						bind:checked={intro}
 						id="intro"
 						label="Intro"
 						onToggle={() => ($userSettings.introOn = !$userSettings.introOn)}
-						disabled={!$userSettings.animationsOn}
+						disabled={!animations}
 					/>
 				</div>
 			</div>
