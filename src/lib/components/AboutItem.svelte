@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { userSettings } from '$lib/stores/userSettings';
 	import { gsap } from 'gsap';
 	import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,12 +7,12 @@
 
 	export let title: string;
 	export let content: string;
-	export let animate = true;
 
 	let containerRef: HTMLDivElement;
 	let titleRef: HTMLHeadingElement;
 	let contentRef: HTMLParagraphElement;
 	let timeline: gsap.core.Timeline;
+	let isMounted = false;
 
 	const { markers, scale, stagger, rotateX } = {
 		markers: false,
@@ -20,9 +21,9 @@
 		rotateX: 60, // number in degrees
 	};
 
-	onMount(() => {
-		if (!animate) return;
+	$: isMounted && $userSettings.animationsOn ? enableAnimations() : disableAnimations();
 
+	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 		timeline = gsap.timeline({
 			scrollTrigger: {
@@ -36,8 +37,30 @@
 				ease: 'sine.out',
 			},
 		});
+
+		if (!$userSettings.animationsOn) return;
+
 		animateRefs([titleRef, contentRef]);
+
+		isMounted = true;
 	});
+
+	function enableAnimations() {
+		if (!isMounted) return;
+
+		animateRefs([titleRef, contentRef]);
+	}
+
+	function disableAnimations() {
+		if (!isMounted) return;
+
+		gsap.set([titleRef, contentRef], {
+			rotateX: 0,
+			opacity: 1,
+			scale: 1,
+		});
+		timeline.clear();
+	}
 
 	function animateRefs(refs: HTMLElement[]) {
 		timeline
