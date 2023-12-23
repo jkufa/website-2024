@@ -1,4 +1,4 @@
-export type userSettings = {
+export type UserSettings = {
 	animationsOn: boolean;
 	introOn: boolean;
 };

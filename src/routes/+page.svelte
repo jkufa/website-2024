@@ -17,8 +17,6 @@
 	let title: HTMLHeadingElement;
 	let follow: boolean;
 	let loaded: boolean;
-	let animations = true;
-	let intro = true;
 	let continueToSite = false;
 
 	const scale = tweened(0, {
@@ -29,14 +27,16 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
-		if ($userSettings.introOn) return;
+		if ($userSettings.introOn) {
+			runIntro();
+			return;
+		}
 
 		scale.set(150);
 		loaded = true;
 	});
 
 	function runIntro() {
-		console.log('run');
 		scale.set(150).then(() => {
 			loaded = true;
 			gsap.from(title, {
@@ -53,6 +53,7 @@
 				delay: 1,
 				ease: 'elastic.out(0.75,0.4)',
 			});
+			$userSettings.introOn = false;
 		});
 	}
 
@@ -64,7 +65,7 @@
 </script>
 
 <LenisContext {scroll}>
-	{#if $userSettings.introOn && !continueToSite}
+	<!-- {#if $userSettings.introOn && !continueToSite}
 		<div
 			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
 		>
@@ -72,32 +73,29 @@
 			<ProgressBar />
 			<Button label="Continue" onClick={() => (continueToSite = true)} />
 		</div>
-	{:else}
-		<Navbar />
-		<!-- Landing -->
-		<Background bind:follow bind:scale={$scale} />
-		<div
-			class="flex h-screen flex-col items-center justify-center gap-10"
-			class:opacity-0={!loaded}
+	{:else} -->
+	<Navbar />
+	<!-- Landing -->
+	<Background bind:follow bind:scale={$scale} />
+	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>
+		<Mug bind:follow bind:el={mug} />
+		<h1
+			bind:this={title}
+			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
 		>
-			<Mug bind:follow bind:el={mug} />
-			<h1
-				bind:this={title}
-				class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
-			>
-				<span class="block">HIRE</span> JACK KUFA
-			</h1>
-		</div>
-		<!-- About -->
-		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-			<AboutItem
-				title="Developer First"
-				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
+			<span class="block">HIRE</span> JACK KUFA
+		</h1>
+	</div>
+	<!-- About -->
+	<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+		<AboutItem
+			title="Developer First"
+			content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
     Science and Computer Engineering."
-			/>
-		</section>
-		<section class="mx-4 flex h-screen flex-col gap-12"></section>
-	{/if}
+		/>
+	</section>
+	<section class="mx-4 flex h-screen flex-col gap-12"></section>
+	<!-- {/if} -->
 </LenisContext>
 
 <style>

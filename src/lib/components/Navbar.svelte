@@ -1,22 +1,23 @@
 <script lang="ts">
 	import Switch from './Switch.svelte';
 	import NavItem from './NavItem.svelte';
-	import { crossfade, scale, slide, type ScaleParams } from 'svelte/transition';
-	import { cubicInOut, linear, quintInOut } from 'svelte/easing';
+	import { cubicInOut } from 'svelte/easing';
 	import Hamburger from './Hamburger.svelte';
 	import { tweened } from 'svelte/motion';
 	import { onMount } from 'svelte';
 	import { userSettings } from '$lib/stores/userSettings';
 
-	export let animations = true;
-	export let intro = true;
 	export let showMenu = false;
+	let introOn: boolean;
+	let animationsOn: boolean;
 
 	const init = {
 		w: 0,
 		h: 0,
 	};
 	let wh = tweened(init);
+
+	$: ({ introOn, animationsOn } = $userSettings);
 
 	function expand() {
 		showMenu = true;
@@ -27,9 +28,6 @@
 	}
 
 	onMount(() => {
-    animations = $userSettings.animationsOn;
-    intro = $userSettings.introOn;
-
 		wh = tweened(init, { duration: 600, easing: cubicInOut });
 	});
 </script>
@@ -66,7 +64,7 @@
 			<div class="settings flex flex-col gap-4 p-4">
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={animations}
+						bind:checked={animationsOn}
 						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
 						id="anim"
 						label="Animations"
@@ -74,11 +72,11 @@
 				</div>
 				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
 					<Switch
-						bind:checked={intro}
+						bind:checked={introOn}
 						id="intro"
 						label="Intro"
 						onToggle={() => ($userSettings.introOn = !$userSettings.introOn)}
-						disabled={!animations}
+						disabled={!animationsOn}
 					/>
 				</div>
 			</div>
