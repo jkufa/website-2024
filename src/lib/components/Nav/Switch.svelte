@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { quartInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
@@ -10,7 +9,6 @@
 	export let tabIndex = 0;
 	export let onToggle: Function;
 
-	let handleRef: HTMLDivElement;
 	const off = {
 		x: 0,
 		offset: 0,
@@ -22,6 +20,7 @@
 		opacity: 1,
 	};
 
+	let handleRef: HTMLDivElement;
 	let tweens = tweened(checked && !disabled ? on : off, { duration: 300, easing: quartInOut }); // in %
 
 	$: if (disabled) {
@@ -65,12 +64,12 @@
 	role="checkbox"
 	tabindex={!disabled ? tabIndex : null}
 	aria-checked="false"
-	on:click={toggle}
-	on:keydown={handleKeydown}
 	class="track float-right flex h-[1em] w-[2em] cursor-pointer border border-solid border-pistachio p-1 transition-opacity aria-disabled:cursor-not-allowed"
 	class:opacity-50={disabled}
 	aria-disabled={disabled}
 	class:disabled
+	on:click={toggle}
+	on:keydown={handleKeydown}
 >
 	<div
 		bind:this={handleRef}

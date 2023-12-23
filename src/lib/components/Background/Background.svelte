@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
-	import Scene from './Scene.svelte';
 	import { userSettings } from '$lib/stores/userSettings';
+	import Scene from './Scene.svelte';
 
 	export let follow: boolean;
 	export let scale: number;

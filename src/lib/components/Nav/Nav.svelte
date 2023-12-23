@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Switch from './Switch.svelte';
-	import NavItem from './NavItem.svelte';
 	import { cubicInOut } from 'svelte/easing';
-	import Hamburger from './Hamburger.svelte';
 	import { tweened } from 'svelte/motion';
 	import { onMount } from 'svelte';
-	import { userSettings } from '$lib/stores/userSettings';
+	import { userSettings } from '$lib/stores';
+	import Switch from './Switch.svelte';
+	import NavItem from './NavItem.svelte';
+	import Hamburger from './Hamburger.svelte';
 
 	export let showMenu = false;
 	let introOn: boolean;

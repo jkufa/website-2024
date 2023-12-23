@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { scrollPosition } from '$lib/stores/scrollPosition';
-	import Lenis from '@studio-freight/lenis';
 	import { onMount } from 'svelte';
+	import { scrollPosition } from '$lib/stores';
+	import Lenis from '@studio-freight/lenis';
+
+	export let onScroll: () => unknown;
 
 	let lenis: Lenis;
-	export let scroll: () => unknown;
 
 	// Handle Lenis
 	onMount(() => {
@@ -15,7 +16,7 @@
 		lenis.on('scroll', () => {
 			scrollPosition.set(lenis.animatedScroll);
 
-			scroll(); // do stuff from other components
+			onScroll(); // do stuff from other components
 		});
 
 		function raf(time: number) {

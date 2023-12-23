@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { T, useTask } from '@threlte/core';
 	import { Color, PlaneGeometry, Vector3 } from 'three';
-	import fragmentShader from '$lib/shaders/spiral.glsl?raw';
 	import { colors } from '$lib/theme';
-	import { userSettings } from '$lib/stores/userSettings';
+	import { userSettings } from '$lib/stores';
+	import fragmentShader from '$lib/shaders/spiral.glsl?raw';
 
 	export let w: number;
 	export let h: number;

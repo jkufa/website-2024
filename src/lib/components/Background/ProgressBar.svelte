@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { cubicInOut, quadOut } from 'svelte/easing';
+	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
 	let barRef: HTMLDivElement;

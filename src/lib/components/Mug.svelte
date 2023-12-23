@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { userSettings } from '$lib/stores';
 	import gsap from 'gsap';
-	import { userSettings } from '$lib/stores/userSettings';
 
 	export let follow: boolean | undefined;
 	export let el: HTMLDivElement;

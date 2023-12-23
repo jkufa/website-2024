@@ -2,10 +2,11 @@
 	export let onClick: Function;
 	export let height: number;
 	export let width: number;
+	export let toX: boolean;
+
 	let topBun: SVGPathElement;
 	let botBun: SVGPathElement;
 	let patty: SVGPathElement;
-	export let toX: boolean;
 </script>
 
 <button

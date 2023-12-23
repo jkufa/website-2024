@@ -1,17 +1,18 @@
 <script lang="ts">
-	import Mug from '$lib/components/Mug.svelte';
-	import Background from '$lib/components/Background.svelte';
-	import LenisContext from '$lib/components/LenisContext.svelte';
-	import gsap from 'gsap';
-	import { scrollPosition } from '$lib/stores/scrollPosition';
+	import {
+		Mug,
+		Background,
+		Nav,
+		AboutItem,
+		LenisContext,
+		ProgressBar,
+		Button,
+	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
-	import AboutItem from '$lib/components/AboutItem.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-	import { userSettings } from '$lib/stores/userSettings';
-	import ProgressBar from '$lib/components/Progressbar.svelte';
-	import Button from '$lib/components/Button.svelte';
+	import { scrollPosition, userSettings } from '$lib/stores';
+	import gsap from 'gsap';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -64,7 +65,7 @@
 	}
 </script>
 
-<LenisContext {scroll}>
+<LenisContext onScroll={scroll}>
 	<!-- {#if $userSettings.introOn && !continueToSite}
 		<div
 			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
@@ -74,7 +75,7 @@
 			<Button label="Continue" onClick={() => (continueToSite = true)} />
 		</div>
 	{:else} -->
-	<Navbar />
+	<Nav />
 	<!-- Landing -->
 	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>
