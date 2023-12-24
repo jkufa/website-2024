@@ -73,7 +73,7 @@
 	data-sevenup="{name}.png"
 ></div>
 
-<style>
+<style lang="postcss">
 	/* * {
     border: 1px solid red;
   } */

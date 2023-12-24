@@ -28,11 +28,6 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
-		if ($userSettings.introOn) {
-			runIntro();
-			return;
-		}
-
 		scale.set(150);
 		loaded = true;
 	});
@@ -66,37 +61,40 @@
 </script>
 
 <LenisContext onScroll={scroll}>
-	<!-- {#if $userSettings.introOn && !continueToSite}
+	{#if $userSettings.introOn && !continueToSite}
 		<div
 			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
 		>
-			<span>Loading</span>
+			<!-- <span>Loading</span> -->
 			<ProgressBar />
 			<Button label="Continue" onClick={() => (continueToSite = true)} />
 		</div>
-	{:else} -->
-	<Nav />
-	<!-- Landing -->
-	<Background bind:follow bind:scale={$scale} />
-	<div class="flex h-screen flex-col items-center justify-center gap-10" class:opacity-0={!loaded}>
-		<Mug bind:follow bind:el={mug} />
-		<h1
-			bind:this={title}
-			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
+	{:else}
+		<Nav />
+		<!-- Landing -->
+		<Background bind:follow bind:scale={$scale} />
+		<div
+			class="flex h-screen flex-col items-center justify-center gap-10"
+			class:opacity-0={!loaded}
 		>
-			<span class="block">HIRE</span> JACK KUFA
-		</h1>
-	</div>
-	<!-- About -->
-	<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-		<AboutItem
-			title="Developer First"
-			content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
+			<Mug bind:follow bind:el={mug} />
+			<h1
+				bind:this={title}
+				class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
+			>
+				<span class="block">HIRE</span> JACK KUFA
+			</h1>
+		</div>
+		<!-- About -->
+		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+			<AboutItem
+				title="Developer First"
+				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
     Science and Computer Engineering."
-		/>
-	</section>
-	<section class="mx-4 flex h-screen flex-col gap-12"></section>
-	<!-- {/if} -->
+			/>
+		</section>
+		<section class="mx-4 flex h-screen flex-col gap-12"></section>
+	{/if}
 </LenisContext>
 
 <style>

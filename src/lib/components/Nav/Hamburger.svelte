@@ -15,6 +15,7 @@
 	class="
   z-50 flex w-fit justify-end p-8 text-pistachio transition-all
   focus-within:outline-none
+  active:scale-95
   "
 	on:click={() => {
 		onClick();

@@ -11,14 +11,15 @@ export const colors = {
 
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
-	// edit your tailwind theme here!
-	// https://tailwindcss.com/docs/adding-custom-styles
 	fontFamily: {
 		sans: ['Archivo Expanded, Helvetica, Arial, sans-serif'],
 	},
 	letterSpacing: {
 		tightest: '-.75rem',
 		tighter: '-.25rem',
+	},
+	backgroundSize: {
+		double: '200%',
 	},
 	extend: {
 		backgroundColor: {
@@ -36,6 +37,9 @@ export const theme = {
 		},
 		margin: {
 			'half-screen': '50vh',
+		},
+		content: {
+			empty: '""',
 		},
 	},
 };
