@@ -64,7 +64,17 @@
 	role="checkbox"
 	tabindex={!disabled ? tabIndex : null}
 	aria-checked="false"
-	class="track float-right flex h-[1em] w-[2em] cursor-pointer border border-solid border-pistachio p-1 transition-opacity aria-disabled:cursor-not-allowed"
+	class="
+  track float-right flex h-[1em] w-[2em] cursor-pointer border border-solid border-pistachio p-1
+
+  transition-[opacity,box-shadow]
+  ease-circular-in-out
+
+  focus-visible:shadow-outline
+  focus-visible:outline-none
+
+  aria-disabled:cursor-not-allowed
+  "
 	class:opacity-50={disabled}
 	aria-disabled={disabled}
 	class:disabled
@@ -73,33 +83,10 @@
 >
 	<div
 		bind:this={handleRef}
-		class="handle h-full w-[calc(50%-0.25rem)] bg-pistachio"
+		class="handle h-full w-[calc(50%-0.25rem)] bg-pistachio transition-opacity ease-circular-in-out"
 		style="
     transform: translateX(calc({$tweens.x}% + {$tweens.offset}rem));
     opacity: {$tweens.opacity};
     "
 	></div>
 </div>
-
-<style lang="scss">
-	.track {
-		transition: box-shadow 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-		transition-property: box-shadow, opacity;
-	}
-	.handle {
-		// transition: width 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-		transition-property: opacity;
-	}
-	.track:focus-visible {
-		box-shadow: 0px 0px 0px 0.25rem rgba(178, 185, 159, 0.4);
-		outline: none;
-	}
-	/*
-  TODO: learn to handle this right
-  .track:hover {
-    .handle {
-      width: 60%;
-    }
-  }
-  */
-</style>

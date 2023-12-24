@@ -19,6 +19,7 @@
 	let follow: boolean;
 	let loaded: boolean;
 	let continueToSite = false;
+	let complete = false;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -66,8 +67,8 @@
 			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
 		>
 			<!-- <span>Loading</span> -->
-			<ProgressBar />
-			<Button label="Continue" onClick={() => (continueToSite = true)} />
+			<ProgressBar bind:complete />
+			<Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
 		</div>
 	{:else}
 		<Nav />

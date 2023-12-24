@@ -3,12 +3,13 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
+	export let complete = false;
 	const progress = tweened(0, { duration: 2000, delay: 100, easing: cubicInOut });
 
 	let barRef: HTMLDivElement;
 
 	onMount(() => {
-		progress.set(1);
+		progress.set(1).then(() => (complete = true));
 	});
 </script>
 

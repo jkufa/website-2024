@@ -4,32 +4,29 @@
 
 	export let onClick: Function = () => {};
 	export let label: string;
+	export let disabled = false;
 
 	let ref: HTMLButtonElement;
 	let exit: boolean;
 
 	$: console.log(exit);
 
-	const slide = tweened(1, { duration: 300, delay: 100, easing: cubicIn });
+	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
 
 	function slideIn() {
-		// 100% to 0
 		if ($slide <= 0) {
-			slide.set(1, { duration: 0 });
+			slide.set(1, { duration: 0 }); // Reset
 		}
-
-		slide.set(0);
+		slide.set(0); // 100% to 0
 	}
 
 	function slideOut() {
 		if ($slide <= 0.4) {
-			slide.set(-1);
+			slide.set(-1); // 0 to -100%
 			return;
 		}
-		slide.set(1);
+		slide.set(1); // Go back to 100%
 	}
-
-	// go from 100% -> 0 -> -100% back to -> 100%
 </script>
 
 <button
@@ -41,7 +38,9 @@
   font-semibold
   text-off-black
 
-  transition-transform
+  ease-circular-in-out
+  transition-[box-shadow,opacity,transform]
+
   after:absolute
   after:bottom-0
   after:left-0
@@ -52,10 +51,13 @@
   after:bg-double
   after:content-empty
 
-  focus-within:outline-none
+  focus-visible:shadow-outline
+  focus-visible:outline-none
   active:scale-95
+  disabled:opacity-50
   "
 	style="--bg-pos: {$slide * 100}%"
+	{disabled}
 	on:click={() => {
 		onClick();
 	}}
