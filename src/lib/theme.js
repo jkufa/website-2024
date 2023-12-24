@@ -21,6 +21,9 @@ export const theme = {
 	backgroundSize: {
 		double: '200%',
 	},
+	boxShadow: {
+		outline: '0 0 0 0.25rem rgba(178, 185, 159, 0.4);',
+	},
 	extend: {
 		backgroundColor: {
 			...colors,
@@ -40,6 +43,9 @@ export const theme = {
 		},
 		content: {
 			empty: '""',
+		},
+		transitionTimingFunction: {
+			'circular-in-out': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
 		},
 	},
 };
