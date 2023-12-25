@@ -2,14 +2,9 @@
 	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
-	export let onClick: Function = () => {};
+	export let onClick: () => void = () => {};
 	export let label: string;
 	export let disabled = false;
-
-	let ref: HTMLButtonElement;
-	let exit: boolean;
-
-	$: console.log(exit);
 
 	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
 
@@ -30,16 +25,15 @@
 </script>
 
 <button
-	bind:this={ref}
 	class="
-  relative flex w-full justify-center border border-solid border-pistachio bg-gradient-to-r from-off-black
-  from-50% to-pistachio to-50% bg-double bg-clip-text
+  relative flex w-full justify-center border border-solid border-pistachio
+  bg-gradient-to-r from-off-black from-50% to-pistachio to-50% bg-double bg-clip-text
   p-3
   font-semibold
   text-off-black
 
-  ease-circular-in-out
   transition-[box-shadow,opacity,transform]
+  ease-circular-in-out
 
   after:absolute
   after:bottom-0
@@ -58,9 +52,7 @@
   "
 	style="--bg-pos: {$slide * 100}%"
 	{disabled}
-	on:click={() => {
-		onClick();
-	}}
+	on:click={onClick}
 	on:mouseenter={slideIn}
 	on:mouseleave={slideOut}
 	on:focusin={slideIn}
@@ -74,7 +66,7 @@
 		-webkit-text-fill-color: transparent;
 	}
 	button,
-	button:after {
+	button::after {
 		background-position: var(--bg-pos);
 	}
 </style>

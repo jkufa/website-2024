@@ -17,7 +17,6 @@
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
 	let follow: boolean;
-	let loaded: boolean;
 	let continueToSite = false;
 	let complete = false;
 
@@ -29,13 +28,15 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
-		scale.set(150);
-		loaded = true;
+    if (!$userSettings.introOn) {
+      scale.set(150);
+      return;
+    }
 	});
 
 	function runIntro() {
 		scale.set(150).then(() => {
-			loaded = true;
+      // these should run in components when mounted
 			gsap.from(title, {
 				opacity: 0,
 				y: 200,
@@ -62,21 +63,26 @@
 </script>
 
 <LenisContext onScroll={scroll}>
-	{#if $userSettings.introOn && !continueToSite}
-		<div
-			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
-		>
-			<!-- <span>Loading</span> -->
-			<ProgressBar bind:complete />
-			<Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
-		</div>
-	{:else}
-		<Nav />
+  {#if !continueToSite}
+  <div
+    class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
+  >
+    <span class="text-xl">initializing K.U.F.A. mind control protocol...</span>
+    <ProgressBar bind:complete />
+    <Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
+  </div>
+  {/if}
+    <div
+			class:opacity-0={!continueToSite}
+      >
+
+      <Nav />
+    </div>
 		<!-- Landing -->
 		<Background bind:follow bind:scale={$scale} />
 		<div
 			class="flex h-screen flex-col items-center justify-center gap-10"
-			class:opacity-0={!loaded}
+			class:opacity-0={!continueToSite}
 		>
 			<Mug bind:follow bind:el={mug} />
 			<h1
@@ -95,7 +101,6 @@
 			/>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
-	{/if}
 </LenisContext>
 
 <style>

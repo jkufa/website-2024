@@ -50,9 +50,7 @@
 		onClick={() => (showMenu ? shrink() : expand())}
 	/>
 	{#if showMenu}
-		<div
-			class="container flex h-full flex-col justify-between overflow-hidden border-solid bg-off-black"
-		>
+		<div class="container flex h-full flex-col justify-between overflow-hidden border-solid">
 			<div class="nav-items flex flex-col text-end">
 				<NavItem href="#">
 					<span class="text-3xl font-bold md:text-5xl">HOME</span>

@@ -13,9 +13,9 @@
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	class="
-  z-50 flex w-fit justify-end p-8 text-pistachio transition-all
-  focus-within:outline-none
+  z-50 flex w-fit justify-end p-5 text-pistachio transition-all focus-within:outline-none
   active:scale-95
+  md:p-8
   "
 	on:click={() => {
 		onClick();
