@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cubicIn, quintOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import SlideInOut from '../SlideInOut.svelte';
 
 	export let active = false;
 	export let href: string;
@@ -22,51 +23,25 @@
 	}
 </script>
 
-<a
-	{href}
-	draggable="false"
-	class="
-  relative flex w-full justify-end
-  bg-gradient-to-r from-off-black from-50% to-pistachio to-50% bg-double bg-clip-text
-  p-4
-  font-semibold
-  text-off-black
-
-  transition-[box-shadow,opacity,transform]
-  delay-100
-  ease-circular-in-out
-
-  after:absolute
-  after:bottom-0
-  after:left-0
-  after:right-0
-  after:top-0
-  after:z-[-1] after:bg-gradient-to-r after:from-pistachio after:from-50% after:to-transparent
-  after:to-50%
-  after:bg-double
-  after:content-empty
-
-  focus-visible:shadow-outline
-  focus-visible:outline-none
-
-  active:bg-pistachio active:text-off-black
-  md:my-1
-  "
-	style="--bg-pos: {$slide * 100}%"
-	on:mouseenter={slideIn}
-	on:mouseleave={slideOut}
-	on:focusin={slideIn}
-	on:focusout={slideOut}
->
-	<slot />
-</a>
-
-<style lang="postcss">
-	a {
-		-webkit-text-fill-color: transparent;
-	}
-	a,
-	a::after {
-		background-position: var(--bg-pos);
-	}
-</style>
+<SlideInOut>
+  <a
+    {href}
+    draggable="false"
+    class="
+    p-4
+    font-semibold
+    text-off-black
+    ms-auto
+  
+    md:my-1
+    focus-visible:outline-none
+    "
+    style="--bg-pos: {$slide * 100}%"
+    on:mouseenter={slideIn}
+    on:mouseleave={slideOut}
+    on:focusin={slideIn}
+    on:focusout={slideOut}
+  >
+    <slot />
+  </a>
+</SlideInOut>

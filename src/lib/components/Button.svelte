@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import SlideInOut from './SlideInOut.svelte';
 
 	export let onClick: () => void = () => {};
 	export let label: string;
@@ -24,31 +25,18 @@
 	}
 </script>
 
-<button
+<SlideInOut>
+  <button
 	class="
-  relative flex w-full justify-center border border-solid border-pistachio
-  bg-gradient-to-r from-off-black from-50% to-pistachio to-50% bg-double bg-clip-text
+  w-full
+  border border-solid border-pistachio
   p-3
   font-semibold
   text-off-black
 
-  transition-[box-shadow,opacity,transform]
-  ease-circular-in-out
-
-  after:absolute
-  after:bottom-0
-  after:left-0
-  after:right-0
-  after:top-0
-  after:z-[-1] after:bg-gradient-to-r after:from-pistachio after:from-50% after:to-transparent
-  after:to-50%
-  after:bg-double
-  after:content-empty
-
-  focus-visible:shadow-outline
-  focus-visible:outline-none
   active:scale-95
   disabled:opacity-50
+  focus-visible:outline-none
   "
 	style="--bg-pos: {$slide * 100}%"
 	{disabled}
@@ -60,13 +48,4 @@
 >
 	{label}
 </button>
-
-<style lang="postcss">
-	button {
-		-webkit-text-fill-color: transparent;
-	}
-	button,
-	button::after {
-		background-position: var(--bg-pos);
-	}
-</style>
+</SlideInOut>
