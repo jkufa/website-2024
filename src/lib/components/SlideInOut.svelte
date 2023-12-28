@@ -2,9 +2,13 @@
 	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
+	export let disabled = false;
+
 	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
 
 	function slideIn() {
+		if (disabled) return;
+
 		if ($slide <= 0) {
 			slide.set(1, { duration: 0 }); // Reset
 		}
@@ -12,6 +16,8 @@
 	}
 
 	function slideOut() {
+		if (disabled) return;
+
 		if ($slide <= 0.4) {
 			slide.set(-1); // 0 to -100%
 			return;
