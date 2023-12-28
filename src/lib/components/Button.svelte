@@ -26,26 +26,26 @@
 </script>
 
 <SlideInOut>
-  <button
-	class="
-  w-full
-  border border-solid border-pistachio
-  p-3
-  font-semibold
-  text-off-black
+	<button
+		class="
+      w-full
+      border border-solid border-pistachio
+      p-3
+      font-semibold
+      text-off-black
 
-  active:scale-95
-  disabled:opacity-50
-  focus-visible:outline-none
-  "
-	style="--bg-pos: {$slide * 100}%"
-	{disabled}
-	on:click={onClick}
-	on:mouseenter={slideIn}
-	on:mouseleave={slideOut}
-	on:focusin={slideIn}
-	on:focusout={slideOut}
->
-	{label}
-</button>
+      focus-visible:outline-none
+      active:scale-95
+      disabled:opacity-50
+      "
+		style="--bg-pos: {$slide * 100}%"
+		{disabled}
+		on:click={onClick}
+		on:mouseenter={slideIn}
+		on:mouseleave={slideOut}
+		on:focusin={slideIn}
+		on:focusout={slideOut}
+	>
+		{label}
+	</button>
 </SlideInOut>

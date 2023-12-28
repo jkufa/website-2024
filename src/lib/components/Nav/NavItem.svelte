@@ -24,24 +24,24 @@
 </script>
 
 <SlideInOut>
-  <a
-    {href}
-    draggable="false"
-    class="
+	<a
+		{href}
+		draggable="false"
+		class="
+    ms-auto
     p-4
     font-semibold
     text-off-black
-    ms-auto
   
-    md:my-1
     focus-visible:outline-none
+    md:my-1
     "
-    style="--bg-pos: {$slide * 100}%"
-    on:mouseenter={slideIn}
-    on:mouseleave={slideOut}
-    on:focusin={slideIn}
-    on:focusout={slideOut}
-  >
-    <slot />
-  </a>
+		style="--bg-pos: {$slide * 100}%"
+		on:mouseenter={slideIn}
+		on:mouseleave={slideOut}
+		on:focusin={slideIn}
+		on:focusout={slideOut}
+	>
+		<slot />
+	</a>
 </SlideInOut>

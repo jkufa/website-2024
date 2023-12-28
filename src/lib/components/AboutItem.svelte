@@ -21,7 +21,8 @@
 		rotateX: 60, // number in degrees
 	};
 
-	$: $userSettings.animationsOn ? enableAnimations() : disableAnimations();
+	$: ({ animationsOn } = $userSettings);
+	$: animationsOn ? enableAnimations() : disableAnimations();
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
@@ -47,6 +48,7 @@
 
 	function enableAnimations() {
 		if (!isMounted) return;
+
 		animateRefs([titleRef, contentRef]);
 	}
 

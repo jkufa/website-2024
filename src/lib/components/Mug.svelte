@@ -14,7 +14,8 @@
 
 	$: name = names[current];
 	$: if (el && follow === false) resetPos();
-	$: $userSettings.animationsOn ? spin() : pause();
+	$: ({ animationsOn } = $userSettings);
+	$: animationsOn ? spin() : pause();
 
 	function pause() {
 		clearInterval(interval);

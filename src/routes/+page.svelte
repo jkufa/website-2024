@@ -28,29 +28,38 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
-    if (!$userSettings.introOn) {
-      scale.set(150);
-      return;
-    }
+		if (!$userSettings.introOn) {
+			scale.set(150);
+			return;
+		}
 	});
 
 	function runIntro() {
+		gsap.set(title, {
+			opacity: 0,
+			y: 200,
+		});
+		gsap.set(mug, {
+			opacity: 0,
+			scale: 0,
+		});
 		scale.set(150).then(() => {
-      // these should run in components when mounted
-			gsap.from(title, {
-				opacity: 0,
-				y: 200,
+			// these should run in components when mounted
+			gsap.to(title, {
+				opacity: 1,
+				y: 0,
 				delay: 0.5,
 				duration: 2,
 				ease: 'power4.out',
 			});
-			gsap.from(mug, {
-				opacity: 0,
-				scale: 0,
+			gsap.to(mug, {
+				opacity: 1,
+				scale: 1,
 				duration: 5,
 				delay: 1,
 				ease: 'elastic.out(0.75,0.4)',
 			});
+			// This is triggering reactive update on AboutItem
 			$userSettings.introOn = false;
 		});
 	}
@@ -63,36 +72,34 @@
 </script>
 
 <LenisContext onScroll={scroll}>
-  {#if !continueToSite}
-  <div
-    class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
-  >
-    <span class="text-xl">initializing K.U.F.A. mind control protocol...</span>
-    <ProgressBar bind:complete />
-    <Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
-  </div>
-  {/if}
-    <div
-			class:opacity-0={!continueToSite}
-      >
-
-      <Nav />
-    </div>
-		<!-- Landing -->
-		<Background bind:follow bind:scale={$scale} />
+	{#if !continueToSite}
 		<div
-			class="flex h-screen flex-col items-center justify-center gap-10"
-			class:opacity-0={!continueToSite}
+			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
 		>
-			<Mug bind:follow bind:el={mug} />
-			<h1
-				bind:this={title}
-				class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
-			>
-				<span class="block">HIRE</span> JACK KUFA
-			</h1>
+			<span class="text-xl">initializing K.U.F.A. mind control protocol...</span>
+			<ProgressBar bind:complete />
+			<Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
 		</div>
-		<!-- About -->
+	{/if}
+	<div class:opacity-0={!continueToSite}>
+		<Nav />
+	</div>
+	<!-- Landing -->
+	<Background bind:follow bind:scale={$scale} />
+	<div
+		class="flex h-screen flex-col items-center justify-center gap-10"
+		class:opacity-0={!continueToSite}
+	>
+		<Mug bind:follow bind:el={mug} />
+		<h1
+			bind:this={title}
+			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
+		>
+			<span class="block">HIRE</span> JACK KUFA
+		</h1>
+	</div>
+	<!-- About -->
+	{#if continueToSite}
 		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 			<AboutItem
 				title="Developer First"
@@ -101,6 +108,7 @@
 			/>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
+	{/if}
 </LenisContext>
 
 <style>
