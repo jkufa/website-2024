@@ -23,8 +23,23 @@
 		showMenu = true;
 		wh.set({ w: $wh.w * 4.5, h: $wh.h * 5.5 });
 	}
+
 	function shrink() {
 		wh.set(init).then(() => (showMenu = false));
+	}
+
+	function escape(e: KeyboardEvent) {
+		if (e.key !== 'Escape') return;
+		if (!showMenu) return;
+
+		shrink();
+	}
+
+	function clickOut(e: MouseEvent) {
+		if (!showMenu) return;
+		if ((e.target as HTMLElement).closest('#navigation')) return;
+
+		shrink();
 	}
 
 	onMount(() => {
@@ -32,7 +47,9 @@
 	});
 </script>
 
+<svelte:window on:keydown|stopPropagation={escape} on:click={clickOut} />
 <nav
+	id="navigation"
 	class="
     fixed end-4 top-4 z-40 flex flex-col items-end
     border border-solid border-pistachio bg-off-black

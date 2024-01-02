@@ -88,7 +88,7 @@
 	<Background bind:follow bind:scale={$scale} />
 	<div
 		class="flex h-screen flex-col items-center justify-center gap-10"
-		class:opacity-0={!continueToSite}
+		class:hidden={!continueToSite}
 	>
 		<Mug bind:follow bind:el={mug} />
 		<h1
