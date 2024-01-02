@@ -7,6 +7,7 @@
 		LenisContext,
 		ProgressBar,
 		Button,
+		Skills,
 	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
@@ -69,6 +70,42 @@
 		const bot = title.getBoundingClientRect().bottom;
 		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
 	}
+
+	const tempSkills = [
+		'TypeScript',
+		'JavaScript',
+		'Python',
+		'HTML5',
+		'CSS3',
+		'Tailwind',
+		'SCSS',
+		'Java',
+		'C#',
+		'Postgres',
+		'MSSQL',
+		'Angular',
+		'React',
+		'NextJS',
+		'Svelte',
+		'SvelteKit',
+		'RxJs',
+		'Cypress',
+		'Playwright',
+		'Jest',
+		'Docker',
+		'.NET',
+		'Storybook',
+		'Restful APIs',
+		'Microservices',
+		'Azure',
+		'CI/CD',
+		'Unit testing',
+		'Agile',
+		'Node',
+		'Git',
+		'Server-side rendering',
+		'Figma',
+	];
 </script>
 
 <LenisContext onScroll={scroll}>
@@ -102,13 +139,15 @@
 	{#if continueToSite}
 		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 			<AboutItem
-				title="Developer First"
+				title="developer and designer"
 				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
     Science and Computer Engineering."
 			/>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
 	{/if}
+	<!-- Skills -->
+	<Skills skills={tempSkills} range={7}></Skills>
 </LenisContext>
 
 <style>

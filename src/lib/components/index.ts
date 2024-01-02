@@ -8,3 +8,4 @@ export { default as ProgressBar } from './Background/ProgressBar.svelte';
 // Components consisting of multiple components get their own folder
 export * from './Background';
 export * from './Nav';
+export * from './Skills';
