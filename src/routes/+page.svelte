@@ -1,45 +1,118 @@
 <script lang="ts">
-	import About from '$lib/components/about.svelte';
-	import Cursor from '$lib/components/cursor.svelte';
-	import Landing from '$lib/components/landing.svelte';
-	import Lenis from '@studio-freight/lenis';
+	import {
+		Mug,
+		Background,
+		Nav,
+		AboutItem,
+		LenisContext,
+		ProgressBar,
+		Button,
+	} from '$lib/components';
 	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+	import { cubicInOut } from 'svelte/easing';
+	import { scrollPosition, userSettings } from '$lib/stores';
+	import gsap from 'gsap';
 
-	let lenis: Lenis;
-	let follow = false;
-	let cursor: HTMLDivElement;
-	let el: HTMLCanvasElement;
-	let createScene;
+	let mug: HTMLDivElement;
+	let title: HTMLHeadingElement;
+	let follow: boolean;
+	let continueToSite = false;
+	let complete = false;
 
-	onMount(async () => {
-		// ensures window exists
-		createScene = (await import('$lib/scene')).createScene;
-
-		createScene(el);
-		lenis = new Lenis({
-			lerp: 0.075
-		});
-
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-
-		lenis.on('scroll', (e: number) => {
-			lenis.progress > 0.3 ? (follow = true) : (follow = false);
-		});
-
-		requestAnimationFrame(raf);
-
-		return () => {
-			lenis.destroy();
-		};
+	const scale = tweened(0, {
+		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
+		easing: cubicInOut,
 	});
+
+	$: if (continueToSite) runIntro();
+
+	onMount(() => {
+		if (!$userSettings.introOn) {
+			scale.set(150);
+			return;
+		}
+	});
+
+	function runIntro() {
+		gsap.set(title, {
+			opacity: 0,
+			y: 200,
+		});
+		gsap.set(mug, {
+			opacity: 0,
+			scale: 0,
+		});
+		scale.set(150).then(() => {
+			// these should run in components when mounted
+			gsap.to(title, {
+				opacity: 1,
+				y: 0,
+				delay: 0.5,
+				duration: 2,
+				ease: 'power4.out',
+			});
+			gsap.to(mug, {
+				opacity: 1,
+				scale: 1,
+				duration: 5,
+				delay: 1,
+				ease: 'elastic.out(0.75,0.4)',
+			});
+			// This is triggering reactive update on AboutItem
+			$userSettings.introOn = false;
+		});
+	}
+
+	function scroll() {
+		// Set mug to follow cursor
+		const bot = title.getBoundingClientRect().bottom;
+		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
+	}
 </script>
 
-<canvas bind:this={el} id="container" class="fixed h-full w-full transition-opacity" />
-<!-- <canvas bind:this={el} id="container" class="fixed transition-opacity w-full h-full" class:opacity-20={follow}/> -->
-<Cursor bind:follow bind:el={cursor} />
-<!-- <Landing /> -->
-<!-- <About /> -->
-<div class="h-screen"></div>
+<LenisContext onScroll={scroll}>
+	{#if !continueToSite}
+		<div
+			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
+		>
+			<span class="text-xl">initializing K.U.F.A. mind control protocol...</span>
+			<ProgressBar bind:complete />
+			<Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
+		</div>
+	{/if}
+	<div class:opacity-0={!continueToSite}>
+		<Nav />
+	</div>
+	<!-- Landing -->
+	<Background bind:follow bind:scale={$scale} />
+	<div
+		class="flex h-screen flex-col items-center justify-center gap-10"
+		class:hidden={!continueToSite}
+	>
+		<Mug bind:follow bind:el={mug} />
+		<h1
+			bind:this={title}
+			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
+		>
+			<span class="block">HIRE</span> JACK KUFA
+		</h1>
+	</div>
+	<!-- About -->
+	{#if continueToSite}
+		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+			<AboutItem
+				title="Developer First"
+				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
+    Science and Computer Engineering."
+			/>
+		</section>
+		<section class="mx-4 flex h-screen flex-col gap-12"></section>
+	{/if}
+</LenisContext>
+
+<style>
+	h1 {
+		font-size: clamp(4rem, 13vw, 13rem);
+	}
+</style>

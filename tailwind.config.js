@@ -1,18 +1,11 @@
+// This is a dummy tailwind config file used to provide intellisense.
+// To configure your global tailwind settings, modify the imported theme object.
+import { theme } from './src/lib/theme';
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		fontFamily: {
-			sans: ['DM sans, Helvetica, Arial, sans-serif']
-		},
-		extend: {
-			backgroundColor: {
-				'off-white': '#F4F2F7'
-			},
-			colors: {
-				'off-black': '#0C0C17'
-			}
-		}
+		...theme,
 	},
-	plugins: []
 };
