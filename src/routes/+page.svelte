@@ -144,10 +144,17 @@
     Science and Computer Engineering."
 			/>
 		</section>
+		<!-- Skills -->
+		<section class="mx-4 flex h-screen flex-col gap-12">
+			<h2
+				class="max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
+			>
+				EXPERIENCED WITH...
+			</h2>
+			<Skills skills={tempSkills} range={7}></Skills>
+		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
 	{/if}
-	<!-- Skills -->
-	<Skills skills={tempSkills} range={7}></Skills>
 </LenisContext>
 
 <style>

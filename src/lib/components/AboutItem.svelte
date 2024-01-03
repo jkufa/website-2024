@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { userSettings } from '$lib/stores/userSettings';
 	import { gsap } from 'gsap';
-	import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { onMount } from 'svelte';
 
@@ -25,7 +24,7 @@
 	$: animationsOn ? enableAnimations() : disableAnimations();
 
 	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+		gsap.registerPlugin(ScrollTrigger);
 		timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: containerRef,
