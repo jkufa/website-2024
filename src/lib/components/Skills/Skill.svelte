@@ -10,7 +10,7 @@
 
 <style>
 	div {
-		font-family: 'Clear Sans';
+		font-family: 'IBM Plex Sans';
 		box-sizing: border-box;
 		white-space: nowrap;
 	}

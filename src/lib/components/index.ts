@@ -10,4 +10,5 @@ export * from './AboutItem';
 export * from './Animations';
 export * from './Background';
 export * from './Nav';
+export * from './Project';
 export * from './Skills';

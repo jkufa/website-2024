@@ -8,6 +8,7 @@
 		ProgressBar,
 		Button,
 		Skills,
+		ProjectItem,
 	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
@@ -107,11 +108,11 @@
 	</div>
 	<!-- About -->
 	{#if continueToSite}
-		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+		<section id="about" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 			<AboutItem title={ABOUT.title} content={ABOUT.content} />
 		</section>
 		<!-- Skills -->
-		<section class="flex h-screen flex-col gap-12">
+		<section id="skills" class="flex h-screen flex-col gap-12">
 			<h2
 				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 			>
@@ -121,7 +122,18 @@
 				<Skills skills={SKILLS} {range}></Skills>
 			</div>
 		</section>
-		<section class="mx-4 flex h-screen flex-col gap-12"></section>
+		<section id="work" class="mx-4 flex h-screen flex-col gap-12">
+			<h2
+				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
+			>
+				WORK
+			</h2>
+			<ProjectItem
+				title="JourneyTodo"
+				src="https://placehold.co/600x400/EEE/31343C"
+				alt="UI for a todo management app"
+			/>
+		</section>
 		<footer class="mx-4 mb-4 flex justify-between border-t border-pistachio pt-4">
 			<p class="text-pistachio">
 				Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
@@ -130,11 +142,11 @@
 				<a
 					href="https://github.com/jkufa/website-2024"
 					class="
-          border-b border-pistachio pb-1 text-pistachio 
+          border-b border-pistachio pb-1 text-pistachio
           transition-shadow
           ease-circular-in-out
-          focus-within:shadow-outline focus-within:outline-none"
-					>View on GitHub</a
+          focus-within:shadow-outline focus-within:outline-none
+          ">View on GitHub</a
 				>
 			</div>
 		</footer>
