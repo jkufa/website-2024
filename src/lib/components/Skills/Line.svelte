@@ -16,6 +16,7 @@
 			scrollTrigger: {
 				trigger: '#skillz',
 				scrub: 1,
+				start: `top+=${id * 80} bottom`,
 				end: 'bottom+=4000px top',
 			},
 			x: reverse ? '-100%' : '100%',

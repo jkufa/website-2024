@@ -30,7 +30,7 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
-		range = Math.min(Math.ceil(window.innerWidth / 100), 7);
+		range = Math.min(Math.floor(window.innerWidth / 100), 7);
 
 		if (!$userSettings.introOn) {
 			scale.set(150);
@@ -149,13 +149,15 @@
 			/>
 		</section>
 		<!-- Skills -->
-		<section class="mx-4 flex h-screen flex-col gap-12">
+		<section class="flex h-screen flex-col gap-12">
 			<h2
-				class="max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
+				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 			>
 				USED IN PRODUCTION
 			</h2>
-			<Skills skills={tempSkills} {range}></Skills>
+			<div class="relative w-full overflow-x-clip">
+				<Skills skills={tempSkills} {range}></Skills>
+			</div>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
 	{/if}
