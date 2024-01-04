@@ -122,6 +122,22 @@
 			</div>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
+		<footer class="mx-4 mb-4 flex justify-between border-t border-pistachio pt-4">
+			<p class="text-pistachio">
+				Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
+			</p>
+			<div class="mb-1">
+				<a
+					href="https://github.com/jkufa/website-2024"
+					class="
+          border-b border-pistachio pb-1 text-pistachio 
+          transition-shadow
+          ease-circular-in-out
+          focus-within:shadow-outline focus-within:outline-none"
+					>View on GitHub</a
+				>
+			</div>
+		</footer>
 	{/if}
 </LenisContext>
 
