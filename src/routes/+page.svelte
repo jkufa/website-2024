@@ -20,6 +20,7 @@
 	let follow: boolean;
 	let continueToSite = false;
 	let complete = false;
+	let range: number;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -29,6 +30,8 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
+		range = Math.min(Math.ceil(window.innerWidth / 100), 7);
+
 		if (!$userSettings.introOn) {
 			scale.set(150);
 			return;
@@ -72,39 +75,40 @@
 	}
 
 	const tempSkills = [
-		'TypeScript',
-		'JavaScript',
-		'Python',
-		'HTML5',
-		'CSS3',
-		'Tailwind',
-		'SCSS',
-		'Java',
 		'C#',
+		'Java',
+		'Python',
+		'Javascript',
+		'Typescript',
+		// Empty strings give us some control over the number of skills in each row
+		'',
+		'',
+		'SvelteKit',
+		'Svelte',
+		'NextJS',
+		'React',
+		'Angular',
+		'AngularJS',
+		'.NET',
+		'CSS',
+		'HTML5',
+		'TailwindCSS',
+		'Sass',
+		'GSAP',
+		'ThreeJS',
+		'RxJs',
+		'Node',
 		'Postgres',
 		'MSSQL',
-		'Angular',
-		'React',
-		'NextJS',
-		'Svelte',
-		'SvelteKit',
-		'RxJs',
+		'Jest',
 		'Cypress',
 		'Playwright',
-		'Jest',
-		'Docker',
-		'.NET',
-		'Storybook',
-		'Restful APIs',
-		'Microservices',
-		'Azure',
 		'CI/CD',
-		'Unit testing',
-		'Agile',
-		'Node',
-		'Git',
-		'Server-side rendering',
+		'GitHub Actions',
 		'Figma',
+		'Storybook',
+		'Google Lighthouse',
+		'WCAG 2.0',
 	];
 </script>
 
@@ -149,9 +153,9 @@
 			<h2
 				class="max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 			>
-				EXPERIENCED WITH...
+				USED IN PRODUCTION
 			</h2>
-			<Skills skills={tempSkills} range={7}></Skills>
+			<Skills skills={tempSkills} {range}></Skills>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
 	{/if}

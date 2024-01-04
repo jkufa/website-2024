@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { LINE_ID_PREFIX } from './constants';
-	import { beforeUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import gsap from 'gsap';
 	import Skill from './Skill.svelte';
@@ -15,10 +14,8 @@
 		gsap.registerPlugin(ScrollTrigger);
 		gsap.to(ref, {
 			scrollTrigger: {
-				trigger: ref,
+				trigger: '#skillz',
 				scrub: 1,
-				markers: true,
-				start: 'center-=400px center',
 				end: 'bottom+=4000px top',
 			},
 			x: reverse ? '-100%' : '100%',
@@ -27,13 +24,12 @@
 	});
 </script>
 
-<div
-	bind:this={ref}
-	id="{LINE_ID_PREFIX}{id}"
-	class="flex gap-6 {reverse ? 'reverse' : 'forwards'}"
->
+<div bind:this={ref} class="flex justify-center gap-6 {reverse ? 'reverse' : 'forwards'}">
 	{#each line as s}
-		<Skill label={s} />
+		<!-- Skip empty strings. This lets us have some control over the number of skills in each row -->
+		{#if s}
+			<Skill label={s} />
+		{/if}
 	{/each}
 </div>
 

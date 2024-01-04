@@ -2,6 +2,9 @@
 	import Line from './Line.svelte';
 
 	export let skills: string[];
+	/**
+	 * The number of skills per row.
+	 */
 	export let range: number;
 
 	const split: string[][] = [];
@@ -12,8 +15,8 @@
 	}
 </script>
 
-<div class="translate-x-100 flex transform flex-col gap-8">
-	{#each split as line, i}
-		<Line {line} id={i} />
+<div id="skillz" class="translate-x-100 flex transform flex-col gap-8">
+	{#each split as line, id}
+		<Line {line} {id} />
 	{/each}
 </div>

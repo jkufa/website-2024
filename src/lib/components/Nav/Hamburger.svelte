@@ -21,7 +21,6 @@
 		onClick();
 	}}
 >
-	<!-- {#if hamburger} -->
 	<svg
 		viewBox="0 0 24 24"
 		fill="none"
