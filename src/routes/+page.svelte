@@ -7,18 +7,21 @@
 		LenisContext,
 		ProgressBar,
 		Button,
+		Skills,
 	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
-	import gsap from 'gsap';
+	import { gsap } from 'gsap';
+	import { ABOUT, SKILLS } from '$lib';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
+	let range: number;
 	let follow: boolean;
-	let continueToSite = false;
 	let complete = false;
+	let continueToSite = false;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -28,6 +31,11 @@
 	$: if (continueToSite) runIntro();
 
 	onMount(() => {
+		range = Math.min(Math.floor(window.innerWidth / 100), 7);
+
+		if ($userSettings.devMode) {
+			continueToSite = true;
+		}
 		if (!$userSettings.introOn) {
 			scale.set(150);
 			return;
@@ -59,7 +67,6 @@
 				delay: 1,
 				ease: 'elastic.out(0.75,0.4)',
 			});
-			// This is triggering reactive update on AboutItem
 			$userSettings.introOn = false;
 		});
 	}
@@ -101,11 +108,18 @@
 	<!-- About -->
 	{#if continueToSite}
 		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-			<AboutItem
-				title="Developer First"
-				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
-    Science and Computer Engineering."
-			/>
+			<AboutItem title={ABOUT.title} content={ABOUT.content} />
+		</section>
+		<!-- Skills -->
+		<section class="flex h-screen flex-col gap-12">
+			<h2
+				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
+			>
+				USED IN PRODUCTION
+			</h2>
+			<div class="relative w-full overflow-x-clip">
+				<Skills skills={SKILLS} {range}></Skills>
+			</div>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
 	{/if}

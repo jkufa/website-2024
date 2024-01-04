@@ -1,12 +1,12 @@
 // @ts-check
 
 /**
- * Collection of custom colors to used in tailwind and can be imported in components
+ * Collection of custom colors to use in tailwind and components
  */
 export const colors = {
 	'off-black': '#0B0904',
 	pistachio: '#B2B99F',
-	stone: '#b2b99f66', //opacity value of 0.4
+	stone: '#b2b99f66', // Opacity value of 0.4
 };
 
 /** @type {import('tailwindcss').Config['theme']} */

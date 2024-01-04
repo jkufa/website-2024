@@ -6,6 +6,7 @@ import { browser } from '$app/environment';
 const defaultSettings: UserSettings = {
 	animationsOn: true,
 	introOn: true,
+	devMode: true,
 };
 
 /**
