@@ -46,6 +46,7 @@
 		timeline.clear();
 	}
 
+	// TODO: fix perspective on this
 	function animate() {
 		timeline
 			?.from(ref, {
@@ -68,8 +69,10 @@
 	}
 </script>
 
-<div bind:this={ref} class="perspective">
-	<slot />
+<div class="perspective">
+	<div bind:this={ref} class="wrapper">
+		<slot />
+	</div>
 </div>
 
 <style>

@@ -13,7 +13,8 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
-	import gsap from 'gsap';
+	import { gsap } from 'gsap';
+	import { ABOUT, SKILLS } from '$lib';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -75,43 +76,6 @@
 		const bot = title.getBoundingClientRect().bottom;
 		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
 	}
-
-	const tempSkills = [
-		'C#',
-		'Java',
-		'Python',
-		'Javascript',
-		'Typescript',
-		// Empty strings give us some control over the number of skills in each row
-		'',
-		'',
-		'SvelteKit',
-		'Svelte',
-		'NextJS',
-		'React',
-		'Angular',
-		'AngularJS',
-		'.NET',
-		'CSS',
-		'HTML5',
-		'TailwindCSS',
-		'Sass',
-		'GSAP',
-		'ThreeJS',
-		'RxJs',
-		'Node',
-		'Postgres',
-		'MSSQL',
-		'Jest',
-		'Cypress',
-		'Playwright',
-		'CI/CD',
-		'GitHub Actions',
-		'Figma',
-		'Storybook',
-		'Google Lighthouse',
-		'WCAG 2.0',
-	];
 </script>
 
 <LenisContext onScroll={scroll}>
@@ -144,14 +108,7 @@
 	<!-- About -->
 	{#if continueToSite}
 		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-			<AboutItem
-				title="developer, designer"
-				content={[
-					'Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for web. He’s been passionate about the web ever since he designed his first website in 2007 with Microsoft Publisher.',
-					'After graduating from Missouri University of Science and Technology in 2021, Jack Kufa began his career at Service Management Group where he contributed to their UI library, flagship web app, and new greenfield development. He had a major role in building a new hierarchy management system, leading the development of a new onboarding wizard.',
-					'Jack’s skill in multiple frontend frameworks paired with his experience setting up project infrastructure from scratch make him a great asset not only for building amazing user experiences but also maintaining them.',
-				]}
-			/>
+			<AboutItem title={ABOUT.title} content={ABOUT.content} />
 		</section>
 		<!-- Skills -->
 		<section class="flex h-screen flex-col gap-12">
@@ -161,7 +118,7 @@
 				USED IN PRODUCTION
 			</h2>
 			<div class="relative w-full overflow-x-clip">
-				<Skills skills={tempSkills} {range}></Skills>
+				<Skills skills={SKILLS} {range}></Skills>
 			</div>
 		</section>
 		<section class="mx-4 flex h-screen flex-col gap-12"></section>
