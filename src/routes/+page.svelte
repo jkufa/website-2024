@@ -17,10 +17,10 @@
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
-	let follow: boolean;
-	let continueToSite = false;
-	let complete = false;
 	let range: number;
+	let follow: boolean;
+	let complete = false;
+	let continueToSite = false;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -32,6 +32,9 @@
 	onMount(() => {
 		range = Math.min(Math.floor(window.innerWidth / 100), 7);
 
+		if ($userSettings.devMode) {
+			continueToSite = true;
+		}
 		if (!$userSettings.introOn) {
 			scale.set(150);
 			return;
@@ -63,7 +66,6 @@
 				delay: 1,
 				ease: 'elastic.out(0.75,0.4)',
 			});
-			// This is triggering reactive update on AboutItem
 			$userSettings.introOn = false;
 		});
 	}
@@ -143,9 +145,12 @@
 	{#if continueToSite}
 		<section class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
 			<AboutItem
-				title="developer and designer"
-				content="Classically trained, Jack Kufa graduated from Missouri S&T with a Bachelors in Computer
-    Science and Computer Engineering."
+				title="developer, designer"
+				content={[
+					'Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for web. He’s been passionate about the web ever since he designed his first website in 2007 with Microsoft Publisher.',
+					'After graduating from Missouri University of Science and Technology in 2021, Jack Kufa began his career at Service Management Group where he contributed to their UI library, flagship web app, and new greenfield development. He had a major role in building a new hierarchy management system, leading the development of a new onboarding wizard.',
+					'Jack’s skill in multiple frontend frameworks paired with his experience setting up project infrastructure from scratch make him a great asset not only for building amazing user experiences but also maintaining them.',
+				]}
 			/>
 		</section>
 		<!-- Skills -->
