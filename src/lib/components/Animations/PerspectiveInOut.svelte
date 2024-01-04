@@ -38,6 +38,8 @@
 	});
 
 	function disableAnimations() {
+		if (!timeline) return;
+
 		gsap.set(ref, {
 			rotateX: 0,
 			opacity: 1,
@@ -48,6 +50,8 @@
 
 	// TODO: fix perspective on this
 	function animate() {
+		if (!timeline) return;
+
 		timeline
 			?.from(ref, {
 				rotateX: `-${rotateX}deg`,
