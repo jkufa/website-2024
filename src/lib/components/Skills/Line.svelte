@@ -24,7 +24,6 @@
 				scrub: 1,
 				start: `top+=${id * 40}px bottom`,
 				end: 'bottom+=4000px top',
-				markers: true,
 			},
 			defaults: {
 				ease: 'power4.out',
