@@ -9,7 +9,7 @@
 </script>
 
 <!-- Container -->
-<div class="flex w-fit max-w-full flex-col gap-3 p-2 text-pistachio md:max-w-4xl md:gap-6">
+<div class="flex w-fit max-w-full flex-col gap-3 text-pistachio md:max-w-4xl md:gap-6">
 	<!-- Perspective wrapper -->
 	<PerspectiveInOut disabled={!animationsOn}>
 		<!-- Title -->
@@ -28,6 +28,7 @@
 
 <style>
 	p {
-		font-family: 'Clear Sans';
+		font-family: 'system-ui';
+		font-weight: 500;
 	}
 </style>

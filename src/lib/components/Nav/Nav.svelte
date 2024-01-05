@@ -51,11 +51,11 @@
 <nav
 	id="navigation"
 	class="
-    fixed end-4 top-4 z-40 flex flex-col items-end
+    fixed end-2 top-2 z-40 flex flex-col items-end
     border border-solid border-pistachio bg-off-black
     transition-opacity
-    focus-within:opacity-100 hover:opacity-100 md:end-8
-    md:top-8
+    focus-within:opacity-100 hover:opacity-100 md:end-4
+    md:top-4
     "
 	class:opacity-60={!showMenu}
 	style="width: {$wh.w}px; height: {$wh.h}px;"
@@ -69,11 +69,14 @@
 	{#if showMenu}
 		<div class="container flex h-full flex-col justify-between overflow-hidden border-solid">
 			<div class="nav-items flex flex-col text-end">
-				<NavItem href="#">
+				<NavItem href="">
 					<span class="text-3xl font-bold md:text-5xl">HOME</span>
 				</NavItem>
-				<NavItem href="#about">
+				<NavItem href="about">
 					<span class="text-3xl font-bold md:text-5xl">ABOUT</span>
+				</NavItem>
+				<NavItem href="work">
+					<span class="text-3xl font-bold md:text-5xl">WORK</span>
 				</NavItem>
 			</div>
 			<div class="settings flex flex-col gap-4 p-4">
@@ -101,6 +104,6 @@
 
 <style>
 	.settings > div {
-		font-family: 'Clear Sans';
+		font-family: 'system-ui';
 	}
 </style>

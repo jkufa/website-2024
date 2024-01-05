@@ -112,7 +112,7 @@
 			<AboutItem title={ABOUT.title} content={ABOUT.content} />
 		</section>
 		<!-- Skills -->
-		<section id="skills" class="flex h-screen flex-col gap-12">
+		<section id="skills" class="flex flex-col gap-12">
 			<h2
 				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 			>
@@ -122,7 +122,8 @@
 				<Skills skills={SKILLS} {range}></Skills>
 			</div>
 		</section>
-		<section id="work" class="mx-4 flex h-screen flex-col gap-12">
+		<!-- Work -->
+		<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12">
 			<h2
 				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 			>
@@ -134,7 +135,13 @@
 				alt="UI for a todo management app"
 			/>
 		</section>
-		<footer class="mx-4 mb-4 flex justify-between border-t border-pistachio pt-4">
+		<!-- Contact -->
+		<section id="contact" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+			<Button>
+				<span class="block py-8 text-5xl font-extrabold"> JACK@KUFA.IO </span>
+			</Button>
+		</section>
+		<footer class="mx-6 mb-4 mt-40 flex justify-between border-t border-pistachio pt-4">
 			<p class="text-pistachio">
 				Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
 			</p>
@@ -142,10 +149,10 @@
 				<a
 					href="https://github.com/jkufa/website-2024"
 					class="
-          border-b border-pistachio pb-1 text-pistachio
-          transition-shadow
+          border-pistachio pb-1 text-pistachio transition-shadow
           ease-circular-in-out
-          focus-within:shadow-outline focus-within:outline-none
+          focus-within:shadow-outline
+          focus-within:outline-none hover:border-b
           ">View on GitHub</a
 				>
 			</div>
@@ -156,5 +163,8 @@
 <style>
 	h1 {
 		font-size: clamp(4rem, 13vw, 13rem);
+	}
+	footer {
+		font-family: 'system-ui';
 	}
 </style>

@@ -70,7 +70,9 @@
 	bind:this={el}
 	class="{follow && hasMoved && $userSettings.animationsOn
 		? 'fixed left-0 top-0 origin-top-left'
-		: 'relative'} md:mug-md lg:mug-lg z-10"
+		: 'relative'} md:mug-md lg:mug-lg pointer-events-none
+    z-10
+    "
 	data-sevenup="{name}.png"
 ></div>
 

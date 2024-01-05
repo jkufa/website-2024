@@ -2,7 +2,7 @@
 	import SlideInOut from './SlideInOut.svelte';
 
 	export let onClick: () => void = () => {};
-	export let label: string;
+	export let label: string = '';
 	export let disabled = false;
 </script>
 
@@ -21,6 +21,10 @@
 		{disabled}
 		on:click={onClick}
 	>
-		{label}
+		{#if label}
+			{label}
+		{:else}
+			<slot />
+		{/if}
 	</button>
 </SlideInOut>
