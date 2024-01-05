@@ -1,1 +1,1 @@
-export { default as ProjectItem } from './ProjectItem.svelte';
+export { default as Project } from './Project.svelte';

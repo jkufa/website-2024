@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SlideInOut from './SlideInOut.svelte';
+	import { SlideInOut } from './Animations';
 
 	export let onClick: () => void = () => {};
 	export let label: string = '';

@@ -2,6 +2,7 @@
 	export let title: string;
 	export let alt: string;
 	export let src: string;
+	export let showView: boolean;
 
 	let showImg = false;
 
@@ -10,6 +11,9 @@
 	}
 	function transitionOut() {
 		showImg = false;
+	}
+	function showTheView() {
+		showView = true;
 	}
 </script>
 
@@ -32,6 +36,8 @@
 	on:mouseleave={transitionOut}
 	on:focusin={transitionIn}
 	on:focusout={transitionOut}
+	on:click={showTheView}
+	on:keydown={showTheView}
 >
 	<span
 		class="

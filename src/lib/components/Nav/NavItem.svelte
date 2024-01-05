@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { cubicIn, quintOut } from 'svelte/easing';
+	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
-	import SlideInOut from '../SlideInOut.svelte';
+	import { SlideInOut } from '../Animations';
 	import { scrollPosition } from '$lib/stores';
 
 	export let href: string;
 
 	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
 
-  // Doesn't work
+	// Doesn't work
 	function scrollTo() {
 		const body = document.body.getBoundingClientRect().top;
 		const el = document.getElementById(href)?.getBoundingClientRect().top ?? 0;
