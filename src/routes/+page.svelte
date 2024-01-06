@@ -97,7 +97,8 @@
 	<!-- Skills -->
 	<Section id="skills">
 		<H2>
-			JACK KUFA KNOWS<br />A THING OR TWO
+			JACK KUFA KNOWS<br />
+			A THING OR TWO
 		</H2>
 		<Skills skills={SKILLS} {range}></Skills>
 	</Section>
@@ -112,7 +113,10 @@
 
 	<!-- Contact -->
 	<Section id="contact" styles="mt-1/2">
-		<H2>CONTACT</H2>
+		<H2>
+			GET IN TOUCH<br />
+			WITH JACK KUFA
+		</H2>
 		<Button href="mailto:jack@kufa.io">
 			<span class="block py-8 text-center text-2xl font-extrabold"> JACK@KUFA.IO </span>
 		</Button>

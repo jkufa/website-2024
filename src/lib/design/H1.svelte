@@ -12,6 +12,8 @@
 
 <style lang="postcss">
 	h1 {
-		font-size: clamp(4rem, 13vw, 13rem);
+		font-size: clamp(4rem, 13vw, 20rem);
+		line-height: 0.8 !important;
+		font-family: 'Archivo Expanded';
 	}
 </style>

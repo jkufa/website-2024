@@ -13,7 +13,6 @@
       border border-solid border-pistachio
       p-3
       font-semibold
-      text-off-black
 
       focus-visible:outline-none
       disabled:opacity-50

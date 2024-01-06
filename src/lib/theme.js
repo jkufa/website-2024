@@ -6,14 +6,14 @@
 export const colors = {
 	'off-black': '#0B0904',
 	pistachio: '#B2B99F',
-	ivory: '#E7EDD5',
+	ivory: '#F0F5E4',
 	stone: '#b2b99f66', // Opacity value of 0.4
 };
 
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Segoe UI'],
+		sans: ['Segoe UI', 'system-ui'],
 	},
 	letterSpacing: {
 		tightest: '-.75rem',

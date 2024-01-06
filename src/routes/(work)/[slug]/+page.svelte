@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button, LenisContext } from '$lib/components';
 	import Mug from '$lib/components/Mug.svelte';
+	import { H2, P } from '$lib/design';
 	import { userSettings } from '$lib/stores';
 
 	export let data;
@@ -11,12 +12,12 @@
 	{#if $userSettings.animationsOn}
 		<Mug follow={true} />
 	{/if}
-	<section class="lg :flex-row mx-8 mt-40 flex flex-col gap-14 bg-off-black md:gap-6">
+	<section class="mx-8 mt-40 flex flex-col gap-14 bg-off-black md:gap-6 lg:flex-row">
 		<!-- Text content -->
-		<div class="flex flex-col gap-4 lg:fixed lg:w-1/3 lg:max-w-2xl">
-			<h2 class="text-6xl font-bold">
+		<div class="flex flex-col gap-4 lg:fixed lg:w-4/12">
+			<H2>
 				{title}
-			</h2>
+			</H2>
 			<!-- Links -->
 			<div class="flex gap-2">
 				{#each links as l}
@@ -24,9 +25,9 @@
 					<Button label={l.label} />
 				{/each}
 			</div>
-			<p class="leading-5">
+			<P>
 				{description}
-			</p>
+			</P>
 			<!-- Back -->
 			<div class="mt-8">
 				<a href="/#work">Back</a>

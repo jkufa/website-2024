@@ -3,7 +3,7 @@
 </script>
 
 {#if variant === 'default'}
-	<p class="">
+	<p class="default font-semibold leading-normal">
 		<slot />
 	</p>
 {:else if variant === 'large'}
@@ -15,5 +15,8 @@
 <style lang="postcss">
 	.large {
 		font-size: clamp(1.25rem, 2.5vw, 3.75rem);
+	}
+	.default {
+		font-size: clamp(1rem, 1vw, 1.5rem);
 	}
 </style>
