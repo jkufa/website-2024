@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { workData } from './data.js';
+import { workData } from '$lib';
 
 export function load({ params }) {
 	console.log(params.slug);
