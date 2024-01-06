@@ -7,7 +7,13 @@
 		<slot />
 	</p>
 {:else if variant === 'large'}
-	<p class="text-5xl font-semibold leading-snug">
+	<p class="large max-w-[90%] font-semibold !leading-snug">
 		<slot />
 	</p>
 {/if}
+
+<style lang="postcss">
+	.large {
+		font-size: clamp(1.25rem, 2.5vw, 3.75rem);
+	}
+</style>

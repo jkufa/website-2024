@@ -21,7 +21,7 @@
 
 	function expand() {
 		showMenu = true;
-		wh.set({ w: $wh.w * 4.5, h: $wh.h * 5.5 });
+		wh.set({ w: $wh.w * 4.5, h: $wh.h * 6.5 });
 	}
 
 	function shrink() {
@@ -80,7 +80,7 @@
 				</NavItem>
 			</div>
 			<div class="settings flex flex-col gap-4 p-4">
-				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
+				<div class="flex items-center justify-between text-2xl md:text-3xl">
 					<Switch
 						bind:checked={animationsOn}
 						onToggle={() => ($userSettings.animationsOn = !$userSettings.animationsOn)}
@@ -88,7 +88,7 @@
 						label="Animations"
 					/>
 				</div>
-				<div class="flex items-center justify-between text-2xl text-pistachio md:text-3xl">
+				<div class="flex items-center justify-between text-2xl md:text-3xl">
 					<Switch
 						bind:checked={introOn}
 						id="intro"

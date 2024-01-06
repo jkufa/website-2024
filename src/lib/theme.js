@@ -6,6 +6,7 @@
 export const colors = {
 	'off-black': '#0B0904',
 	pistachio: '#B2B99F',
+	ivory: '#E7EDD5',
 	stone: '#b2b99f66', // Opacity value of 0.4
 };
 

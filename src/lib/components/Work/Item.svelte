@@ -37,7 +37,7 @@
 >
 	<span
 		class="
-      font-bold text-pistachio transition-transform
+      font-bold transition-transform
       delay-100
       duration-300
       ease-out

@@ -3,14 +3,19 @@
 </script>
 
 <div
-	class="skillbox flex border border-pistachio bg-off-black px-6 py-4 text-lg text-pistachio md:px-8 md:py-6 md:text-3xl"
+	class="flex border border-pistachio bg-off-black p-6
+
+  text-lg
+  
+  md:p-7 md:text-2xl
+  
+  lg:p-9 lg:text-4xl"
 >
 	{label}
 </div>
 
-<style>
+<style lang="postcss">
 	div {
-		font-family: 'IBM Plex Sans';
 		box-sizing: border-box;
 		white-space: nowrap;
 	}

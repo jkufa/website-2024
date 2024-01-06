@@ -1,2 +1,2 @@
 <!-- TODO: implement -->
-<h1 class="text-pistachio">Hmmm</h1>
+<h1 class="tachio">Hmmm</h1>

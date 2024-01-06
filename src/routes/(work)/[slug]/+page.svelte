@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { Button, LenisContext } from '$lib/components';
 	import Mug from '$lib/components/Mug.svelte';
+	import { userSettings } from '$lib/stores';
 
 	export let data;
 	$: ({ title, description, imgs, links } = data);
 </script>
 
 <LenisContext>
-	<Mug follow={true} />
-	<section
-		class="lg :flex-row mx-8 mt-40 flex flex-col gap-14 bg-off-black text-pistachio md:gap-6"
-	>
+	{#if $userSettings.animationsOn}
+		<Mug follow={true} />
+	{/if}
+	<section class="lg :flex-row mx-8 mt-40 flex flex-col gap-14 bg-off-black md:gap-6">
 		<!-- Text content -->
 		<div class="flex flex-col gap-4 lg:fixed lg:w-1/3 lg:max-w-2xl">
 			<h2 class="text-6xl font-bold">
