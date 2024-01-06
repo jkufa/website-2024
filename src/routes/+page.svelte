@@ -85,18 +85,17 @@
 	<!-- About -->
 	<Section id="about" styles="mt-1/4 justify-center">
 		<P variant="large">
-			Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for
+			Jack Kufa is a Software Engineer that <span class="text-ivory">builds fast, accessible and responsive experiences</span> for
 			web. His experience with multiple frontend frameworks and setting up project infrastructure
 			from scratch makes him a great asset for
-			<span class="text-ivory">building amazing user experiences</span> and
-			<span class="text-ivory">maintaining them.</span>
+			<span class="text-ivory">building and maintaining amazing user experiences.</span>
 		</P>
 		<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
 	</Section>
 
 	<!-- Skills -->
 	<Section id="skills">
-		<H2>
+		<H2 variant="large">
 			JACK KUFA KNOWS<br />
 			A THING OR TWO
 		</H2>
@@ -105,7 +104,7 @@
 
 	<!-- Work -->
 	<Section id="work" styles="mt-1/4 justify-center">
-		<H2>JACK KUFA<br />HAS WORKED ON</H2>
+		<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
 		{#each WORK_DATA as wd}
 			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
 		{/each}
@@ -113,7 +112,7 @@
 
 	<!-- Contact -->
 	<Section id="contact" styles="mt-1/2">
-		<H2>
+		<H2 variant="large">
 			GET IN TOUCH<br />
 			WITH JACK KUFA
 		</H2>
@@ -123,7 +122,7 @@
 	</Section>
 
 	<!-- Footer -->
-	<footer class="mx-4 mb-4 mt-40 flex justify-between border-t border-pistachio pt-4 md:mx-8">
+	<footer class="mx-4 mb-4 flex justify-between border-t border-pistachio pt-4 md:mx-8">
 		<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 		<div class="mb-1">
 			<a

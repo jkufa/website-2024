@@ -6,11 +6,11 @@
 	export let variant: 'default' | 'large' = 'default';
 </script>
 
-{#if 'default'}
+{#if variant === 'default'}
 	<h2 class="default tracking max-w-full font-extrabold {styles}" {...$$restProps}>
 		<slot />
 	</h2>
-{:else if 'large'}
+{:else if variant === 'large'}
 	<h2 class="large tracking max-w-full font-extrabold leading-[.9] {styles}" {...$$restProps}>
 		<slot />
 	</h2>
