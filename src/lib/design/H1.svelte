@@ -1,10 +1,12 @@
 <script lang="ts">
 	export let ref: HTMLHeadingElement | undefined = undefined;
+
+	export let styles: string = '';
 </script>
 
 <h1
 	bind:this={ref}
-	class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter md:bottom-8 md:left-8 md:leading-9"
+	class="leading-85 font-black tracking-tighter md:bottom-8 md:left-8 md:leading-9 {styles}"
 	{...$$restProps}
 >
 	<slot />

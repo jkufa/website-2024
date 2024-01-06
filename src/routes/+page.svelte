@@ -77,21 +77,24 @@
 	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10">
 		<Mug bind:follow bind:ref={mug} hideUntilFollow={false} />
-		<H1 bind:ref={title}>
+		<H1 bind:ref={title} styles="absolute bottom-4 left-4">
 			<span class="block">HIRE</span> JACK KUFA
 		</H1>
 	</div>
 
 	<!-- About -->
 	<Section id="about" styles="mt-1/4 justify-center">
-		<P variant="large">
-			Jack Kufa is a Software Engineer that <span class="text-ivory"
-				>builds fast, accessible and responsive experiences</span
-			>
-			for web. His experience with multiple frontend frameworks and setting up project infrastructure
-			from scratch makes him a great asset for
-			<span class="text-ivory">building and maintaining amazing user experiences.</span>
-		</P>
+		<div class="max-w-[90%]">
+			<P variant="large">
+				Jack Kufa is a Software Engineer that <span class="text-ivory"
+					>builds fast, accessible and responsive experiences</span
+				>
+				for web. His experience with multiple frontend frameworks and setting up project infrastructure
+				from scratch makes him a great asset for
+				<span class="text-ivory">building and maintaining amazing user experiences.</span>
+			</P>
+		</div>
+
 		<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
 	</Section>
 

@@ -7,7 +7,7 @@
 		<slot />
 	</p>
 {:else if variant === 'large'}
-	<p class="large max-w-[90%] font-semibold !leading-snug">
+	<p class="large font-semibold !leading-snug">
 		<slot />
 	</p>
 {/if}
