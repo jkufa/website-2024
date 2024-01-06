@@ -4,15 +4,13 @@
 	import { H1, P } from '$lib/design';
 </script>
 
-<div class="mt-1/4 flex flex-col items-center">
-	<H1 styles="flex items-center gap-6 !leading-3">
-		404
-		<div class="scale-[65%]">
-			<Mug follow={false} hideUntilFollow={false}></Mug>
-		</div>
-	</H1>
-	<div class="flex w-fit flex-col gap-6 text-center">
+<div
+	class="mx-4 mt-1/4 flex flex-col items-center justify-center gap-24 md:mx-8 md:flex-row md:gap-32"
+>
+	<div class="flex flex-col gap-6">
+		<H1 styles="flex items-center gap-6">404</H1>
 		<P variant="large">Page not found</P>
 		<Button href="/">Back to home</Button>
 	</div>
+	<Mug follow={false} hideUntilFollow={false}></Mug>
 </div>
