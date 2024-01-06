@@ -9,6 +9,7 @@
 
 	const split: string[][] = [];
 
+  $: console.log(range)
 	$: copy = [...skills];
 	$: range, splitSkills();
 
@@ -21,7 +22,7 @@
 	}
 </script>
 
-<div id="skillz" class="translate-x-100 flex transform flex-col gap-8">
+<div id="skillz" class="translate-x-100 flex transform flex-col gap-8 h-full">
 	{#each split as line, id}
 		<Line {line} {id} />
 	{/each}

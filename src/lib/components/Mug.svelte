@@ -3,7 +3,7 @@
 	import gsap from 'gsap';
 
 	export let follow: boolean | undefined;
-	export let ref: HTMLDivElement | undefined;
+	export let ref: HTMLDivElement | undefined = undefined;
 
 	let hasMoved = false;
 	let current = 0;

@@ -94,7 +94,7 @@
 
 	<!-- Work -->
 	<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio">
-		<h2 class="mx-4 max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
+		<h2 class="max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
 			WORK
 		</h2>
 		<a href="/journey">Clickies</a>
