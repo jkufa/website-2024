@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Nav, ProgressBar } from '$lib/components';
+	import { Button, Nav, PageTransition, ProgressBar } from '$lib/components';
 	import '../app.css';
 	import { continueToSite, userSettings } from '$lib/stores';
 
@@ -7,6 +7,7 @@
 </script>
 
 <main class="text-pistachio">
+	<PageTransition />
 	{#if !$userSettings.devMode && !$continueToSite}
 		<div class="justify-cente m-auto flex h-screen max-w-lg flex-col items-center gap-2 p-4">
 			<span class="text-xl">initializing K.U.F.A. mind control protocol...</span>

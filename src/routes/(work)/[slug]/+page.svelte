@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Button, LenisContext } from '$lib/components';
-	import Mug from '$lib/components/Mug.svelte';
+	import { Button, LenisContext, Mug } from '$lib/components';
 	import { H2, P } from '$lib/design';
 	import { userSettings } from '$lib/stores';
 

@@ -3,6 +3,10 @@
 	import gsap from 'gsap';
 
 	export let follow: boolean | undefined;
+	/**
+	 * Workaround for loading Mug on pages other than main page
+	 */
+	export let hideUntilFollow: boolean = true;
 	export let ref: HTMLDivElement | undefined = undefined;
 
 	let hasMoved = false;
@@ -69,10 +73,10 @@
 <div
 	bind:this={ref}
 	class="{follow && hasMoved && $userSettings.animationsOn
-		? 'fixed left-0 top-0 origin-top-left'
+		? 'fixed left-0 top-0 z-20 origin-top-left'
 		: 'relative'} md:mug-md lg:mug-lg pointer-events-none
-    z-10
     "
+	class:hidden={hideUntilFollow && !hasMoved}
 	data-sevenup="{name}.png"
 ></div>
 
