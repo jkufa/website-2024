@@ -46,8 +46,8 @@ export const SKILLS = [
 	'WCAG 2.0',
 ];
 
-export const workData: { [key: string]: WorkData } = {
-	journey: {
+export const WORK_DATA: WorkData[] = [
+	{
 		slug: 'journey',
 		title: 'JourneyTodo',
 		description:
@@ -81,4 +81,4 @@ export const workData: { [key: string]: WorkData } = {
 			},
 		],
 	},
-};
+];

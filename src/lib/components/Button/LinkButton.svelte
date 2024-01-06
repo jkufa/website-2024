@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { SlideInOut } from './Animations';
+	import { SlideInOut } from '../Animations';
 
-	export let onClick: () => void = () => {};
 	export let label: string = '';
-	export let disabled = false;
+	export let href: string;
 </script>
 
-<SlideInOut {disabled}>
-	<button
+<SlideInOut>
+	<a
+		{href}
 		class="
       w-full
       border border-solid border-pistachio
@@ -18,13 +18,11 @@
       focus-visible:outline-none
       disabled:opacity-50
       "
-		{disabled}
-		on:click={onClick}
 	>
 		{#if label}
 			{label}
 		{:else}
 			<slot />
 		{/if}
-	</button>
+	</a>
 </SlideInOut>

@@ -2,7 +2,7 @@
 	export let title: string;
 	export let alt: string;
 	export let src: string;
-	export let showView: boolean;
+	export let href: string;
 
 	let showImg = false;
 
@@ -12,12 +12,10 @@
 	function transitionOut() {
 		showImg = false;
 	}
-	function showTheView() {
-		showView = true;
-	}
 </script>
 
-<div
+<a
+	{href}
 	role="row"
 	tabindex="0"
 	class="
@@ -36,8 +34,6 @@
 	on:mouseleave={transitionOut}
 	on:focusin={transitionIn}
 	on:focusout={transitionOut}
-	on:click={showTheView}
-	on:keydown={showTheView}
 >
 	<span
 		class="
@@ -67,4 +63,4 @@
 		class:opacity-0={!showImg}
 		class:scale-0={!showImg}
 	/>
-</div>
+</a>

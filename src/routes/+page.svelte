@@ -1,11 +1,19 @@
 <script lang="ts">
-	import { Mug, Background, AboutItem, LenisContext, Button, Skills } from '$lib/components';
+	import {
+		Mug,
+		Background,
+		AboutItem,
+		LenisContext,
+		Button,
+		Skills,
+		WorkItem,
+	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
-	import { ABOUT, SKILLS } from '$lib';
+	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -94,16 +102,16 @@
 
 	<!-- Work -->
 	<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio">
-		<h2 class="max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
-			WORK
-		</h2>
-		<a href="/journey">Clickies</a>
+		<h2 class="max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">WORK</h2>
+		{#each WORK_DATA as wd}
+			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+		{/each}
 	</section>
 
 	<!-- Contact -->
 	<section id="contact" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-		<Button>
-			<span class="block py-8 text-5xl font-extrabold"> JACK@KUFA.IO </span>
+		<Button href="mailto:jack@kufa.io">
+			<span class="block py-8 text-center text-5xl font-extrabold"> JACK@KUFA.IO </span>
 		</Button>
 	</section>
 
