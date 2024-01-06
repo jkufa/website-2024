@@ -18,7 +18,7 @@
 
 <style lang="postcss">
 	.large {
-		font-size: clamp(2rem, 9vw, 9rem);
+		font-size: clamp(2rem, 7.25vw, 9rem);
 	}
 	.default {
 		font-size: clamp(2rem, 5.5vw, 6rem);

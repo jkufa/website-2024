@@ -49,7 +49,7 @@ export const SKILLS = [
 export const WORK_DATA: WorkData[] = [
 	{
 		slug: 'journey',
-		title: 'JourneyTodo',
+		title: 'JOURNEY',
 		description:
 			'Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for web. His experience with multiple frontend frameworks and setting up project infrastructure from scratch makes him a great asset for building amazing user experiences and maintaining them.',
 		imgs: [
