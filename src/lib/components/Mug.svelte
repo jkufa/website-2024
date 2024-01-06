@@ -3,7 +3,7 @@
 	import gsap from 'gsap';
 
 	export let follow: boolean | undefined;
-	export let el: HTMLDivElement;
+	export let ref: HTMLDivElement | undefined;
 
 	let hasMoved = false;
 	let current = 0;
@@ -13,7 +13,7 @@
 	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
 
 	$: name = names[current];
-	$: if (el && follow === false) resetPos();
+	$: if (ref && follow === false) resetPos();
 	$: ({ animationsOn } = $userSettings);
 	$: animationsOn ? spin() : pause();
 
@@ -37,13 +37,13 @@
 		if (!$userSettings.animationsOn) return;
 		if (follow) {
 			if (!hasMoved) {
-				gsap.set(el, {
+				gsap.set(ref!, {
 					top: 0,
 					left: window.innerWidth / 2,
 				});
 				hasMoved = true;
 			}
-			gsap.to(el, {
+			gsap.to(ref!, {
 				x: e.clientX,
 				y: e.clientY,
 				left: 0,
@@ -54,7 +54,7 @@
 		}
 	}
 	function resetPos() {
-		gsap.to(el, {
+		gsap.to(ref!, {
 			x: 0,
 			y: 0,
 			scale: 1,
@@ -67,7 +67,7 @@
 
 <svelte:window on:mousemove={handleMouse} />
 <div
-	bind:this={el}
+	bind:this={ref}
 	class="{follow && hasMoved && $userSettings.animationsOn
 		? 'fixed left-0 top-0 origin-top-left'
 		: 'relative'} md:mug-md lg:mug-lg pointer-events-none

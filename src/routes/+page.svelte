@@ -1,14 +1,5 @@
 <script lang="ts">
-	import {
-		Mug,
-		Background,
-		Nav,
-		AboutItem,
-		LenisContext,
-		ProgressBar,
-		Button,
-		Skills,
-	} from '$lib/components';
+	import { Mug, Background, AboutItem, LenisContext, Button, Skills } from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
@@ -20,28 +11,20 @@
 	let title: HTMLHeadingElement;
 	let range: number;
 	let follow: boolean;
-	let showingProject: boolean;
-	let complete = false;
-	let continueToSite = false;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
 		easing: cubicInOut,
 	});
 
-	$: if (continueToSite) runIntro();
-	$: console.log(showingProject);
-
 	onMount(() => {
 		range = Math.min(Math.floor(window.innerWidth / 100), 7);
 
-		if ($userSettings.devMode) {
-			continueToSite = true;
-		}
 		if (!$userSettings.introOn) {
 			scale.set(150);
 			return;
 		}
+		runIntro();
 	});
 
 	function runIntro() {
@@ -81,25 +64,10 @@
 </script>
 
 <LenisContext onScroll={scroll}>
-	{#if !continueToSite}
-		<div
-			class="m-auto flex h-screen max-w-lg flex-col items-center justify-center gap-2 p-4 text-pistachio"
-		>
-			<span class="text-xl">initializing K.U.F.A. mind control protocol...</span>
-			<ProgressBar bind:complete />
-			<Button disabled={!complete} label="Continue" onClick={() => (continueToSite = true)} />
-		</div>
-	{/if}
-	<div class:opacity-0={!continueToSite}>
-		<Nav />
-	</div>
 	<!-- Landing -->
 	<Background bind:follow bind:scale={$scale} />
-	<div
-		class="flex h-screen flex-col items-center justify-center gap-10"
-		class:hidden={!continueToSite}
-	>
-		<Mug bind:follow bind:el={mug} />
+	<div class="flex h-screen flex-col items-center justify-center gap-10">
+		<Mug bind:follow bind:ref={mug} />
 		<h1
 			bind:this={title}
 			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
@@ -108,59 +76,54 @@
 		</h1>
 	</div>
 	<!-- About -->
-	{#if continueToSite}
-		{#if !showingProject}
-			<section id="about" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-				<AboutItem title={ABOUT.title} content={ABOUT.content} />
-			</section>
-			<!-- Skills -->
-			<section id="skills" class="flex flex-col gap-12">
-				<h2
-					class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
-				>
-					USED IN PRODUCTION
-				</h2>
-				<div class="relative w-full overflow-x-clip">
-					<Skills skills={SKILLS} {range}></Skills>
-				</div>
-			</section>
-		{/if}
+	<section id="about" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+		<AboutItem title={ABOUT.title} content={ABOUT.content} />
+	</section>
 
-		<!-- Work -->
-		<section
-			id="work"
-			class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio"
+	<!-- Skills -->
+	<section id="skills" class="flex flex-col gap-12">
+		<h2
+			class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
 		>
-			<h2 class="mx-4 max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
-				WORK
-			</h2>
-			<a href="/journey">Clickies</a>
-		</section>
-		<!-- Contact -->
-		{#if !showingProject}
-			<section id="contact" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-				<Button>
-					<span class="block py-8 text-5xl font-extrabold"> JACK@KUFA.IO </span>
-				</Button>
-			</section>
-			<footer class="mx-6 mb-4 mt-40 flex justify-between border-t border-pistachio pt-4">
-				<p class="text-pistachio">
-					Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
-				</p>
-				<div class="mb-1">
-					<a
-						href="https://github.com/jkufa/website-2024"
-						class="
-            border-pistachio pb-1 text-pistachio transition-shadow
-            ease-circular-in-out
-            focus-within:shadow-outline
-            focus-within:outline-none hover:border-b
-            ">View on GitHub</a
-					>
-				</div>
-			</footer>
-		{/if}
-	{/if}
+			USED IN PRODUCTION
+		</h2>
+		<div class="relative w-full overflow-x-clip">
+			<Skills skills={SKILLS} {range}></Skills>
+		</div>
+	</section>
+
+	<!-- Work -->
+	<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio">
+		<h2 class="mx-4 max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
+			WORK
+		</h2>
+		<a href="/journey">Clickies</a>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+		<Button>
+			<span class="block py-8 text-5xl font-extrabold"> JACK@KUFA.IO </span>
+		</Button>
+	</section>
+
+	<!-- Footer -->
+	<footer class="mx-6 mb-4 mt-40 flex justify-between border-t border-pistachio pt-4">
+		<p class="text-pistachio">
+			Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
+		</p>
+		<div class="mb-1">
+			<a
+				href="https://github.com/jkufa/website-2024"
+				class="
+          border-pistachio pb-1 text-pistachio transition-shadow
+          ease-circular-in-out
+          focus-within:shadow-outline
+          focus-within:outline-none hover:border-b
+          ">View on GitHub</a
+			>
+		</div>
+	</footer>
 </LenisContext>
 
 <style>

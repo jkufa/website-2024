@@ -3,7 +3,7 @@
 	import { scrollPosition } from '$lib/stores';
 	import Lenis from '@studio-freight/lenis';
 
-	export let onScroll: () => unknown;
+	export let onScroll: () => void = () => {};
 
 	let lenis: Lenis;
 

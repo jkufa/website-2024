@@ -1,17 +1,23 @@
 <script lang="ts">
 	import Line from './Line.svelte';
 
-	export let skills: string[];
 	/**
 	 * The number of skills per row.
 	 */
 	export let range: number;
+	export let skills: string[];
 
 	const split: string[][] = [];
 
 	$: copy = [...skills];
-	$: while (copy.length > 0) {
-		split.push(copy.splice(0, range));
+	$: range, splitSkills();
+
+	function splitSkills() {
+		if (!range) return;
+
+		while (range && copy.length > 0) {
+			split.push(copy.splice(0, range));
+		}
 	}
 </script>
 

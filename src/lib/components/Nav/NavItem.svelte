@@ -21,7 +21,7 @@
 
 <SlideInOut>
 	<a
-		href="#{href}"
+		href="/#{href}"
 		draggable="false"
 		class="
     ms-auto
