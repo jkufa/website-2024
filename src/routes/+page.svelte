@@ -86,12 +86,15 @@
 	<Section id="about" styles="mt-1/4 justify-center">
 		<div class="max-w-[90%]">
 			<P variant="large">
-				Jack Kufa is a Software Engineer that <span class="text-ivory"
-					>builds fast, accessible and responsive experiences</span
+				Jack Kufa is a Software Engineer that
+				<span class="ivory-highlight text-ivory">
+					builds fast, accessible and responsive experiences</span
 				>
 				for web. His experience with multiple frontend frameworks and setting up project infrastructure
 				from scratch makes him a great asset for
-				<span class="text-ivory">building and maintaining amazing user experiences.</span>
+				<span class="ivory-highlight text-ivory"
+					>building and maintaining amazing user experiences.</span
+				>
 			</P>
 		</div>
 
