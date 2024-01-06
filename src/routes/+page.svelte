@@ -8,7 +8,6 @@
 		ProgressBar,
 		Button,
 		Skills,
-		Project,
 	} from '$lib/components';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
@@ -128,41 +127,14 @@
 		{/if}
 
 		<!-- Work -->
-		<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12">
-			<h2
-				class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
-			>
+		<section
+			id="work"
+			class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio"
+		>
+			<h2 class="mx-4 max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">
 				WORK
 			</h2>
-			<Project
-				bind:showingProject
-				title="JourneyTodo"
-				description="Lorem"
-				imgs={[
-					{
-						src: 'https://placehold.co/600x400/EEE/31343C',
-						alt: 'UI for a todo management app',
-					},
-					{
-						src: 'https://placehold.co/600x400/EEE/31343C',
-						alt: 'UI for a todo management app',
-					},
-					{
-						src: 'https://placehold.co/600x400/EEE/31343C',
-						alt: 'UI for a todo management app',
-					},
-				]}
-				links={[
-					{
-						href: 'journeytodo.com',
-						label: 'JOURNETODO.COM',
-					},
-					{
-						href: 'github.com',
-						label: 'GITHUB',
-					},
-				]}
-			/>
+			<a href="/journey">Clickies</a>
 		</section>
 		<!-- Contact -->
 		{#if !showingProject}
