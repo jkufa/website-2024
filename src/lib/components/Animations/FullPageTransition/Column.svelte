@@ -8,11 +8,13 @@
 	 */
 	export let half = false;
 	export let transitioning = false;
+	export let id: number;
 
 	let ref: HTMLDivElement;
 
+	$: offset = id * 40;
 	$: start = half ? 1 : 0;
-	$: slide = tweened(start, { delay: 100, duration: 1000, easing: quartOut });
+	$: slide = tweened(start, { delay: 100 + offset, duration: 1000, easing: quartOut });
 
 	onMount(async () => {
 		if (half) {
@@ -20,16 +22,10 @@
 		}
 		slide.set(-1).then(() => {
 			transitioning = false;
+			console.log('deleting');
 			ref.remove();
 		});
 	});
 </script>
 
-<div
-	bind:this={ref}
-	class="fixed top-0 z-50 h-screen w-screen translate-y-[var(--pos)] bg-off-black"
-	style="--pos: {$slide * 100}%"
-></div>
-
-<style lang="postcss">
-</style>
+<div class="w-full translate-y-[var(--pos)] bg-off-black" style="--pos: {$slide * 100}%"></div>
