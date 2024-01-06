@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
 	import {
 		Mug,
 		Background,
@@ -8,12 +9,12 @@
 		Skills,
 		WorkItem,
 	} from '$lib/components';
+	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
-	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -76,50 +77,47 @@
 	<Background bind:follow bind:scale={$scale} />
 	<div class="flex h-screen flex-col items-center justify-center gap-10">
 		<Mug bind:follow bind:ref={mug} />
-		<h1
-			bind:this={title}
-			class="leading-85 absolute bottom-4 left-4 font-black tracking-tighter text-pistachio md:leading-9"
-		>
+		<H1 bind:ref={title}>
 			<span class="block">HIRE</span> JACK KUFA
-		</h1>
+		</H1>
 	</div>
+
 	<!-- About -->
-	<section id="about" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
-		<AboutItem title={ABOUT.title} content={ABOUT.content} />
-	</section>
+	<Section id="about" styles="mt-1/4 justify-center">
+		<P variant="large">
+			Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for
+			web. His experience with multiple frontend frameworks and setting up project infrastructure
+			from scratch makes him a great asset for building amazing user experiences and maintaining
+			them.
+		</P>
+		<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
+	</Section>
 
 	<!-- Skills -->
-	<section id="skills" class="flex flex-col gap-12">
-		<h2
-			class="mx-4 max-w-full text-5xl font-bold tracking-tighter text-pistachio md:max-w-3xl md:text-8xl"
-		>
-			USED IN PRODUCTION
-		</h2>
-		<div class="relative w-full overflow-x-clip">
-			<Skills skills={SKILLS} {range}></Skills>
-		</div>
-	</section>
+	<Section id="skills">
+		<H2>USED IN PRODUCTION</H2>
+		<Skills skills={SKILLS} {range}></Skills>
+	</Section>
 
 	<!-- Work -->
-	<section id="work" class="mx-4 mt-80 flex h-screen flex-col justify-center gap-12 text-pistachio">
-		<h2 class="max-w-full text-5xl font-bold tracking-tighter md:max-w-3xl md:text-8xl">WORK</h2>
+	<Section id="work" styles="mt-1/4 justify-center">
+		<H2>WORK</H2>
 		{#each WORK_DATA as wd}
 			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
 		{/each}
-	</section>
+	</Section>
 
 	<!-- Contact -->
-	<section id="contact" class="mx-4 mt-half-screen flex h-screen flex-col gap-28">
+	<Section id="contact" styles="mt-1/2">
+		<H2>CONTACT</H2>
 		<Button href="mailto:jack@kufa.io">
 			<span class="block py-8 text-center text-5xl font-extrabold"> JACK@KUFA.IO </span>
 		</Button>
-	</section>
+	</Section>
 
 	<!-- Footer -->
 	<footer class="mx-6 mb-4 mt-40 flex justify-between border-t border-pistachio pt-4">
-		<p class="text-pistachio">
-			Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.
-		</p>
+		<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 		<div class="mb-1">
 			<a
 				href="https://github.com/jkufa/website-2024"
@@ -134,10 +132,7 @@
 	</footer>
 </LenisContext>
 
-<style>
-	h1 {
-		font-size: clamp(4rem, 13vw, 13rem);
-	}
+<style lang="postcss">
 	footer {
 		font-family: 'system-ui';
 	}

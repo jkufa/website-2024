@@ -12,7 +12,7 @@ export const colors = {
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Archivo Expanded, Helvetica, Arial, sans-serif'],
+		sans: ['Segoe UI'],
 	},
 	letterSpacing: {
 		tightest: '-.75rem',
@@ -39,7 +39,9 @@ export const theme = {
 			11: '3rem',
 		},
 		margin: {
-			'half-screen': '50vh',
+			'1/2': '50vh',
+			'1/3': '33vh',
+			'1/4': '25vh',
 		},
 		content: {
 			empty: '""',
