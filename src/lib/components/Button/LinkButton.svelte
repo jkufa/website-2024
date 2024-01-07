@@ -12,6 +12,7 @@
       w-full
       border border-solid border-pistachio
       p-3
+      text-center
       font-semibold
 
       focus-visible:outline-none

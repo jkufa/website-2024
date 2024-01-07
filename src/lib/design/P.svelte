@@ -17,6 +17,6 @@
 		font-size: clamp(1.25rem, 2.5vw, 3.75rem);
 	}
 	.default {
-		font-size: clamp(1rem, 1vw, 1.5rem);
+		font-size: clamp(0.875rem, 1vw, 1.5rem);
 	}
 </style>

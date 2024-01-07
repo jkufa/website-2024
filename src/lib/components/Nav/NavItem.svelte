@@ -2,20 +2,20 @@
 	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 	import { SlideInOut } from '../Animations';
-	import { scrollPosition } from '$lib/stores';
+	import { lenisInstance } from '..';
 
+	/**
+	 * Must be an id, must be unique
+	 */
 	export let href: string;
 
 	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
 
 	// Doesn't work
 	function scrollTo() {
-		const body = document.body.getBoundingClientRect().top;
-		const el = document.getElementById(href)?.getBoundingClientRect().top ?? 0;
-		const diff = el - body;
-		console.log(href, body, el, diff, $scrollPosition);
-		scrollPosition.set(0);
-		console.log($scrollPosition);
+		console.log($lenisInstance);
+		const target = href ? `#${href}` : 'top';
+		$lenisInstance.scrollTo(target);
 	}
 </script>
 
@@ -33,7 +33,7 @@
     md:my-1
     "
 		style="--bg-pos: {$slide * 100}%"
-		on:click={scrollTo}
+		on:click|preventDefault={scrollTo}
 	>
 		<slot />
 	</a>

@@ -22,8 +22,6 @@
 		}
 		slide.set(-1).then(() => {
 			transitioning = false;
-			console.log('deleting');
-			ref.remove();
 		});
 	});
 </script>

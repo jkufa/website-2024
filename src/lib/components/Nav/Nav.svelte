@@ -21,7 +21,7 @@
 
 	function expand() {
 		showMenu = true;
-		wh.set({ w: $wh.w * 4.5, h: $wh.h * 6.5 });
+		wh.set({ w: $wh.w * 4.5, h: $wh.h * 7.5 });
 	}
 
 	function shrink() {
@@ -77,6 +77,9 @@
 				</NavItem>
 				<NavItem href="work">
 					<span class="text-3xl font-bold md:text-5xl">WORK</span>
+				</NavItem>
+				<NavItem href="contact">
+					<span class="text-3xl font-bold md:text-5xl">CONTACT</span>
 				</NavItem>
 			</div>
 			<div class="settings flex flex-col gap-4 p-4">

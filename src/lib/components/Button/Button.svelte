@@ -9,7 +9,7 @@
 </script>
 
 {#if href}
-	<LinkButton {href}>
+	<LinkButton {href} {label}>
 		<slot />
 	</LinkButton>
 {:else}

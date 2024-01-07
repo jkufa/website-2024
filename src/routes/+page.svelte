@@ -1,14 +1,6 @@
 <script lang="ts">
 	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
-	import {
-		Mug,
-		Background,
-		AboutItem,
-		LenisContext,
-		Button,
-		Skills,
-		WorkItem,
-	} from '$lib/components';
+	import { Mug, Background, Button, Skills, WorkItem, lenisFunctionStore } from '$lib/components';
 	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
@@ -25,6 +17,7 @@
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
 		easing: cubicInOut,
 	});
+	lenisFunctionStore.set(scroll);
 
 	onMount(() => {
 		range = Math.min(Math.floor(window.innerWidth / 100), 7);
@@ -66,85 +59,90 @@
 	}
 
 	function scroll() {
+		if (!title) return;
 		// Set mug to follow cursor
 		const bot = title.getBoundingClientRect().bottom;
 		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
 	}
 </script>
 
-<LenisContext onScroll={scroll}>
-	<!-- Landing -->
-	<Background bind:follow bind:scale={$scale} />
-	<div class="flex h-screen flex-col items-center justify-center gap-10">
-		<Mug bind:follow bind:ref={mug} hideUntilFollow={false} />
-		<H1 bind:ref={title} styles="absolute bottom-4 left-4">
-			<span class="block">HIRE</span> JACK KUFA
-		</H1>
+<!-- Landing -->
+<Background bind:follow bind:scale={$scale} />
+<div class="flex h-screen flex-col items-center justify-center gap-10">
+	<Mug bind:follow bind:ref={mug} hideUntilFollow={false} />
+	<H1 bind:ref={title} styles="absolute bottom-4 left-4">
+		<span class="block">HIRE</span> JACK KUFA
+	</H1>
+</div>
+
+<!-- About -->
+<Section id="about" styles="mt-1/4 justify-center">
+	<div class="max-w-[90%]">
+		<P variant="large">
+			Jack Kufa is a Software Engineer that
+			<span class="ivory-highlight text-ivory">
+				builds fast, accessible and responsive experiences</span
+			>
+			for web. His experience with multiple frontend frameworks and setting up project infrastructure
+			from scratch makes him a great asset for
+			<span class="ivory-highlight text-ivory"
+				>building and maintaining amazing user experiences.</span
+			>
+		</P>
 	</div>
 
-	<!-- About -->
-	<Section id="about" styles="mt-1/4 justify-center">
-		<div class="max-w-[90%]">
-			<P variant="large">
-				Jack Kufa is a Software Engineer that
-				<span class="ivory-highlight text-ivory">
-					builds fast, accessible and responsive experiences</span
-				>
-				for web. His experience with multiple frontend frameworks and setting up project infrastructure
-				from scratch makes him a great asset for
-				<span class="ivory-highlight text-ivory"
-					>building and maintaining amazing user experiences.</span
-				>
-			</P>
-		</div>
+	<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
+</Section>
 
-		<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
-	</Section>
+<!-- Skills -->
+<Section id="skills">
+	<H2 variant="large">
+		JACK KUFA KNOWS<br />
+		A THING OR TWO
+	</H2>
+	<Skills skills={SKILLS} {range}></Skills>
+</Section>
 
-	<!-- Skills -->
-	<Section id="skills">
-		<H2 variant="large">
-			JACK KUFA KNOWS<br />
-			A THING OR TWO
-		</H2>
-		<Skills skills={SKILLS} {range}></Skills>
-	</Section>
+<!-- Work -->
+<Section id="work" styles="mt-1/4 justify-center">
+	<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
+	{#each WORK_DATA as wd}
+		<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+	{/each}
+</Section>
 
-	<!-- Work -->
-	<Section id="work" styles="mt-1/4 justify-center">
-		<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
-		{#each WORK_DATA as wd}
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-		{/each}
-	</Section>
+<!-- Contact -->
+<Section id="contact" styles="mt-1/4 justify-center">
+	<H2 variant="large">
+		GET IN TOUCH<br />
+		WITH JACK KUFA
+	</H2>
+	<Button href="mailto:jack@kufa.io">
+		<span class="block py-8 text-center text-2xl font-extrabold"> JACK@KUFA.IO </span>
+	</Button>
+</Section>
 
-	<!-- Contact -->
-	<Section id="contact" styles="mt-1/2">
-		<H2 variant="large">
-			GET IN TOUCH<br />
-			WITH JACK KUFA
-		</H2>
-		<Button href="mailto:jack@kufa.io">
-			<span class="block py-8 text-center text-2xl font-extrabold"> JACK@KUFA.IO </span>
-		</Button>
-	</Section>
-
-	<!-- Footer -->
-	<footer class="mx-4 mb-4 flex justify-between border-t border-pistachio pt-4 md:mx-8">
-		<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
-		<div class="mb-1">
-			<a
-				href="https://github.com/jkufa/website-2024"
-				class="
-          border-pistachio pb-1 transition-shadow
-          ease-circular-in-out
-          focus-within:shadow-outline
-          focus-within:outline-none hover:border-b
+<!-- Footer -->
+<footer
+	class="mx-4 mb-4 flex flex-col gap-4 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8"
+>
+	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
+	<div class="mb-1">
+		<a
+			data-sveltekit-preload-data="hover"
+			href="https://github.com/jkufa/website-2024"
+			class="
+          border-pistachio pb-1 text-sm
+          font-semibold
+          transition-shadow
+          ease-circular-in-out focus-within:shadow-outline
+          focus-within:outline-none
+          hover:border-b
+          md:text-base
           ">View on GitHub</a
-			>
-		</div>
-	</footer>
-</LenisContext>
+		>
+	</div>
+</footer>
 
 <style lang="postcss">
 	footer {
