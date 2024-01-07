@@ -2,9 +2,10 @@ import { error } from '@sveltejs/kit';
 import { WORK_DATA } from '$lib';
 
 export function load({ params }) {
-	console.log(params.slug);
 	const data = WORK_DATA.find((wd) => wd.slug === params.slug);
+
 	if (!data) throw error(404);
+
 	return {
 		title: data.title,
 		description: data.description,

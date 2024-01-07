@@ -21,7 +21,7 @@
 
 	function expand() {
 		showMenu = true;
-		wh.set({ w: $wh.w * 4.5, h: $wh.h * 7.5 });
+		wh.set({ w: $wh.w * 4.5, h: $wh.h * 8 });
 	}
 
 	function shrink() {

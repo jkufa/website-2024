@@ -37,8 +37,9 @@
 		return () => clearInterval(interval);
 	}
 
-	function handleMouse(e: MouseEvent) {
-		if (!$userSettings.animationsOn) return;
+	function handleMouse(e: PointerEvent) {
+		if (!$userSettings.animationsOn || e.pointerType !== 'mouse') return;
+
 		if (follow) {
 			if (!hasMoved) {
 				gsap.set(ref!, {
@@ -69,7 +70,7 @@
 	}
 </script>
 
-<svelte:window on:mousemove={handleMouse} />
+<svelte:window on:pointermove={handleMouse} />
 <div
 	bind:this={ref}
 	class="{follow && hasMoved && $userSettings.animationsOn

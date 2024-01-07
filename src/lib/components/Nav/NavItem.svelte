@@ -13,7 +13,6 @@
 
 	// Doesn't work
 	function scrollTo() {
-		console.log($lenisInstance);
 		const target = href ? `#${href}` : 'top';
 		$lenisInstance.scrollTo(target);
 	}
@@ -25,12 +24,13 @@
 		draggable="false"
 		class="
     ms-auto
-    p-4
+    p-3
     font-semibold
     text-off-black
   
     focus-visible:outline-none
     md:my-1
+    md:p-4
     "
 		style="--bg-pos: {$slide * 100}%"
 		on:click|preventDefault={scrollTo}
