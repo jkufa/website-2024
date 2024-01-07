@@ -51,11 +51,13 @@
 		{src}
 		{alt}
 		class="
-      max-h-32
+      max-h-16
       transition-[opacity,transform]
       delay-100
       duration-300
       ease-circular-in-out
+      md:max-h-32
+      lg:max-h-64
 
     "
 		class:scale-100={showImg}

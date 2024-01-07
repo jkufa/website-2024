@@ -21,6 +21,7 @@
 
 	function expand() {
 		showMenu = true;
+		// TODO: Remove dependency on magic numbers
 		wh.set({ w: $wh.w * 4.5, h: $wh.h * 8 });
 	}
 

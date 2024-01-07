@@ -9,15 +9,12 @@
 	<a
 		{href}
 		class="
-      w-full
-      border border-solid border-pistachio
-      p-3
-      text-center
+			h-full w-full border border-solid border-pistachio p-3 text-center
       font-semibold
 
-      focus-visible:outline-none
-      disabled:opacity-50
-      "
+			focus-visible:outline-none
+			disabled:opacity-50
+			"
 	>
 		{#if label}
 			{label}

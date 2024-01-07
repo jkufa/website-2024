@@ -22,7 +22,7 @@
 	}
 </script>
 
-<div class="relative -mx-4 w-screen overflow-x-clip md:-mx-8">
+<div class="relative -mx-4 w-screen overflow-x-clip md:-mx-8 lg:-mx-16">
 	<div id="skillz" class="translate-x-100 flex h-full transform flex-col gap-8">
 		{#each split as line, id}
 			<Line {line} {id} />

@@ -1,12 +1,20 @@
 <script lang="ts">
 	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
-	import { Mug, Background, Button, Skills, WorkItem, lenisFunctionStore } from '$lib/components';
+	import {
+		Mug,
+		Background,
+		Skills,
+		WorkItem,
+		lenisFunctionStore,
+		EmailContact,
+	} from '$lib/components';
 	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
+	import Link from '$lib/components/Link/Link.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -112,14 +120,24 @@
 </Section>
 
 <!-- Contact -->
-<Section id="contact" styles="mt-1/4 justify-center">
+<Section id="contact" styles="mt-1/4 justify-center lg:mx-16">
 	<H2 variant="large">
 		GET IN TOUCH<br />
 		WITH JACK KUFA
 	</H2>
-	<Button href="mailto:jack@kufa.io">
-		<span class="block py-8 text-center text-2xl font-extrabold"> JACK@KUFA.IO </span>
-	</Button>
+	<div class="flex w-full flex-col gap-8 md:flex-row">
+		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">
+			<span class="text-6xl font-extrabold">JACK@KUFA.IO</span>
+		</EmailContact>
+		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
+			<Link href="https://linkedin.com/in/jackkufa">
+				<span class="text-2xl font-extrabold">LINKEDIN</span>
+			</Link>
+			<Link href="https://github.com/jkufa">
+				<span class="text-2xl font-extrabold">GITHUB</span>
+			</Link>
+		</div>
+	</div>
 </Section>
 
 <!-- Footer -->
@@ -132,13 +150,14 @@
 			data-sveltekit-preload-data="hover"
 			href="https://github.com/jkufa/website-2024"
 			class="
-          border-pistachio pb-1 text-sm
+          text-clamp-base border-pistachio
+          pb-1
           font-semibold
+          leading-normal
           transition-shadow
           ease-circular-in-out focus-within:shadow-outline
           focus-within:outline-none
           hover:border-b
-          md:text-base
           ">View on GitHub</a
 		>
 	</div>
