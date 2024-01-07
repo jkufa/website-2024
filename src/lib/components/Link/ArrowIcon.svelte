@@ -1,5 +1,5 @@
 <script lang="ts">
-	export const directions = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
+	import { directions } from './directions';
 
 	export let direction: (typeof directions)[number] = 'n';
 	$: rotation = directions.indexOf(direction) * 45;

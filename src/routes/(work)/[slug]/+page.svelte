@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Mug } from '$lib/components';
+	import { Button, Link, Mug } from '$lib/components';
 	import { H2, P } from '$lib/design';
 	import { userSettings } from '$lib/stores';
 
@@ -20,7 +20,11 @@
 		<div class="flex gap-2">
 			{#each links as l}
 				<!-- TODO: This should be a button link -->
-				<Button label={l.label} href={l.href} />
+				<div class="w-full border border-pistachio font-extrabold">
+					<Link href={l.href}>
+						{l.label}
+					</Link>
+				</div>
 			{/each}
 		</div>
 		<P>
@@ -28,7 +32,7 @@
 		</P>
 		<!-- Back -->
 		<div class="mt-8">
-			<a href="/#work">Back</a>
+			<Link href="/#work" iconDirection="w" iconPos="start">BACK TO HOME</Link>
 		</div>
 	</div>
 	<!-- Images -->
