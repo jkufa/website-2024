@@ -7,22 +7,19 @@
 </script>
 
 {#if variant === 'default'}
-	<h2 class="default tracking max-w-full font-extrabold {styles}" {...$$restProps}>
+	<h2 class="tracking max-w-full text-clamp-xl font-extrabold {styles}" {...$$restProps}>
 		<slot />
 	</h2>
 {:else if variant === 'large'}
-	<h2 class="large tracking max-w-full font-extrabold leading-[.9] {styles}" {...$$restProps}>
+	<h2
+		class="tracking max-w-full text-clamp-2xl font-extrabold leading-[.9] {styles}"
+		{...$$restProps}
+	>
 		<slot />
 	</h2>
 {/if}
 
 <style lang="postcss">
-	.large {
-		font-size: clamp(2rem, 7.25vw, 9rem);
-	}
-	.default {
-		font-size: clamp(2rem, 5.5vw, 6rem);
-	}
 	h2 {
 		font-family: 'Archivo Expanded';
 		line-height: 0.9 !important;

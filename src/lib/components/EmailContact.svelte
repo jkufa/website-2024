@@ -36,11 +36,14 @@
   border
   border-pistachio
   bg-off-black
-  transition-[box-shadow,transform]
+  py-4
 
+  text-clamp-lg
+  font-extrabold
+
+  transition-[box-shadow,transform]
   delay-100
   after:absolute
-
   after:bottom-0
   after:left-0
   after:right-0
@@ -49,16 +52,15 @@
   after:items-center
   after:justify-center
   after:bg-pistachio
-  after:text-6xl
+  after:text-clamp-lg
+
   after:font-extrabold
   after:text-off-black
-  after:content-empty
 
+  after:content-empty
   focus-visible:shadow-outline
   focus-visible:outline-none
-
   active:scale-95
-
   md:w-8/12
   "
 	style="--ec-content: '{cleanedText}'; --bg-pos: {$slide * 100}%;"
