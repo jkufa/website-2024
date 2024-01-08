@@ -73,11 +73,11 @@ export const WORK_DATA: WorkData[] = [
 		links: [
 			{
 				href: 'https://journeytodo.com',
-				label: 'JOURNETODO.COM',
+				label: 'Visit Site',
 			},
 			{
 				href: 'https://github.com/JourneyTodo/journey-web',
-				label: 'VIEW GITHUB',
+				label: 'View GitHub',
 			},
 		],
 	},

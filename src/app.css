@@ -25,24 +25,4 @@
 	.ivory-highlight {
 		text-shadow: 0px 0px 8px rgba(240, 245, 228, 0.33);
 	}
-
-	.text-clamp-base {
-		font-size: clamp(0.875rem, 1vw, 1.5rem);
-	}
-
-	.text-clamp-lg {
-		font-size: clamp(1.25rem, 2.5vw, 3.75rem);
-	}
-
-	.text-clamp-xl {
-		font-size: clamp(2rem, 5.5vw, 6rem);
-	}
-
-	.text-clamp-2xl {
-		font-size: clamp(2rem, 7.25vw, 9rem);
-	}
-
-	.text-clamp-9xl {
-		font-size: clamp(4rem, 13vw, 20rem);
-	}
 }
