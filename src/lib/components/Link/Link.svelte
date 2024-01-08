@@ -16,18 +16,22 @@
 
 	$: iconDirection, (translateX = setX()), (translateY = setY());
 
-	function setX() {
-		if (iconDirection.includes('e')) return 0.33;
+	// In rem
+	const x = 0.33;
+	const y = 0.25;
 
-		if (iconDirection.includes('w')) return -0.33;
+	function setX() {
+		if (iconDirection.includes('e')) return x;
+
+		if (iconDirection.includes('w')) return -x;
 
 		return 0;
 	}
 
 	function setY() {
-		if (iconDirection.includes('n')) return -0.25;
+		if (iconDirection.includes('n')) return -y;
 
-		if (iconDirection.includes('s')) return 0.25;
+		if (iconDirection.includes('s')) return y;
 
 		return 0;
 	}
@@ -37,13 +41,16 @@
 	<a
 		{href}
 		draggable="false"
-		class="flex w-full items-center justify-between p-8 text-off-black focus-visible:outline-none"
+		class="flex w-full items-center justify-between gap-8 px-[2em] py-[1.25em] text-off-black focus-visible:outline-none"
 		class:flex-row-reverse={iconPos === 'start'}
 		style="--tx: {translateX}rem; --ty: {translateY}rem;"
 	>
 		<slot />
 		{#if showIcon}
-			<div class="icon text-pistachio transition-[transform,color]">
+			<div
+				class="icon text-pistachio transition-[transform,color]"
+				style="transition-delay: {iconPos === 'start' ? '200ms' : '400ms'}"
+			>
 				<ArrowIcon direction={iconDirection} />
 			</div>
 		{/if}
@@ -55,6 +62,5 @@
 	a:focus-visible > .icon {
 		color: rgb(11 9 4 / 1);
 		transform: translate(var(--tx), var(--ty));
-		transition-delay: 400ms; /* TODO: remove */
 	}
 </style>

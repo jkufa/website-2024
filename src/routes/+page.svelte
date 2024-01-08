@@ -127,7 +127,7 @@
 	</H2>
 	<div class="flex w-full flex-col gap-8 md:flex-row">
 		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">
-			<span class="text-6xl font-extrabold">JACK@KUFA.IO</span>
+        JACK@KUFA.IO
 		</EmailContact>
 		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
 			<Link href="https://linkedin.com/in/jackkufa">
