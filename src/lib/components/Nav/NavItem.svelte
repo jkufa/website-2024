@@ -32,7 +32,6 @@
     md:my-1
     md:p-4
     "
-		style="--bg-pos: {$slide * 100}%"
 		on:click|preventDefault={scrollTo}
 	>
 		<slot />
