@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { quadOut } from 'svelte/easing';
+	import { quadOut, quartOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 
 	export let animateOff: boolean;
@@ -8,7 +8,9 @@
 
 	let textHeight: number;
 	let containerW: number;
-	let count = tweened(0, { delay: 400, duration: 800, easing: quadOut });
+	const count = tweened(0, { delay: 400, duration: 800, easing: quartOut });
+
+	let animating = false;
 
 	let smallW = 63;
 	let largeW = 117;
@@ -21,6 +23,10 @@
 	$: multiplier = textHeight * $count;
 
 	async function animate() {
+		if (animating) return;
+
+		animating = true;
+
 		for (let i = 0; i <= words.length; i++) {
 			await count.set(i);
 			if (containerW !== largeW) containerW = largeW; // Only set it on first pass
@@ -36,6 +42,7 @@
 	async function reset() {
 		await count.set(0);
 		containerW = smallW;
+		animating = false;
 	}
 
 	onMount(async () => {
@@ -50,6 +57,8 @@
 </script>
 
 <div
+	role="banner"
+	on:mouseenter={animate}
 	class="relative overflow-hidden font-semibold transition-[width] duration-500"
 	style="width: {containerW}px;"
 >
@@ -70,6 +79,6 @@
 		class="absolute bottom-0 -z-10 transition-opacity duration-300"
 		class:opacity-0={$count > 0}
 	>
-		K.U.F.A
+		K.U.F.A.
 	</div>
 </div>

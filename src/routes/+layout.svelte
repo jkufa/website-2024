@@ -1,9 +1,16 @@
 <script lang="ts">
 	import '../app.css';
-	import { Button, Lenis, Nav, PageTransition, ProgressBar } from '$lib/components';
+	import {
+		Button,
+		EaseText,
+		Lenis,
+		Nav,
+		PageTransition,
+		ProgressBar,
+		WordStack,
+	} from '$lib/components';
 	import { continueToSite, userSettings } from '$lib/stores';
 	import { onNavigate } from '$app/navigation';
-	import WordStack from '$lib/components/Loading/WordStack.svelte';
 
 	let loaded: boolean;
 	let transition = true;
@@ -26,12 +33,8 @@
 		{/if}
 		{#if !$userSettings.devMode && !$continueToSite}
 			<div class="m-auto flex h-screen max-w-2xl flex-col justify-center gap-2 p-4">
-				<div class="flex items-end justify-center gap-2 text-lg md:text-xl lg:text-3xl">
-					{#if loaded}
-						Loaded
-					{:else}
-						Initializing
-					{/if}
+				<div class="-mx-4 flex items-end justify-center gap-2 text-lg md:text-xl lg:text-3xl">
+					<EaseText showEnd={loaded} start="Loading" end="Loaded"></EaseText>
 					<WordStack animateOff={loaded} /> mind control protocol
 				</div>
 				<ProgressBar bind:complete={loaded} />
