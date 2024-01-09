@@ -51,7 +51,15 @@ export const WORK_DATA: WorkData[] = [
 		slug: 'journey',
 		title: 'JOURNEY',
 		description:
-			'Jack Kufa is a Software Engineer that builds fast, accessible and responsive experiences for web. His experience with multiple frontend frameworks and setting up project infrastructure from scratch makes him a great asset for building amazing user experiences and maintaining them.',
+    // TODO: support markdown on work page
+    `Journey is a goal-based todo app designed to declutter your todo lists so you can achieve more. 
+
+      Features:
+      * Progress tracking: Goals are complete once you complete all of its tasks. Goals have a progress bar to indicate the percentage complete.
+      * Target dates: Goals and tasks can both have target dates set. Goals inherit the latest target date of its tasks by default.
+      * Goal organization: Users can re-organize their goals in the sidebar in whatever order they’d like!
+      * Subgoals: Users can nest goals within goals to really organize things how they see fit.
+      * Hotkeys: press the G key to quickly add a goal, or the T key for a quickly adding a task`,
 		imgs: [
 			{
 				src: 'https://placehold.co/600x400/EEE/31343C',

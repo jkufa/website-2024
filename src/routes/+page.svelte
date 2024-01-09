@@ -132,12 +132,8 @@
 	<div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
 		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">JACK@KUFA.IO</EmailContact>
 		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
-			<Link href="https://linkedin.com/in/jackkufa">
-				<span class="text-clamp-base font-extrabold">LINKEDIN</span>
-			</Link>
-			<Link href="https://github.com/jkufa">
-				<span class="text-clamp-base font-extrabold">GITHUB</span>
-			</Link>
+			<Link href="https://linkedin.com/in/jackkufa">LINKEDIN</Link>
+			<Link href="https://github.com/jkufa">GITHUB</Link>
 		</div>
 	</div>
 </Section>
