@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: 'Archivo2';
-	src: url('/fonts/archivo.woff2') format('woff2');
-	font-weight: normal;
-	font-style: normal;
+@layer base {
+	@font-face {
+		font-family: 'Archivo Expanded';
+		src:
+			local('Archivo Expanded Black'),
+			local('ArchivoExpanded-Black'),
+			url('fonts/ArchivoExpanded-Black.woff2') format('woff2'),
+			url('fonts/ArchivoExpanded-Black.woff') format('woff');
+		font-weight: 900;
+		font-style: normal;
+	}
+
+	h1,
+	h2,
+	h3 {
+		@apply font-heading;
+	}
 }
 
 @layer components {

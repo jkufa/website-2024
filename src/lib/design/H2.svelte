@@ -21,7 +21,6 @@
 
 <style lang="postcss">
 	h2 {
-		font-family: 'Archivo Expanded';
 		line-height: 0.9 !important;
 	}
 </style>

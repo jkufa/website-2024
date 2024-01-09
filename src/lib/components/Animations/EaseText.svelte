@@ -19,12 +19,11 @@
 		width: 0,
 	};
 	const animations = tweened(vals, { duration: 800, easing: quartOut });
-	$: (vals.width = width), console.log(vals);
+	$: vals.width = width;
 	$: if (showEnd) animate();
 
 	onMount(() => {
 		widths = [startW, endW];
-		console.log(widths);
 		width = widths[0];
 		mounted = true;
 	});
