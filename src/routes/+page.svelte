@@ -114,9 +114,13 @@
 <!-- Work -->
 <Section id="work" styles="mt-1/4 justify-center">
 	<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
-	{#each WORK_DATA as wd}
-		<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-	{/each}
+	<div class="z-0 border border-solid border-pistachio bg-off-black">
+		{#each WORK_DATA as wd}
+			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+		{/each}
+	</div>
 </Section>
 
 <!-- Contact -->
@@ -125,16 +129,14 @@
 		GET IN TOUCH<br />
 		WITH JACK KUFA
 	</H2>
-	<div class="flex w-full flex-col gap-8 md:flex-row">
-		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">
-        JACK@KUFA.IO
-		</EmailContact>
+	<div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
+		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">JACK@KUFA.IO</EmailContact>
 		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
 			<Link href="https://linkedin.com/in/jackkufa">
-				<span class="text-2xl font-extrabold">LINKEDIN</span>
+				<span class="text-clamp-base font-extrabold">LINKEDIN</span>
 			</Link>
 			<Link href="https://github.com/jkufa">
-				<span class="text-2xl font-extrabold">GITHUB</span>
+				<span class="text-clamp-base font-extrabold">GITHUB</span>
 			</Link>
 		</div>
 	</div>
@@ -142,16 +144,15 @@
 
 <!-- Footer -->
 <footer
-	class="mx-4 mb-4 flex flex-col gap-4 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8"
+	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8"
 >
 	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
-	<div class="mb-1">
-		<a
-			data-sveltekit-preload-data="hover"
-			href="https://github.com/jkufa/website-2024"
-			class="
-          text-clamp-base border-pistachio
-          pb-1
+	<a
+		data-sveltekit-preload-data="hover"
+		href="https://github.com/jkufa/website-2024"
+		class="
+          border-pistachio
+          text-clamp-base
           font-semibold
           leading-normal
           transition-shadow
@@ -159,8 +160,7 @@
           focus-within:outline-none
           hover:border-b
           ">View on GitHub</a
-		>
-	</div>
+	>
 </footer>
 
 <style lang="postcss">

@@ -9,9 +9,6 @@
 	 */
 	export let href: string;
 
-	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
-
-	// Doesn't work
 	function scrollTo() {
 		const target = href ? `#${href}` : 'top';
 		$lenisInstance.scrollTo(target);

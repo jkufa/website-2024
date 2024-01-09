@@ -17,19 +17,27 @@
 <a
 	{href}
 	role="row"
-	tabindex="0"
+	draggable="false"
 	class="
-    flex items-center justify-between border-t border-solid border-pistachio
-    transition-[box-shadow,background-color]
-    delay-100
+    flex
+    w-full items-center justify-between
+    ps-4
+    outline
+    outline-1
+    outline-transparent
 
+    transition-[outline,box-shadow]
+    delay-100
     duration-200
     ease-circular-in-out
 
     focus-within:shadow-outline
-    focus-within:outline-none hover:cursor-pointer
+    focus-within:outline-none
+    hover:cursor-pointer
+    hover:outline-pistachio
+    
+    md:ps-8
     "
-	class:bg-off-black={showImg}
 	on:mouseenter={transitionIn}
 	on:mouseleave={transitionOut}
 	on:focusin={transitionIn}
@@ -37,11 +45,10 @@
 >
 	<span
 		class="
-      font-bold transition-transform
-      delay-100
-      duration-300
+      text-clamp-base
+      font-extrabold
+      transition-transform duration-500
       ease-out
-      md:text-3xl
     "
 		class:translate-x-8={showImg}
 	>
@@ -51,13 +58,13 @@
 		{src}
 		{alt}
 		class="
-      max-h-16
+      max-h-20
       transition-[opacity,transform]
       delay-100
       duration-300
       ease-circular-in-out
       md:max-h-32
-      lg:max-h-64
+      lg:max-h-[6vw]
 
     "
 		class:scale-100={showImg}
@@ -66,3 +73,6 @@
 		class:scale-0={!showImg}
 	/>
 </a>
+
+<style lang="postcss">
+</style>
