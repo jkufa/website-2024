@@ -29,7 +29,7 @@
 			on:click={onClick}
 		>
 			{#if label}
-				{label}
+				{label.toLocaleUpperCase()}
 			{:else}
 				<slot />
 			{/if}
