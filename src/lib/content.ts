@@ -1,3 +1,5 @@
+import type { WorkData } from './types';
+
 export const ABOUT = {
 	title: 'Developer, Designer',
 	content: [
@@ -42,4 +44,49 @@ export const SKILLS = [
 	'Storybook',
 	'Google Lighthouse',
 	'WCAG 2.0',
+];
+
+export const WORK_DATA: WorkData[] = [
+	{
+		slug: 'journey',
+		title: 'Journey',
+		description:
+			// TODO: support markdown on work page
+			`Journey is a goal-based todo app designed to de-clutter your todo lists so you can achieve more. 
+
+      Features:
+      * Progress tracking: Goals are complete once you complete all of its tasks. Goals have a progress bar to indicate the percentage complete.
+      * Target dates: Goals and tasks can both have target dates set. Goals inherit the latest target date of its tasks by default.
+      * Goal organization: Users can re-organize their goals in the sidebar in whatever order they’d like!
+      * Subgoals: Users can nest goals within goals to really organize things how they see fit.
+      * Hotkeys: press the G key to quickly add a goal, or the T key for a quickly adding a task`,
+		imgs: [
+			{
+				src: 'https://placehold.co/600x400/EEE/31343C',
+				alt: 'UI for a todo management app',
+			},
+			{
+				src: 'https://placehold.co/600x400/EEE/31343C',
+				alt: 'UI for a todo management app',
+			},
+			{
+				src: 'https://placehold.co/600x400/EEE/31343C',
+				alt: 'UI for a todo management app',
+			},
+			{
+				src: 'https://placehold.co/600x400/EEE/31343C',
+				alt: 'UI for a todo management app',
+			},
+		],
+		links: [
+			{
+				href: 'https://journeytodo.com',
+				label: 'Visit Site',
+			},
+			{
+				href: 'https://github.com/JourneyTodo/journey-web',
+				label: 'View GitHub',
+			},
+		],
+	},
 ];

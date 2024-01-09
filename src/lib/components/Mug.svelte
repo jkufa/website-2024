@@ -3,7 +3,11 @@
 	import gsap from 'gsap';
 
 	export let follow: boolean | undefined;
-	export let el: HTMLDivElement;
+	/**
+	 * Workaround for loading Mug on pages other than main page
+	 */
+	export let hideUntilFollow: boolean = true;
+	export let ref: HTMLDivElement | undefined = undefined;
 
 	let hasMoved = false;
 	let current = 0;
@@ -13,7 +17,7 @@
 	const names = ['mug0', 'mug1', 'mug2', 'mug3', 'mug4', 'mug5', 'mug6'];
 
 	$: name = names[current];
-	$: if (el && follow === false) resetPos();
+	$: if (ref && follow === false) resetPos();
 	$: ({ animationsOn } = $userSettings);
 	$: animationsOn ? spin() : pause();
 
@@ -33,17 +37,18 @@
 		return () => clearInterval(interval);
 	}
 
-	function handleMouse(e: MouseEvent) {
-		if (!$userSettings.animationsOn) return;
+	function handleMouse(e: PointerEvent) {
+		if (!$userSettings.animationsOn || e.pointerType !== 'mouse') return;
+
 		if (follow) {
 			if (!hasMoved) {
-				gsap.set(el, {
+				gsap.set(ref!, {
 					top: 0,
 					left: window.innerWidth / 2,
 				});
 				hasMoved = true;
 			}
-			gsap.to(el, {
+			gsap.to(ref!, {
 				x: e.clientX,
 				y: e.clientY,
 				left: 0,
@@ -54,7 +59,7 @@
 		}
 	}
 	function resetPos() {
-		gsap.to(el, {
+		gsap.to(ref!, {
 			x: 0,
 			y: 0,
 			scale: 1,
@@ -65,12 +70,14 @@
 	}
 </script>
 
-<svelte:window on:mousemove={handleMouse} />
+<svelte:window on:pointermove={handleMouse} />
 <div
-	bind:this={el}
+	bind:this={ref}
 	class="{follow && hasMoved && $userSettings.animationsOn
-		? 'fixed left-0 top-0 origin-top-left'
-		: 'relative'} md:mug-md lg:mug-lg z-10"
+		? 'fixed left-0 top-0 z-20 origin-top-left'
+		: 'relative'} md:mug-md lg:mug-lg pointer-events-none
+    "
+	class:hidden={hideUntilFollow && !hasMoved}
 	data-sevenup="{name}.png"
 ></div>
 

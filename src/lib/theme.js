@@ -6,13 +6,14 @@
 export const colors = {
 	'off-black': '#0B0904',
 	pistachio: '#B2B99F',
+	ivory: '#F0F5E4',
 	stone: '#b2b99f66', // Opacity value of 0.4
 };
 
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Archivo Expanded, Helvetica, Arial, sans-serif'],
+		sans: ['Segoe UI', 'system-ui'],
 	},
 	letterSpacing: {
 		tightest: '-.75rem',
@@ -34,12 +35,20 @@ export const theme = {
 		fontSize: {
 			'10xl': '9.5rem',
 			huge: '12rem',
+			'clamp-base': 'clamp(0.875rem, 1vw, 1.5rem)',
+			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
+			'clamp-lg': 'clamp(1.25rem, 2.5vw, 3.75rem)',
+			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
+			'clamp-2xl': 'clamp(2rem, 5.5vw, 9rem)',
+			'clamp-9xl': 'clamp(4rem, 11vw, 20rem)',
 		},
 		lineHeight: {
 			11: '3rem',
 		},
 		margin: {
-			'half-screen': '50vh',
+			'1/2': '50vh',
+			'1/3': '33vh',
+			'1/4': '25vh',
 		},
 		content: {
 			empty: '""',
