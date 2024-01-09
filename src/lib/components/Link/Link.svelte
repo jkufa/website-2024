@@ -41,7 +41,7 @@
 	<a
 		{href}
 		draggable="false"
-		class="flex w-full items-center justify-between gap-8 px-[2em] py-[1.25em] text-off-black focus-visible:outline-none text-clamp-base font-extrabold uppercase"
+		class="flex w-full items-center justify-between gap-8 px-[2em] py-[1.25em] text-clamp-base font-extrabold uppercase text-off-black focus-visible:outline-none"
 		class:flex-row-reverse={iconPos === 'start'}
 		style="--tx: {translateX}rem; --ty: {translateY}rem;"
 	>

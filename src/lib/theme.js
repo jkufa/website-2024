@@ -36,6 +36,7 @@ export const theme = {
 			'10xl': '9.5rem',
 			huge: '12rem',
 			'clamp-base': 'clamp(0.875rem, 1vw, 1.5rem)',
+			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
 			'clamp-lg': 'clamp(1.25rem, 2.5vw, 3.75rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
 			'clamp-2xl': 'clamp(2rem, 5.5vw, 9rem)',

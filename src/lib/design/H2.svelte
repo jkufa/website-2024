@@ -7,12 +7,12 @@
 </script>
 
 {#if variant === 'default'}
-	<h2 class="tracking max-w-full text-clamp-xl font-extrabold {styles}" {...$$restProps}>
+	<h2 class="tracking max-w-full text-clamp-xl font-extrabold uppercase {styles}" {...$$restProps}>
 		<slot />
 	</h2>
 {:else if variant === 'large'}
 	<h2
-		class="tracking max-w-full text-clamp-2xl font-extrabold leading-[.9] {styles}"
+		class="tracking max-w-full text-clamp-2xl font-extrabold uppercase leading-[.9] {styles}"
 		{...$$restProps}
 	>
 		<slot />

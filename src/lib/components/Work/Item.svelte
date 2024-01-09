@@ -45,8 +45,8 @@
 >
 	<span
 		class="
-      text-clamp-base
-      font-extrabold
+      text-clamp-md
+      font-semibold
       transition-transform duration-500
       ease-out
     "

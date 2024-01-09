@@ -33,7 +33,7 @@
 		<!-- Back -->
 		<div class="w-full md:w-6/12">
 			<div
-				class="mt-8 w-full overflow-hidden border border-transparent transition-[border-color] duration-500 hover:border-pistachio"
+				class="mt-8 w-full border border-solid border-transparent transition-[border-color] duration-500 hover:border-pistachio"
 			>
 				<Link href="/#work" iconDirection="w" iconPos="start">
 					<span class="whitespace-nowrap text-clamp-base font-bold">BACK TO HOME</span>

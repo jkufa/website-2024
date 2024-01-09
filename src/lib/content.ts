@@ -49,10 +49,10 @@ export const SKILLS = [
 export const WORK_DATA: WorkData[] = [
 	{
 		slug: 'journey',
-		title: 'JOURNEY',
+		title: 'Journey',
 		description:
-    // TODO: support markdown on work page
-    `Journey is a goal-based todo app designed to declutter your todo lists so you can achieve more. 
+			// TODO: support markdown on work page
+			`Journey is a goal-based todo app designed to de-clutter your todo lists so you can achieve more. 
 
       Features:
       * Progress tracking: Goals are complete once you complete all of its tasks. Goals have a progress bar to indicate the percentage complete.

@@ -6,7 +6,7 @@
 
 <h1
 	bind:this={ref}
-	class="leading-85 text-clamp-9xl font-black tracking-tighter md:bottom-8 md:left-8 md:leading-9 {styles}"
+	class="leading-85 text-clamp-9xl font-black tracking-tighter md:bottom-8 md:left-8 md:leading-9 {styles} uppercase"
 	{...$$restProps}
 >
 	<slot />
