@@ -19,11 +19,15 @@
 	let transition = true;
 	let half = true;
 
-	$: ({ introOn } = $userSettings);
+	$: ({ introOn, animationsOn } = $userSettings);
 
-	onMount(() => (continueToSite = !introOn));
+	onMount(() => {
+		continueToSite = !introOn;
+		transition = animationsOn;
+	});
 
 	onNavigate(async (navigation) => {
+		if (!animationsOn) return;
 		transition = true;
 		half = false;
 
