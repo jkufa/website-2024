@@ -8,13 +8,20 @@
 		PageTransition,
 		ProgressBar,
 		WordStack,
+		Warning,
 	} from '$lib/components';
-	import { continueToSite, userSettings } from '$lib/stores';
+	import { userSettings } from '$lib/stores';
 	import { onNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let loaded: boolean;
+	let continueToSite: boolean;
 	let transition = true;
 	let half = true;
+
+	$: ({ introOn } = $userSettings);
+
+	onMount(() => (continueToSite = !introOn));
 
 	onNavigate(async (navigation) => {
 		transition = true;
@@ -31,14 +38,21 @@
 		{#if transition}
 			<PageTransition bind:transitioning={transition} half={!half} />
 		{/if}
-		{#if !$userSettings.devMode && !$continueToSite}
-			<div class="m-auto flex h-screen max-w-2xl flex-col justify-center gap-2 p-4">
+		{#if !$userSettings.devMode && !continueToSite}
+			<div
+				class="m-auto flex h-[100dvh] max-w-2xl flex-col justify-end gap-2 p-4 md:justify-center"
+			>
 				<div class="-mx-4 flex items-end justify-center gap-2 text-lg md:text-xl lg:text-3xl">
 					<EaseText showEnd={loaded} start="Loading" end="Loaded"></EaseText>
 					<WordStack animateOff={loaded} /> mind control protocol
 				</div>
 				<ProgressBar bind:complete={loaded} />
-				<Button disabled={!loaded} label="Continue" onClick={() => ($continueToSite = true)} />
+				<Button
+					disabled={!loaded}
+					label="Begin programming"
+					onClick={() => (continueToSite = true)}
+				/>
+				<Warning />
 			</div>
 		{:else}
 			<Nav />
