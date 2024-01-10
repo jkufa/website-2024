@@ -6,10 +6,10 @@
 	@font-face {
 		font-family: 'Archivo Expanded';
 		src:
-			local('Archivo Expanded Black'),
-			local('ArchivoExpanded-Black'),
-			url('fonts/ArchivoExpanded-Black.woff2') format('woff2'),
-			url('fonts/ArchivoExpanded-Black.woff') format('woff');
+			local('Archivo Expanded ExtraBold'),
+			local('ArchivoExpanded-ExtraBold'),
+			url('fonts/ArchivoExpanded-ExtraBold.woff2') format('woff2'),
+			url('fonts/ArchivoExpanded-ExtraBold.woff') format('woff');
 		font-weight: 900;
 		font-style: normal;
 	}
