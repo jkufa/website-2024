@@ -147,12 +147,13 @@
 		data-sveltekit-preload-data="hover"
 		href="https://github.com/jkufa/website-2024"
 		class="
+          w-fit
           border-pistachio
           text-clamp-base
           font-semibold
           leading-normal
-          transition-shadow
-          ease-circular-in-out focus-within:shadow-outline
+          transition-shadow ease-circular-in-out
+          focus-within:shadow-outline
           focus-within:outline-none
           hover:border-b
           ">View on GitHub</a

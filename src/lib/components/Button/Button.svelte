@@ -18,8 +18,8 @@
 			class="
         w-full
         border border-solid border-pistachio
-        p-3
-        font-semibold
+        p-4
+        font-extrabold
         text-off-black
 
         focus-visible:outline-none
@@ -29,7 +29,7 @@
 			on:click={onClick}
 		>
 			{#if label}
-				{label}
+				{label.toLocaleUpperCase()}
 			{:else}
 				<slot />
 			{/if}

@@ -1,4 +1,5 @@
 // @ts-check
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 /**
  * Collection of custom colors to use in tailwind and components
@@ -13,7 +14,8 @@ export const colors = {
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Segoe UI', 'system-ui'],
+		sans: ['Segoe UI', ...defaultTheme.fontFamily.sans],
+		heading: ['Archivo Expanded', ...defaultTheme.fontFamily.sans],
 	},
 	letterSpacing: {
 		tightest: '-.75rem',
@@ -39,8 +41,8 @@ export const theme = {
 			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
 			'clamp-lg': 'clamp(1.25rem, 2.5vw, 3.75rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
-			'clamp-2xl': 'clamp(2rem, 5.5vw, 9rem)',
-			'clamp-9xl': 'clamp(4rem, 11vw, 20rem)',
+			'clamp-2xl': 'clamp(1.875rem, 5.5vw, 9rem)',
+			'clamp-9xl': 'clamp(3.25rem, 11vw, 20rem)',
 		},
 		lineHeight: {
 			11: '3rem',

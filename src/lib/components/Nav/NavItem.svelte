@@ -1,15 +1,17 @@
 <script lang="ts">
-	import { cubicIn } from 'svelte/easing';
-	import { tweened } from 'svelte/motion';
 	import { SlideInOut } from '../Animations';
 	import { lenisInstance } from '..';
+	import { page } from '$app/stores';
 
 	/**
 	 * Must be an id, must be unique
 	 */
 	export let href: string;
 
-	function scrollTo() {
+	function scrollTo(e: Event) {
+		if ($page.url.pathname !== '/') return;
+
+		e.preventDefault();
 		const target = href ? `#${href}` : 'top';
 		$lenisInstance.scrollTo(target);
 	}
@@ -29,7 +31,7 @@
     md:my-1
     md:p-4
     "
-		on:click|preventDefault={scrollTo}
+		on:click={scrollTo}
 	>
 		<slot />
 	</a>

@@ -11,9 +11,13 @@
 	<div class="flex flex-col gap-6">
 		<H1 styles="flex items-center gap-6">404</H1>
 		<P variant="large">Page not found</P>
-		<Link href="/" iconDirection="w" iconPos="start">
-			<span class="text-2xl font-bold">Back to home</span>
-		</Link>
+		<div
+			class="mt-8 w-full border border-solid border-transparent transition-[border-color] duration-500 hover:border-pistachio"
+		>
+			<Link href="/" iconDirection="w" iconPos="start">
+				<span class="text-2xl font-bold">Back to home</span>
+			</Link>
+		</div>
 	</div>
 	<Mug follow={false} hideUntilFollow={false}></Mug>
 </div>

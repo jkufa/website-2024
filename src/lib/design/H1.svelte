@@ -15,6 +15,5 @@
 <style lang="postcss">
 	h1 {
 		line-height: 0.8 !important;
-		font-family: 'Archivo Expanded';
 	}
 </style>
