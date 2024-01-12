@@ -90,7 +90,7 @@
 		--x: 0;
 		--y: 0;
 
-		background-image: url('$lib/imgs/sprites.png');
+		background-image: url('$lib/imgs/sprites.webp');
 		background-size: calc(192px * var(--scale));
 		filter: grayscale();
 		width: calc(64px * var(--scale));
