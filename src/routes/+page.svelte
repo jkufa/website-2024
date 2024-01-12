@@ -2,11 +2,13 @@
 	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
 	import {
 		Mug,
-		Background,
+		type Background,
 		Skills,
 		WorkItem,
 		lenisFunctionStore,
 		EmailContact,
+		Link,
+    AsyncLoader
 	} from '$lib/components';
 	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
@@ -14,7 +16,6 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
-	import Link from '$lib/components/Link/Link.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
@@ -27,17 +28,12 @@
 	});
 	lenisFunctionStore.set(scroll);
 
-	onMount(() => {
+	onMount(async () => {
 		range = Math.min(Math.floor(window.innerWidth / 100), 7);
-
-		if (!$userSettings.introOn) {
-			scale.set(150);
-			return;
-		}
-		runIntro();
 	});
 
 	function runIntro() {
+    console.log('intro')
 		gsap.set(title, {
 			opacity: 0,
 			y: 200,
@@ -47,6 +43,7 @@
 			scale: 0,
 		});
 		scale.set(150).then(() => {
+      console.log('scale set to 150')
 			// these should run in components when mounted
 			gsap.to(title, {
 				opacity: 1,
@@ -74,13 +71,14 @@
 	}
 </script>
 
-<!-- Landing -->
-<Background bind:follow bind:scale={$scale} />
+<!-- Landing -->  
+
 <div class="flex h-screen flex-col items-center justify-center gap-10">
-	<Mug bind:follow bind:ref={mug} hideUntilFollow={false} />
-	<H1 bind:ref={title} styles="absolute bottom-4 left-4">
-		<span class="block">HIRE</span> JACK KUFA
-	</H1>
+  <!-- <AsyncLoader></AsyncLoader> -->
+	<!-- <Mug bind:follow bind:ref={mug} hideUntilFollow={false} /> -->
+	<!-- <H1 bind:ref={title} styles="absolute bottom-4 left-4"> -->
+		<!-- <span class="block">HIRE</span> JACK KUFA -->
+	<!-- </H1> -->
 </div>
 
 <!-- About -->

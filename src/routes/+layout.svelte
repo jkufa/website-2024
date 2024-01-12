@@ -9,6 +9,7 @@
 		ProgressBar,
 		WordStack,
 		Warning,
+		AsyncLoader,
 	} from '$lib/components';
 	import { userSettings } from '$lib/stores';
 	import { onNavigate } from '$app/navigation';
@@ -38,13 +39,14 @@
 
 <Lenis>
 	<main class="text-pistachio">
+    <!-- <AsyncLoader></AsyncLoader> -->
 		<!-- Render unique transition for start & stop -->
 		{#if transition}
 			<PageTransition bind:transitioning={transition} half={!half} />
 		{/if}
 		{#if !$userSettings.devMode && !continueToSite}
 			<div
-				class="m-auto flex h-[100dvh] max-w-2xl flex-col justify-end gap-2 p-4 md:justify-center"
+				class="m-auto flex h-[100dvh] max-w-2xl flex-col justify-end gap-2 p-4 md:justify-center box-content"
 			>
 				<div class="-mx-4 flex items-end justify-center gap-2 text-lg md:text-xl lg:text-3xl">
 					<EaseText showEnd={loaded} start="Loading" end="Loaded"></EaseText>
@@ -60,7 +62,7 @@
 			</div>
 		{:else}
 			<Nav />
-			<slot />
+			<!-- <slot /> -->
 		{/if}
 	</main>
 </Lenis>

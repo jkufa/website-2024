@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/components/Button/Button.svelte';
-	import Link from '$lib/components/Link/Link.svelte';
-	import Mug from '$lib/components/Mug.svelte';
+	import { Link, Mug } from '$lib/components';
 	import { H1, P } from '$lib/design';
 </script>
 

@@ -4,10 +4,12 @@
 	import { colors } from '$lib/theme';
 	import { userSettings } from '$lib/stores';
 	import fragmentShader from '$lib/shaders/spiral.glsl?raw';
+	import { tweened } from 'svelte/motion';
+	import { cubicInOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
 
 	export let w: number;
 	export let h: number;
-	export let scale: number;
 
 	let time = 0;
 
@@ -34,13 +36,21 @@
 	};
 	const geometry = new PlaneGeometry(w, h);
 
+  $: ({animationsOn, introOn} = $userSettings);
+
+  const scale = tweened(0, { easing: cubicInOut});
+
+  onMount(() => {
+    scale.set(150, { duration: animationsOn && introOn ? 5000 : 0 }).then(() => console.log($scale));
+  })
+
 	useTask((delta) => {
 		if (!$userSettings.animationsOn) return;
 
 		time += delta * params.speed;
 		uniforms.iTime.value = time;
 		uniforms.iResolution.value.set(w * pixelRatio, h * pixelRatio, 1);
-		uniforms.scale.value = scale;
+		uniforms.scale.value = $scale;
 	});
 </script>
 

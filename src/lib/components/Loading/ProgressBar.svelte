@@ -1,16 +1,20 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+  import { loadedComponents } from '$lib/components';
 
 	export let complete = false;
 	const progress = tweened(0, { duration: 2000, delay: 100, easing: cubicInOut });
 
 	let barRef: HTMLDivElement;
 
-	onMount(() => {
-		progress.set(1).then(() => (complete = true));
-	});
+  const TOTAL = 1;
+
+  loadedComponents.subscribe((numLoaded) => progress.set(numLoaded / TOTAL));
+  progress.subscribe((value) => {
+    if (value === 1) complete = true;
+  });
+
 </script>
 
 <div
