@@ -8,8 +8,8 @@
 		src:
 			local('Archivo Expanded ExtraBold'),
 			local('ArchivoExpanded-ExtraBold'),
-			url('fonts/ArchivoExpanded-ExtraBold.woff2') format('woff2'),
-			url('fonts/ArchivoExpanded-ExtraBold.woff') format('woff');
+			url('$fonts/ArchivoExpanded-ExtraBold.woff2') format('woff2'),
+			url('$fonts/ArchivoExpanded-ExtraBold.woff') format('woff');
 		font-weight: 900;
 		font-style: normal;
 	}
