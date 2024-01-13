@@ -37,6 +37,7 @@
     hover:outline-pistachio
     
     md:ps-8
+    xl:ps-[2%]
     "
 	on:mouseenter={transitionIn}
 	on:mouseleave={transitionOut}
@@ -45,8 +46,7 @@
 >
 	<span
 		class="
-      text-clamp-md
-      font-semibold
+      text-vw-md
       transition-transform duration-500
       ease-out
     "

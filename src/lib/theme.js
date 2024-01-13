@@ -14,7 +14,7 @@ export const colors = {
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Segoe UI', ...defaultTheme.fontFamily.sans],
+		sans: ['Inter', ...defaultTheme.fontFamily.sans],
 		heading: ['Archivo Expanded', ...defaultTheme.fontFamily.sans],
 	},
 	letterSpacing: {
@@ -39,7 +39,6 @@ export const theme = {
 			huge: '12rem',
 			'clamp-base': 'clamp(0.875rem, 1vw, 1.5rem)',
 			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
-			'clamp-lg': 'clamp(1.25rem, 2.5vw, 3.75rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
 			'clamp-2xl': 'clamp(1.875rem, 5.5vw, 9rem)',
 			'clamp-9xl': 'clamp(3.25rem, 11vw, 20rem)',
@@ -51,6 +50,7 @@ export const theme = {
 			'1/2': '50vh',
 			'1/3': '33vh',
 			'1/4': '25vh',
+			'4%': '4%',
 		},
 		content: {
 			empty: '""',

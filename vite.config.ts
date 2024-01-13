@@ -17,9 +17,9 @@ export default defineConfig({
 	ssr: {
 		noExternal: ['three', 'gsap'],
 	},
-  resolve: {
-    alias: {
-      $fonts: resolve('./static/fonts')
-    }
-  }
+	resolve: {
+		alias: {
+			$fonts: resolve('./static/fonts'),
+		},
+	},
 });

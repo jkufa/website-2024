@@ -28,19 +28,20 @@
 <a
 	{href}
 	class="
-  relative flex w-full
+  text-vw-lg after:text-vw-lg relative
+  flex
+  w-full
   items-center
   justify-center
   gap-4
   overflow-hidden
   border
   border-pistachio
+
   bg-off-black
   py-4
 
-  text-clamp-lg
-  font-extrabold
-
+  font-semibold
   transition-[box-shadow,transform]
   delay-100
   after:absolute
@@ -52,9 +53,7 @@
   after:items-center
   after:justify-center
   after:bg-pistachio
-  after:text-clamp-lg
-
-  after:font-extrabold
+  after:font-bold
   after:text-off-black
 
   after:content-empty

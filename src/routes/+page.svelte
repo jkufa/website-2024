@@ -132,26 +132,24 @@
 	<div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
 		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">JACK@KUFA.IO</EmailContact>
 		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
-			<Link href="https://linkedin.com/in/jackkufa">LINKEDIN</Link>
-			<Link href="https://github.com/jkufa">GITHUB</Link>
+			<Link href="https://linkedin.com/in/jackkufa">LinkedIn</Link>
+			<Link href="https://github.com/jkufa">GitHub</Link>
 		</div>
 	</div>
 </Section>
 
 <!-- Footer -->
 <footer
-	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8"
+	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4%"
 >
 	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 	<a
 		data-sveltekit-preload-data="hover"
 		href="https://github.com/jkufa/website-2024"
 		class="
+          text-vw-base
           w-fit
           border-pistachio
-          text-clamp-base
-          font-semibold
-          leading-normal
           transition-shadow ease-circular-in-out
           focus-within:shadow-outline
           focus-within:outline-none

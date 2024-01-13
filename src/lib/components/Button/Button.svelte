@@ -19,7 +19,7 @@
         w-full
         border border-solid border-pistachio
         p-4
-        font-extrabold
+        font-medium
         text-off-black
 
         focus-visible:outline-none

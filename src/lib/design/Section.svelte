@@ -8,7 +8,7 @@
 
 <section
 	{id}
-	class="mx-4 flex min-h-screen flex-col gap-6 md:mx-8 md:gap-12 lg:mx-16 {styles}"
+	class="mx-4 flex min-h-screen flex-col justify-center gap-6 md:mx-8 md:gap-12 lg:mx-16 xl:mx-4% {styles}"
 	{...$$restProps}
 >
 	<slot />
