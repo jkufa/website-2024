@@ -24,13 +24,12 @@
 	}
 </script>
 
-<div
-	class="relative -mx-4 w-screen overflow-x-clip md:-mx-8 lg:-mx-16 xl:-mx-4%"
-	class:!mx-0={!animationsOn}
->
-	<div id="skillz" class="translate-x-100 flex h-full transform flex-col gap-8">
-		{#each split as line, id}
-			<Line {line} {id} />
-		{/each}
+<div class="container">
+	<div class="absolute left-0 w-screen overflow-x-clip" class:!mx-0={!animationsOn}>
+		<div id="skillz" class="translate-x-100 flex h-full transform flex-col gap-8">
+			{#each split as line, id}
+				<Line {line} {id} />
+			{/each}
+		</div>
 	</div>
 </div>

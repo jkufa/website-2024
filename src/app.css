@@ -30,6 +30,13 @@
 		--scale: 6 !important;
 	}
 
+	.mug-xl {
+		--scale: 8 !important;
+	}
+	.mug-2xl {
+		--scale: 12 !important;
+	}
+
 	.leading-85 {
 		line-height: 0.85 !important;
 	}
@@ -56,7 +63,7 @@
 	}
 
 	.text-vw-2xl {
-		font-size: 5.5vw;
+		font-size: 5vw;
 		line-height: 0.9;
 	}
 }

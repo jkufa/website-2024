@@ -37,7 +37,7 @@
 </script>
 
 <Lenis>
-	<main class="max-w-[2450px] text-pistachio">
+	<main class="text-pistachio">
 		<!-- Render unique transition for start & stop -->
 		{#if transition}
 			<PageTransition bind:transitioning={transition} half={!half} />

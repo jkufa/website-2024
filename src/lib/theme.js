@@ -58,5 +58,8 @@ export const theme = {
 		transitionTimingFunction: {
 			'circular-in-out': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
 		},
+		screens: {
+			'4xl': '3072px',
+		},
 	},
 };

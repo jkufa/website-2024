@@ -75,7 +75,7 @@
 	bind:this={ref}
 	class="{follow && hasMoved && $userSettings.animationsOn
 		? 'fixed left-0 top-0 z-20 origin-top-left'
-		: 'relative'} md:mug-md lg:mug-lg pointer-events-none
+		: 'relative'} md:mug-md lg:mug-lg 4xl:mug-2xl pointer-events-none
     "
 	class:hidden={hideUntilFollow && !hasMoved}
 	data-sevenup="{name}.png"
