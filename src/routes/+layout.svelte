@@ -1,24 +1,24 @@
 <script lang="ts">
 	import '../app.css';
 	import {
+		ProgressBar,
 		Button,
 		EaseText,
 		Lenis,
 		Nav,
 		PageTransition,
-		ProgressBar,
 		WordStack,
 		Warning,
-		AsyncLoader,
 	} from '$lib/components';
 	import { userSettings } from '$lib/stores';
 	import { onNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
-	let loaded: boolean;
+  let loaded: boolean;
 	let continueToSite: boolean;
 	let transition = true;
 	let half = true;
+  let ProgressbarRef: ProgressBar;
 
 	$: ({ introOn, animationsOn } = $userSettings);
 
@@ -38,7 +38,8 @@
 </script>
 
 <Lenis>
-	<main class="text-pistachio">
+	<main class="text-pistachio"
+  >
     <!-- <AsyncLoader></AsyncLoader> -->
 		<!-- Render unique transition for start & stop -->
 		{#if transition}
@@ -52,7 +53,7 @@
 					<EaseText showEnd={loaded} start="Loading" end="Loaded"></EaseText>
 					<WordStack animateOff={loaded} /> mind control protocol
 				</div>
-				<ProgressBar bind:complete={loaded} />
+				<ProgressBar bind:this={ProgressbarRef} bind:complete={loaded} />
 				<Button
 					disabled={!loaded}
 					label="Begin programming"
@@ -60,10 +61,13 @@
 				/>
 				<Warning />
 			</div>
-		{:else}
-			<Nav />
-			<!-- <slot /> -->
-		{/if}
+    {/if}
+    {#if ProgressBar}
+    <div class:hidden={!$userSettings.devMode && !continueToSite}>
+      <Nav />
+      <slot />
+    </div>
+    {/if}
 	</main>
 </Lenis>
 

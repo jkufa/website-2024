@@ -6,12 +6,12 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 
-	export let follow: boolean;
+	export let follow: boolean = true;
 	let wrapper: HTMLDivElement;
 	let w: number;
 	let h: number;
 
-  $: ({animationsOn, introOn} = $userSettings);
+  $: ({ animationsOn } = $userSettings);
 
   // const scale = tweened(0, {
 	// 	duration: animationsOn && introOn ? 5000 : 0,
@@ -31,7 +31,7 @@
 		bind:clientWidth={w}
 		bind:clientHeight={h}
 		class="-z-10 h-full w-full transition-opacity duration-500"
-		class:opacity-30={follow || !$userSettings.animationsOn}
+		class:opacity-30={follow || !animationsOn}
 	>
 		<Canvas>
 			<Scene bind:w bind:h />

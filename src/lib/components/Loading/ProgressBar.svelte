@@ -8,7 +8,7 @@
 
 	let barRef: HTMLDivElement;
 
-  const TOTAL = 1;
+  const TOTAL = 2;
 
   loadedComponents.subscribe((numLoaded) => progress.set(numLoaded / TOTAL));
   progress.subscribe((value) => {

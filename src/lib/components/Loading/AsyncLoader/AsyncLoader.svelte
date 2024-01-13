@@ -1,7 +1,6 @@
-<!-- Load components async -->
+<!-- Load components async
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { loadedComponents, type Background } from "../..";
 
   let Bg: typeof Background;
   let follow = false;
@@ -15,4 +14,4 @@
   });
 </script>
 
-<svelte:component this={Bg} bind:follow/>
+<svelte:component this={Bg} bind:follow/> -->

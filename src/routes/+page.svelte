@@ -2,13 +2,11 @@
 	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
 	import {
 		Mug,
-		type Background,
 		Skills,
 		WorkItem,
 		lenisFunctionStore,
 		EmailContact,
 		Link,
-    AsyncLoader
 	} from '$lib/components';
 	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
@@ -16,11 +14,25 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
+	import type { ComponentAsync } from '$lib/types';
+  import { loadedComponents as loadedComponentsStore } from '$lib/components';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
 	let range: number;
 	let follow: boolean;
+
+  let m: typeof Mug;
+
+  const loadedComponents: Record<string, ComponentAsync | null> = {}
+  const componentNames = [
+  'Background',
+  'Mug',
+  // 'Skills',
+  // 'WorkItem',
+  // 'EmailContact',
+  // 'Link'
+  ];
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -29,6 +41,9 @@
 	lenisFunctionStore.set(scroll);
 
 	onMount(async () => {
+    $loadedComponentsStore = 0;
+    console.log('mounting')
+    await loadComponentsAsync();
 		range = Math.min(Math.floor(window.innerWidth / 100), 7);
 	});
 
@@ -69,16 +84,36 @@
 		const bot = title.getBoundingClientRect().bottom;
 		follow ? (follow = bot < $scrollPosition) : (follow = bot <= 120);
 	}
+
+  async function loadComponentsAsync() {
+    console.log('loading')
+    for (const name of componentNames) {
+      try {
+          const module = await import(`$lib/components/${name}/${name}.svelte`);
+          loadedComponents[name] = module.default;
+          $loadedComponentsStore++;
+      }
+      catch (error) {
+        console.error(`Error loading component ${name}:`, error);
+        loadedComponents[name] = null;
+      }
+    }
+  }
+
 </script>
 
 <!-- Landing -->  
 
 <div class="flex h-screen flex-col items-center justify-center gap-10">
   <!-- <AsyncLoader></AsyncLoader> -->
+  {#if loadedComponents['Background']}
+    <svelte:component this={loadedComponents['Background']} bind:follow={mug}/>
+  {/if}
+  <svelte:component this={loadedComponents['Mug']} bind:follow bind:ref={mug} hideUntilFollow={false}/>
 	<!-- <Mug bind:follow bind:ref={mug} hideUntilFollow={false} /> -->
-	<!-- <H1 bind:ref={title} styles="absolute bottom-4 left-4"> -->
-		<!-- <span class="block">HIRE</span> JACK KUFA -->
-	<!-- </H1> -->
+	<H1 bind:ref={title} styles="absolute bottom-4 left-4">
+		<span class="block">HIRE</span> JACK KUFA
+	</H1>
 </div>
 
 <!-- About -->
@@ -97,7 +132,6 @@
 		</P>
 	</div>
 
-	<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
 </Section>
 
 <!-- Skills -->
@@ -157,9 +191,3 @@
           ">View on GitHub</a
 	>
 </footer>
-
-<style lang="postcss">
-	footer {
-		font-family: 'system-ui';
-	}
-</style>
