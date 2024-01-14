@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="text-vw-md flex border border-pistachio bg-off-black
+	class="text-[1.5vw] flex border border-pistachio bg-off-black
   p-[1em]"
 >
 	{label}

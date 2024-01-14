@@ -69,7 +69,7 @@
 	/>
 	{#if showMenu}
 		<div class="container flex h-full flex-col justify-between overflow-hidden border-solid">
-			<div class="nav-items flex flex-col text-end">
+			<div class="nav-items flex flex-col text-end font-heading">
 				<NavItem href="">
 					<span class="text-3xl font-bold md:text-5xl">HOME</span>
 				</NavItem>
@@ -83,7 +83,7 @@
 					<span class="text-3xl font-bold md:text-5xl">CONTACT</span>
 				</NavItem>
 			</div>
-			<div class="settings flex flex-col gap-4 p-4">
+			<div class="settings flex flex-col gap-4 p-4 font-sans">
 				<div class="flex items-center justify-between text-2xl md:text-3xl">
 					<Switch
 						bind:checked={animationsOn}
@@ -105,9 +105,3 @@
 		</div>
 	{/if}
 </nav>
-
-<style>
-	.settings > div {
-		font-family: 'system-ui';
-	}
-</style>

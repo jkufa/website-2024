@@ -46,7 +46,8 @@
 >
 	<span
 		class="
-      text-vw-md
+      text-vw-base
+      font-medium
       transition-transform duration-500
       ease-out
     "
