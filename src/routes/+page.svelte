@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
+	import { SKILLS, WORK_DATA } from '$lib';
 	import {
 		Mug,
 		Background,

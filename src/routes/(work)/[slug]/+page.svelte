@@ -26,8 +26,8 @@
 				</div>
 			{/each}
 		</div>
-		<P class="mt-8">
-			{description}
+		<P class="content mt-8">
+			{@html description}
 		</P>
 		<!-- Back -->
 		<div class="mt-12 w-full border border-solid border-pistachio md:w-[calc(50%-0.5rem)]">
@@ -44,3 +44,14 @@
 <section
 	class="mx-8 mt-20 flex flex-col gap-14 bg-off-black md:mt-40 md:gap-6 lg:flex-row"
 ></section>
+
+<style lang="postcss">
+	:global(.content > h2) {
+		text-transform: uppercase;
+		font-size: 1.8vw;
+		margin-bottom: -1rem;
+	}
+	:global(.content > *:not(:first-child)) {
+		margin-top: 2rem;
+	}
+</style>

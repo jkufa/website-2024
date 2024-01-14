@@ -15,9 +15,15 @@
 	}
 
 	h1,
-	h2,
-	h3 {
+	h2 {
 		@apply font-heading;
+	}
+	h3 {
+		font-weight: bold;
+	}
+
+	li {
+		margin-top: 1rem;
 	}
 }
 
