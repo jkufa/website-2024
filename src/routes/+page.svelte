@@ -137,7 +137,7 @@
 
 <!-- Footer -->
 <footer
-	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4% 2xl:mx-auto 2xl:max-w-[2450px]"
+	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4% 4xl:mx-auto 2xl:max-w-[2450px]"
 >
 	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 	<a
