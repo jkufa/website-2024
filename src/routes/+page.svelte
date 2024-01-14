@@ -90,9 +90,10 @@
 			Jack Kufa is a Software Engineer that <span class="ivory-highlight text-ivory">
 				builds fast, accessible and responsive</span
 			>
-			<span class="ivory-highlight text-ivory">experiences</span> for web. His experience with
-			taking multiple frontend frameworks to production and setting infrastructure from scratch
-			makes him a great asset for
+			<span class="ivory-highlight text-ivory">experiences</span> for web. His production experience
+			with multiple frontend frameworks and setting up infrastructure from scratch make him a great
+			<br />
+			asset for
 			<span class="ivory-highlight text-ivory"
 				>building and maintaining amazing user experiences.</span
 			>

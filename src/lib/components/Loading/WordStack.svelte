@@ -64,13 +64,13 @@
 >
 	<div style="transform: translateY(calc(100% - {multiplier}px));">
 		{#each words as word, i}
-			{#if i < words.length - 1}
-				<div class="w-fit">{word}</div>
-			{:else}
-				<!-- Bind only final element's height to reduce overhead -->
+			{#if i < 1}
+				<!-- Bind only first element's height to reduce overhead -->
 				<div class="w-fit pe-[2px]" bind:clientWidth={bindedW} bind:clientHeight={textHeight}>
 					{word}
 				</div>
+			{:else}
+				<div class="w-fit">{word}</div>
 			{/if}
 		{/each}
 	</div>
