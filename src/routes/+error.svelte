@@ -6,17 +6,13 @@
 </script>
 
 <div
-	class="mx-4 mt-1/4 flex flex-col items-center justify-center gap-24 md:mx-8 md:flex-row md:gap-32"
+	class="mx-4 mt-1/4 flex flex-col-reverse items-center justify-center gap-24 md:mx-8 md:flex-row md:gap-32"
 >
-	<div class="flex flex-col gap-6">
-		<H1 styles="flex items-center gap-6">404</H1>
+	<div class="flex flex-col">
+		<H1 styles="flex items-center">404</H1>
 		<P variant="large">Page not found</P>
-		<div
-			class="mt-8 w-full border border-solid border-transparent transition-[border-color] duration-500 hover:border-pistachio"
-		>
-			<Link href="/" iconDirection="w" iconPos="start">
-				<span class="text-2xl font-bold">Back to home</span>
-			</Link>
+		<div class="mt-2 w-full border border-solid border-pistachio md:mt-8 lg:mt-16">
+			<Link href="/" iconDirection="w" iconPos="start">Back to home</Link>
 		</div>
 	</div>
 	<Mug follow={false} hideUntilFollow={false}></Mug>

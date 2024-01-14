@@ -25,7 +25,11 @@
 </script>
 
 <div class="container">
-	<div class="absolute left-0 w-screen overflow-x-clip" class:!mx-0={!animationsOn}>
+	<div
+		class="left-0 w-screen overflow-x-clip"
+		class:!mx-0={!animationsOn}
+		class:absolute={animationsOn}
+	>
 		<div id="skillz" class="translate-x-100 flex h-full transform flex-col gap-8">
 			{#each split as line, id}
 				<Line {line} {id} />

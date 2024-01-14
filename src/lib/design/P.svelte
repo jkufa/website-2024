@@ -1,16 +1,12 @@
 <script lang="ts">
-	export let variant: 'default' | 'large' = 'default';
+	export let variant: 'base' | 'large' = 'base';
+
+	let ref: HTMLParagraphElement;
+
+	$: base = variant === 'base';
+	$: large = variant === 'large';
 </script>
 
-{#if variant === 'default'}
-	<p class="text-vw-base leading-normal">
-		<slot />
-	</p>
-{:else if variant === 'large'}
-	<p class="text-vw-lg">
-		<slot />
-	</p>
-{/if}
-
-<style lang="postcss">
-</style>
+<p bind:this={ref} class:text-vw-base={base} class:text-vw-lg={large} {...$$restProps}>
+	<slot />
+</p>

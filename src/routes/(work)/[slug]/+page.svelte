@@ -19,7 +19,6 @@
 		<!-- Links -->
 		<div class="flex flex-col gap-2 md:flex-row">
 			{#each links as l}
-				<!-- TODO: This should be a button link -->
 				<div class="w-full border border-pistachio font-extrabold">
 					<Link href={l.href}>
 						{l.label}
@@ -27,18 +26,12 @@
 				</div>
 			{/each}
 		</div>
-		<P>
+		<P class="mt-8">
 			{description}
 		</P>
 		<!-- Back -->
-		<div class="w-full md:w-6/12">
-			<div
-				class="mt-8 w-full border border-solid border-transparent transition-[border-color] duration-500 hover:border-pistachio"
-			>
-				<Link href="/#work" iconDirection="w" iconPos="start">
-					<span class="whitespace-nowrap text-clamp-base font-bold">BACK TO HOME</span>
-				</Link>
-			</div>
+		<div class="mt-12 w-full border border-solid border-pistachio md:w-[calc(50%-0.5rem)]">
+			<Link href="/#work" iconDirection="w" iconPos="start">Back to home</Link>
 		</div>
 	</div>
 	<!-- Images -->

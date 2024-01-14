@@ -41,7 +41,8 @@
 	<a
 		{href}
 		draggable="false"
-		class="flex w-full items-center justify-between gap-8 px-[2em] py-[1.25em] text-clamp-base font-medium text-off-black focus-visible:outline-none"
+		class="flex w-full items-center justify-between gap-8 px-[1.25em] py-[1em] text-clamp-base font-medium text-off-black focus-visible:outline-none
+    "
 		class:flex-row-reverse={iconPos === 'start'}
 		style="--tx: {translateX}rem; --ty: {translateY}rem;"
 	>
@@ -49,7 +50,7 @@
 		{#if showIcon}
 			<div
 				class="icon text-pistachio transition-[transform,color]"
-				style="transition-delay: {iconPos === 'start' ? '200ms' : '400ms'}"
+				style="transition-delay: {iconPos === 'start' ? '20ms' : '500ms'}"
 			>
 				<ArrowIcon direction={iconDirection} />
 			</div>

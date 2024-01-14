@@ -25,10 +25,3 @@
 		</PerspectiveInOut>
 	{/each}
 </div>
-
-<style>
-	p {
-		font-family: 'system-ui';
-		font-weight: 500;
-	}
-</style>

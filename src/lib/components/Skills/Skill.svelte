@@ -3,8 +3,8 @@
 </script>
 
 <div
-	class="text-[1.5vw] flex border border-pistachio bg-off-black
-  p-[1em]"
+	class="flex border border-pistachio bg-off-black p-[1em]
+  text-[1.5vw]"
 >
 	{label}
 </div>
