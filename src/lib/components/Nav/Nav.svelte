@@ -1,32 +1,42 @@
 <script lang="ts">
-	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
-	import { onMount } from 'svelte';
 	import { userSettings } from '$lib/stores';
+	import { Expo } from 'gsap';
 	import Switch from './Switch.svelte';
 	import NavItem from './NavItem.svelte';
 	import Hamburger from './Hamburger.svelte';
 
+	type Dimensions = {
+		width: number;
+		height: number;
+	};
+
 	export let showMenu = false;
+
 	let introOn: boolean;
 	let animationsOn: boolean;
 
-	const init = {
-		w: 0,
-		h: 0,
+	const initDimensions: Dimensions = {
+		width: 0,
+		height: 0,
 	};
-	let wh = tweened(init);
+	const hamburgerDimensions: Dimensions = initDimensions;
+	const wh = tweened(initDimensions, { duration: 600, easing: Expo.easeInOut });
 
 	$: ({ introOn, animationsOn } = $userSettings);
+	$: expandedDimensions = {
+		height: hamburgerDimensions.height * 8,
+		width: hamburgerDimensions.width * 5,
+	} as Dimensions;
+	$: wh.set(showMenu ? expandedDimensions : hamburgerDimensions);
 
 	function expand() {
 		showMenu = true;
-		// TODO: Remove dependency on magic numbers
-		wh.set({ w: $wh.w * 4.5, h: $wh.h * 8 });
+		wh.set(expandedDimensions);
 	}
 
 	function shrink() {
-		wh.set(init).then(() => (showMenu = false));
+		wh.set(hamburgerDimensions).then(() => (showMenu = false));
 	}
 
 	function escape(e: KeyboardEvent) {
@@ -42,10 +52,6 @@
 
 		shrink();
 	}
-
-	onMount(() => {
-		wh = tweened(init, { duration: 600, easing: cubicInOut });
-	});
 </script>
 
 <svelte:window on:keydown|stopPropagation={escape} on:click={clickOut} />
@@ -59,11 +65,11 @@
     md:top-4
     "
 	class:opacity-60={!showMenu}
-	style="width: {$wh.w}px; height: {$wh.h}px;"
+	style="width: {$wh.width}px; height: {$wh.height}px;"
 >
 	<Hamburger
-		bind:height={init.h}
-		bind:width={init.w}
+		bind:height={hamburgerDimensions.height}
+		bind:width={hamburgerDimensions.width}
 		bind:toX={showMenu}
 		onClick={() => (showMenu ? shrink() : expand())}
 	/>
