@@ -3,10 +3,13 @@
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { userSettings } from '$lib/stores';
+	import { derived } from 'svelte/store';
 
 	let triggerRef: HTMLDivElement;
 	let slideUpRef: HTMLDivElement;
 	let timeline: gsap.core.Timeline;
+
+	const animationsOn = derived(userSettings, (settings) => settings.animationsOn);
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
@@ -22,18 +25,22 @@
 				stagger: 0.5,
 			},
 		});
-		userSettings.subscribe((settings) => {
-			settings.animationsOn ? animate() : clear();
+		animationsOn.subscribe((on) => {
+			on ? animate() : clear();
 		});
 	});
 
 	function animate() {
+		if (!slideUpRef) return;
+
 		timeline.from(slideUpRef, {
 			y: '100%',
 		});
 	}
 
 	function clear() {
+		if (!timeline) return;
+
 		timeline.set(slideUpRef, {
 			y: 0,
 		});

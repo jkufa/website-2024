@@ -2,7 +2,7 @@
 	import { userSettings } from '$lib/stores';
 	import gsap from 'gsap';
 
-	export let follow: boolean | undefined;
+	export let follow: boolean | undefined = undefined;
 	/**
 	 * Workaround for loading Mug on pages other than main page
 	 */
@@ -59,7 +59,9 @@
 		}
 	}
 	function resetPos() {
-		gsap.to(ref!, {
+		if (!ref) return;
+
+		gsap.to(ref, {
 			x: 0,
 			y: 0,
 			scale: 1,

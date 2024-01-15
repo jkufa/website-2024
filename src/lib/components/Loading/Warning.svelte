@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="bottom-4 mt-4 flex max-w-2xl flex-col gap-2 border border-pistachio p-6 !font-normal transition-opacity focus-within:opacity-100 hover:opacity-100 md:opacity-60 xl:absolute"
+	class="bottom-4 mb-4 mt-4 flex max-w-2xl flex-col gap-2 border border-pistachio p-6 !font-normal transition-opacity focus-within:opacity-100 hover:opacity-100 md:mb-0 md:opacity-60 xl:absolute"
 >
 	<strong class="w-fit text-base md:text-lg lg:text-xl">NOTICE</strong>
 	<aside class="" role="note" aria-label="Important information">
