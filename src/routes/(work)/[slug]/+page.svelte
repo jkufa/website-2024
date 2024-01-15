@@ -54,4 +54,7 @@
 	:global(.content > *:not(:first-child)) {
 		margin-top: 2em;
 	}
+	:global(.content > h2:not(:first-child)) {
+		margin-top: 1.25em;
+	}
 </style>
