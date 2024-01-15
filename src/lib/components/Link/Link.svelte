@@ -68,7 +68,7 @@
 
 <style lang="postcss">
 	.animate {
-		color: rgb(11 9 4 / 1);
+		color: theme(colors.off-black);
 		transform: translate(var(--tx), var(--ty));
 	}
 </style>

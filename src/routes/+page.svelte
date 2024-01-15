@@ -115,8 +115,6 @@
 	<div class="z-0 border border-solid border-pistachio bg-off-black">
 		{#each WORK_DATA as wd}
 			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
 		{/each}
 	</div>
 </Section>
@@ -145,9 +143,9 @@
 		data-sveltekit-preload-data="hover"
 		href="https://github.com/jkufa/website-2024"
 		class="
-          text-vw-base
           w-fit
           border-pistachio
+          text-clamp-base
           transition-shadow ease-circular-in-out
           focus-within:shadow-outline
           focus-within:outline-none

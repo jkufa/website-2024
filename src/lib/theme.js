@@ -9,6 +9,7 @@ export const colors = {
 	pistachio: '#B2B99F',
 	ivory: '#F0F5E4',
 	stone: '#b2b99f66', // Opacity value of 0.4
+	'ivory-highlight': 'rgba(240, 245, 228, 0.25)',
 };
 
 /** @type {import('tailwindcss').Config['theme']} */
@@ -25,7 +26,7 @@ export const theme = {
 		double: '200%',
 	},
 	boxShadow: {
-		outline: '0 0 0 0.25rem rgba(178, 185, 159, 0.4);',
+		outline: `0 0 0 0.25rem ${colors.stone}`,
 	},
 	extend: {
 		backgroundColor: {
@@ -37,14 +38,16 @@ export const theme = {
 		fontSize: {
 			'10xl': '9.5rem',
 			huge: '12rem',
-			'clamp-base': 'clamp(0.875rem, 1vw, 1.5rem)',
-			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
+			'clamp-base': 'clamp(0.875rem, .8vw, 2.25rem)',
+			'clamp-lg': 'clamp(3.25rem, 2.15vw, 4rem)',
+			'clamp-md': 'clamp(1.5rem, 1.8vw, 2rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
-			'clamp-2xl': 'clamp(1.875rem, 5.5vw, 9rem)',
+			'clamp-2xl': 'clamp(1.875rem, 5vw, 9rem)',
 			'clamp-9xl': 'clamp(3.25rem, 11vw, 20rem)',
 		},
 		lineHeight: {
 			11: '3rem',
+			'clamp-lg': '1.3',
 		},
 		margin: {
 			'1/2': '50vh',

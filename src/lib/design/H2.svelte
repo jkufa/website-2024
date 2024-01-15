@@ -12,7 +12,7 @@
 	</h2>
 {:else if variant === 'large'}
 	<h2
-		class="tracking text-vw-2xl max-w-full font-extrabold uppercase leading-[.9] {styles}"
+		class="tracking max-w-full text-clamp-2xl font-extrabold uppercase leading-[.9] {styles}"
 		{...$$restProps}
 	>
 		<slot />

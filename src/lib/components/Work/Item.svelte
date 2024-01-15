@@ -46,7 +46,7 @@
 >
 	<span
 		class="
-      text-vw-base
+      text-clamp-base
       font-medium
       transition-transform duration-500
       ease-out

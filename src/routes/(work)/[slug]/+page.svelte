@@ -48,10 +48,10 @@
 <style lang="postcss">
 	:global(.content > h2) {
 		text-transform: uppercase;
-		font-size: 1.8vw;
-		margin-bottom: -1rem;
+		margin-bottom: -1em;
+		font-size: theme(fontSize.clamp-md);
 	}
 	:global(.content > *:not(:first-child)) {
-		margin-top: 2rem;
+		margin-top: 2em;
 	}
 </style>

@@ -7,6 +7,6 @@
 	$: large = variant === 'large';
 </script>
 
-<p bind:this={ref} class:text-vw-base={base} class:text-vw-lg={large} {...$$restProps}>
+<p bind:this={ref} class:text-clamp-base={base} class:text-clamp-lg={large} {...$$restProps}>
 	<slot />
 </p>
