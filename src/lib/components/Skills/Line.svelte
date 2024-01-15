@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import gsap from 'gsap';
-	import Skill from './Skill.svelte';
+	import { gsap } from 'gsap';
 	import { userSettings } from '$lib/stores';
+	import Skill from './Skill.svelte';
 
 	export let line: string[];
 	export let id: number;

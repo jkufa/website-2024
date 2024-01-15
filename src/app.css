@@ -15,9 +15,15 @@
 	}
 
 	h1,
-	h2,
-	h3 {
+	h2 {
 		@apply font-heading;
+	}
+	h3 {
+		font-weight: bold;
+	}
+
+	li {
+		margin-top: 1rem;
 	}
 }
 
@@ -30,11 +36,18 @@
 		--scale: 6 !important;
 	}
 
+	.mug-xl {
+		--scale: 8 !important;
+	}
+	.mug-2xl {
+		--scale: 10 !important;
+	}
+
 	.leading-85 {
 		line-height: 0.85 !important;
 	}
 
 	.ivory-highlight {
-		text-shadow: 0px 0px 8px rgba(240, 245, 228, 0.33);
+		text-shadow: 0px 0px 8px theme(colors.ivory-highlight);
 	}
 }

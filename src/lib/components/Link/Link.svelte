@@ -13,12 +13,23 @@
 
 	let translateX: number;
 	let translateY: number;
+	let progress: number;
 
 	$: iconDirection, (translateX = setX()), (translateY = setY());
+	$: animate = checkProgress(progress);
 
 	// In rem
 	const x = 0.33;
 	const y = 0.25;
+
+	function checkProgress(progress: number) {
+		if (iconPos === 'start') {
+			return progress > -0.1 && progress < 0.9;
+		} else if (iconPos === 'end') {
+			return progress > -0.9 && progress < 0.1;
+		}
+		return false;
+	}
 
 	function setX() {
 		if (iconDirection.includes('e')) return x;
@@ -37,20 +48,18 @@
 	}
 </script>
 
-<SlideInOut>
+<SlideInOut bind:progress>
 	<a
 		{href}
 		draggable="false"
-		class="flex w-full items-center justify-between gap-8 px-[2em] py-[1.25em] text-clamp-base font-extrabold uppercase text-off-black focus-visible:outline-none"
+		class="flex w-full items-center justify-between gap-8 px-[1.25em] py-[1em] text-clamp-base font-medium text-off-black focus-visible:outline-none
+    "
 		class:flex-row-reverse={iconPos === 'start'}
 		style="--tx: {translateX}rem; --ty: {translateY}rem;"
 	>
 		<slot />
 		{#if showIcon}
-			<div
-				class="icon text-pistachio transition-[transform,color]"
-				style="transition-delay: {iconPos === 'start' ? '200ms' : '400ms'}"
-			>
+			<div class="icon w-arrow text-pistachio transition-[transform,color]" class:animate>
 				<ArrowIcon direction={iconDirection} />
 			</div>
 		{/if}
@@ -58,9 +67,8 @@
 </SlideInOut>
 
 <style lang="postcss">
-	a:hover > .icon,
-	a:focus-visible > .icon {
-		color: rgb(11 9 4 / 1);
+	.animate {
+		color: theme(colors.off-black);
 		transform: translate(var(--tx), var(--ty));
 	}
 </style>

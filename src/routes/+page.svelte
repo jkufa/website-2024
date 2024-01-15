@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ABOUT, SKILLS, WORK_DATA } from '$lib';
+	import { SKILLS, WORK_DATA } from '$lib';
 	import {
 		Mug,
 		Background,
@@ -7,6 +7,8 @@
 		WorkItem,
 		lenisFunctionStore,
 		EmailContact,
+		SlideUp,
+		Link,
 	} from '$lib/components';
 	import { H1, H2, P, Section } from '$lib/design';
 	import { onMount } from 'svelte';
@@ -14,12 +16,13 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { scrollPosition, userSettings } from '$lib/stores';
 	import { gsap } from 'gsap';
-	import Link from '$lib/components/Link/Link.svelte';
 
 	let mug: HTMLDivElement;
 	let title: HTMLHeadingElement;
 	let range: number;
 	let follow: boolean;
+
+	let showTitle = true;
 
 	const scale = tweened(0, {
 		duration: $userSettings.animationsOn && $userSettings.introOn ? 5000 : 0,
@@ -38,6 +41,7 @@
 	});
 
 	function runIntro() {
+		showTitle = false;
 		gsap.set(title, {
 			opacity: 0,
 			y: 200,
@@ -47,14 +51,6 @@
 			scale: 0,
 		});
 		scale.set(150).then(() => {
-			// these should run in components when mounted
-			gsap.to(title, {
-				opacity: 1,
-				y: 0,
-				delay: 0.5,
-				duration: 2,
-				ease: 'power4.out',
-			});
 			gsap.to(mug, {
 				opacity: 1,
 				scale: 1,
@@ -63,6 +59,7 @@
 				ease: 'elastic.out(0.75,0.4)',
 			});
 			$userSettings.introOn = false;
+			showTitle = true;
 		});
 	}
 
@@ -78,28 +75,30 @@
 <Background bind:follow bind:scale={$scale} />
 <div class="flex h-screen flex-col items-center justify-center gap-10">
 	<Mug bind:follow bind:ref={mug} hideUntilFollow={false} />
-	<H1 bind:ref={title} styles="absolute bottom-4 left-4">
-		<span class="block">HIRE</span> JACK KUFA
-	</H1>
+	{#if showTitle}
+		<H1 bind:ref={title} styles="absolute bottom-4 left-4">
+			<SlideUp>HIRE</SlideUp>
+			<SlideUp>JACK KUFA</SlideUp>
+		</H1>
+	{/if}
 </div>
 
 <!-- About -->
 <Section id="about" styles="mt-1/4 justify-center">
-	<div class="max-w-[90%]">
+	<div class="max-w-[90%] 4xl:max-w-full">
 		<P variant="large">
-			Jack Kufa is a Software Engineer that
-			<span class="ivory-highlight text-ivory">
-				builds fast, accessible and responsive experiences</span
+			Jack Kufa is a Software Engineer that <span class="ivory-highlight text-ivory">
+				builds fast, accessible and responsive</span
 			>
-			for web. His experience with multiple frontend frameworks and setting up project infrastructure
-			from scratch makes him a great asset for
+			<span class="ivory-highlight text-ivory">experiences</span> for web. His production experience
+			with multiple frontend frameworks and setting up infrastructure from scratch make him a great
+			<br />
+			asset for
 			<span class="ivory-highlight text-ivory"
 				>building and maintaining amazing user experiences.</span
 			>
 		</P>
 	</div>
-
-	<!-- <AboutItem title={ABOUT.title} content={ABOUT.content} /> -->
 </Section>
 
 <!-- Skills -->
@@ -117,8 +116,6 @@
 	<div class="z-0 border border-solid border-pistachio bg-off-black">
 		{#each WORK_DATA as wd}
 			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
 		{/each}
 	</div>
 </Section>
@@ -132,15 +129,15 @@
 	<div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
 		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">JACK@KUFA.IO</EmailContact>
 		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
-			<Link href="https://linkedin.com/in/jackkufa">LINKEDIN</Link>
-			<Link href="https://github.com/jkufa">GITHUB</Link>
+			<Link href="https://linkedin.com/in/jackkufa">LinkedIn</Link>
+			<Link href="https://github.com/jkufa">GitHub</Link>
 		</div>
 	</div>
 </Section>
 
 <!-- Footer -->
 <footer
-	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8"
+	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4% 2xl:max-w-[2450px] 4xl:mx-auto"
 >
 	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 	<a
@@ -150,8 +147,6 @@
           w-fit
           border-pistachio
           text-clamp-base
-          font-semibold
-          leading-normal
           transition-shadow ease-circular-in-out
           focus-within:shadow-outline
           focus-within:outline-none
@@ -159,9 +154,3 @@
           ">View on GitHub</a
 	>
 </footer>
-
-<style lang="postcss">
-	footer {
-		font-family: 'system-ui';
-	}
-</style>

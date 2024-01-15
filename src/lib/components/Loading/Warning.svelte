@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { P } from '$lib/design';
 	import { userSettings } from '$lib/stores';
 	import Switch from '../Nav/Switch.svelte';
 	$: ({ animationsOn } = $userSettings);
 </script>
 
 <div
-	class="bottom-4 mt-4 flex max-w-2xl flex-col gap-2 border border-pistachio p-6 !font-normal transition-opacity focus-within:opacity-100 hover:opacity-100 md:absolute md:opacity-60"
+	class="bottom-4 mt-4 flex max-w-2xl flex-col gap-2 border border-pistachio p-6 !font-normal transition-opacity focus-within:opacity-100 hover:opacity-100 md:opacity-60 xl:absolute"
 >
 	<strong class="w-fit text-base md:text-lg lg:text-xl">NOTICE</strong>
 	<aside class="" role="note" aria-label="Important information">

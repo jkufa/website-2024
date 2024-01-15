@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { cubicIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import { Expo } from 'gsap';
 
 	export let disabled = false;
+	export let progress: number = 0;
 
-	const slide = tweened(1, { duration: 400, delay: 100, easing: cubicIn });
+	const slide = tweened(1, { duration: 1000, delay: 100, easing: Expo.easeOut });
+	$: progress = $slide;
 
 	function slideIn() {
 		if (disabled) return;

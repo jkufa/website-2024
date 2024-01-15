@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import { Expo } from 'gsap';
 
 	export let href: string;
 	export let hoverText: string;
 
 	$: cleanedText = hoverText.replace(/'/g, "\\'").toLocaleUpperCase();
 
-	const slide = tweened(1, { duration: 500, delay: 100, easing: cubicInOut });
+	const slide = tweened(1, { duration: 1000, delay: 100, easing: Expo.easeOut });
 
 	function slideIn() {
 		if ($slide <= 0) {
@@ -39,7 +39,7 @@
   py-4
 
   text-clamp-lg
-  font-extrabold
+  font-semibold
 
   transition-[box-shadow,transform]
   delay-100
@@ -53,8 +53,7 @@
   after:justify-center
   after:bg-pistachio
   after:text-clamp-lg
-
-  after:font-extrabold
+  after:font-bold
   after:text-off-black
 
   after:content-empty

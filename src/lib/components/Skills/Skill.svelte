@@ -4,8 +4,7 @@
 
 <div
 	class="flex border border-pistachio bg-off-black p-[1em]
-  text-clamp-md
-  font-semibold"
+  text-clamp-md"
 >
 	{label}
 </div>

@@ -17,7 +17,7 @@
 		bind:clientWidth={w}
 		bind:clientHeight={h}
 		class="-z-10 h-full w-full transition-opacity duration-500"
-		class:opacity-30={follow || !$userSettings.animationsOn}
+		class:opacity-10={follow || !$userSettings.animationsOn}
 	>
 		<Canvas>
 			<Scene bind:w bind:h bind:scale />
