@@ -3,7 +3,6 @@ export { default as Mug } from './Mug.svelte';
 export { default as EmailContact } from './EmailContact.svelte';
 
 // Components consisting of multiple components get their own folder
-export * from './AboutItem';
 export * from './Animations';
 export * from './Background';
 export * from './Button';
