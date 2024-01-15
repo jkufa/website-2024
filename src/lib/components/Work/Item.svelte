@@ -46,7 +46,7 @@
 >
 	<span
 		class="
-      text-clamp-base
+      text-clamp-md
       font-medium
       transition-transform duration-500
       ease-out

@@ -36,6 +36,10 @@
 	});
 </script>
 
+<svelte:head>
+  <title>HIRE JACK KUFA</title>
+</svelte:head>
+
 <Lenis>
 	<main class="text-pistachio">
 		<!-- Render unique transition for start & stop -->

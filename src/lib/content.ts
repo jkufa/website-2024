@@ -50,7 +50,7 @@ export const WORK_DATA: WorkData[] = [
       * **Auto archival**: tasks will be automatically moved to an archived section when their due date is a week past to help users keep their inbox clutter-free.
       * **Progress tracking:** Goals have a progress bar to indicate the percentage complete. Goals are considered completed once all of its tasks are complete.
       * **Target dates:** Goals and tasks can both have a target completion date. Goals inherit the latest target date of its tasks by default.
-      * **Goal organization:** Users can re-organize their goals in the sidebar in whatever order they’d like.
+      * **Goal organization:** Users can re-organize their goals in the sidebar in whatever order they fancy.
       * **Subgoals:** Users can nest goals within goals for even more customization.
       * **Hotkeys:** press the G key to quickly add a goal, or the T key to quickly add a task
 

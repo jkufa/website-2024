@@ -21,7 +21,7 @@
 		height: 0,
 	};
 	const hamburgerDimensions: Dimensions = initDimensions;
-	const wh = tweened(initDimensions, { duration: 600, easing: Expo.easeInOut });
+	const wh = tweened(initDimensions, { duration: 800, easing: Expo.easeInOut });
 
 	$: ({ introOn, animationsOn } = $userSettings);
 	$: expandedDimensions = {
