@@ -16,7 +16,6 @@
 
 <a
 	{href}
-	role="row"
 	draggable="false"
 	class="
     flex
