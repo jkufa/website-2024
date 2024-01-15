@@ -24,7 +24,11 @@
 	}
 </script>
 
-<div class="container">
+<!-- 
+  Arbitrary height to account for position absolute below.
+  As long as we aren't overlapping...
+ -->
+<div class="container h-screen md:h-[50vh] lg:h-[25vh]">
 	<div
 		class="left-0 w-screen overflow-x-clip"
 		class:!mx-0={!animationsOn}
