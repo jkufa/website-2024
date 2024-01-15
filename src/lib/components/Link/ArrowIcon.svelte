@@ -7,8 +7,7 @@
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	width="16"
-	height="24"
+	viewBox="0 0 16 24"
 	fill="none"
 	style="transform: rotate({rotation}deg);"
 >
@@ -17,3 +16,10 @@
 		fill="currentColor"
 	/>
 </svg>
+
+<style>
+	svg {
+		max-width: 100%; /* Ensures the SVG doesn't exceed its container */
+		height: auto; /* Allows the SVG to scale proportionally */
+	}
+</style>

@@ -100,6 +100,7 @@
 		</P>
 	</div>
 </Section>
+
 <!-- Skills -->
 <Section id="skills">
 	<H2 variant="large">

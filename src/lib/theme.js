@@ -39,8 +39,8 @@ export const theme = {
 			'10xl': '9.5rem',
 			huge: '12rem',
 			'clamp-base': 'clamp(0.875rem, .8vw, 2.25rem)',
-			'clamp-lg': 'clamp(3.25rem, 2.15vw, 4rem)',
-			'clamp-md': 'clamp(1.5rem, 1.8vw, 2rem)',
+			'clamp-lg': 'clamp(1.25rem, 2.15vw, 4rem)',
+			'clamp-md': 'clamp(1rem, 1.8vw, 2rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
 			'clamp-2xl': 'clamp(1.875rem, 5vw, 9rem)',
 			'clamp-9xl': 'clamp(3.25rem, 11vw, 20rem)',
@@ -63,6 +63,9 @@ export const theme = {
 		},
 		screens: {
 			'4xl': '3072px',
+		},
+		width: {
+			arrow: 'clamp(0.625rem, .6vw, 1.5rem)',
 		},
 	},
 };

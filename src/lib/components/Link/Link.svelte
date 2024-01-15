@@ -59,7 +59,7 @@
 	>
 		<slot />
 		{#if showIcon}
-			<div class="icon text-pistachio transition-[transform,color]" class:animate>
+			<div class="icon w-arrow text-pistachio transition-[transform,color]" class:animate>
 				<ArrowIcon direction={iconDirection} />
 			</div>
 		{/if}
