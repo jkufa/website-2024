@@ -19,7 +19,7 @@
 	let transition = true;
 	let half = true;
 
-	$: ({ introOn, animationsOn } = $userSettings);
+	$: ({ introOn, animationsOn, devMode } = $userSettings);
 
 	onMount(() => {
 		continueToSite = !introOn;
@@ -46,7 +46,7 @@
 		{#if transition}
 			<PageTransition bind:transitioning={transition} half={!half} />
 		{/if}
-		{#if !$userSettings.devMode && !continueToSite}
+		{#if !devMode && !continueToSite}
 			<div
 				class="m-auto box-content flex h-[100dvh] max-w-2xl flex-col justify-end gap-2 px-4 md:justify-center"
 			>

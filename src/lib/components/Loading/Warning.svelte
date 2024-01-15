@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { userSettings } from '$lib/stores';
 	import Switch from '../Nav/Switch.svelte';
+
 	$: ({ animationsOn } = $userSettings);
 </script>
 

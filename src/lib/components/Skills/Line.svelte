@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { derived } from 'svelte/store';
 	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { userSettings } from '$lib/stores';
 	import Skill from './Skill.svelte';
 
@@ -12,7 +13,8 @@
 	let timeline: gsap.core.Timeline;
 	let reverse = !!(id % 2);
 
-	$: ({ animationsOn } = $userSettings);
+	const animationsOn = derived(userSettings, (settings) => settings.animationsOn);
+
 	$: animationsOn ? animate() : disableAnimations();
 
 	onMount(() => {
@@ -30,19 +32,19 @@
 			},
 		});
 
-		if (!animationsOn) return;
-
-		animate();
+		animationsOn.subscribe((on) => {
+			on ? animate() : disableAnimations();
+		});
 	});
 
 	function animate() {
-		if (!timeline) return;
+		if (!timeline || !ref) return;
 
 		timeline.set(ref, { x: reverse ? '100%' : '-100%' }).to(ref, { x: reverse ? '-100%' : '100%' });
 	}
 
 	function disableAnimations() {
-		if (!timeline) return;
+		if (!timeline || !ref) return;
 
 		timeline.set(ref, { x: 0 });
 		timeline.clear();

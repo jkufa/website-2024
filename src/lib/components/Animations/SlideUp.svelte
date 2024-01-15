@@ -39,12 +39,11 @@
 	}
 
 	function clear() {
-		if (!timeline) return;
+		if (!slideUpRef) return;
 
-		timeline.set(slideUpRef, {
+		timeline.set(slideUpRef!, {
 			y: 0,
 		});
-		timeline.clear();
 	}
 </script>
 
