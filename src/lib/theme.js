@@ -15,10 +15,11 @@ export const colors = {
 /** @type {import('tailwindcss').Config['theme']} */
 export const theme = {
 	fontFamily: {
-		sans: ['Inter', ...defaultTheme.fontFamily.sans],
+		sans: ['Inter2', ...defaultTheme.fontFamily.sans],
 		heading: ['Archivo Expanded', ...defaultTheme.fontFamily.sans],
 	},
 	letterSpacing: {
+		...defaultTheme.letterSpacing,
 		tightest: '-.75rem',
 		tighter: '-.25rem',
 	},
@@ -40,7 +41,7 @@ export const theme = {
 			huge: '12rem',
 			'clamp-base': 'clamp(1rem, .9vw, 2rem)',
 			'clamp-md': 'clamp(1rem, 1.6vw, 2.25rem)',
-			'clamp-lg': 'clamp(1.25rem, 2.15vw, 4rem)',
+			'clamp-lg': 'clamp(1.25rem, 2.2vw, 4rem)',
 			'clamp-xl': 'clamp(2rem, 5.5vw, 6rem)',
 			'clamp-2xl': 'clamp(1.875rem, 5vw, 9rem)',
 			'clamp-9xl': 'clamp(3.25rem, 11vw, 20rem)',
