@@ -3,8 +3,6 @@
 	export let alt: string;
 	export let src: string;
 	export let href: string;
-	export let fileName: string;
-	let fileType = '.webp';
 
 	let showImg = false;
 
@@ -14,13 +12,6 @@
 	function transitionOut() {
 		showImg = false;
 	}
-	console.log(src);
-
-	console.log(new URL('$imgs/journey/thumbnail.webp', import.meta.url));
-	console.log(src);
-	// $: imgUrl = '/images/' + title.toLocaleLowerCase() + '/' + fileName + fileType
-	const imgUrl = new URL('/static/images/journey/thumbnail.webp', import.meta.url);
-	$: console.log(imgUrl.href);
 </script>
 
 <a

@@ -21,8 +21,8 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			$fonts: resolve('./fonts'),
-			$imgs: resolve('./images'),
+			$fonts: resolve('./static/fonts'),
+			$imgs: resolve('./static/images'),
 		},
 	},
 });
