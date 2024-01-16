@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { quadOut, quartOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import { Expo } from 'gsap';
 
 	export let animateOff: boolean;
 	export let words = ['KINETICALLY', 'UNREAL', 'FRAMING', 'ALTERATION'];
 
 	let textHeight: number;
 	let containerW: number;
-	const count = tweened(0, { delay: 400, duration: 800, easing: quartOut });
+	const count = tweened(0, { delay: 400, duration: 800, easing: Expo.easeOut });
 
 	let animating = false;
 
-	let smallW = 63;
-	let largeW = 117;
+	let smallW = 106;
+	let largeW = 193;
 
 	let bindedW: number;
 	let bindedW2: number;
