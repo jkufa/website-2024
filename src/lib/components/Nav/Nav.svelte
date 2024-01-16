@@ -21,7 +21,7 @@
 		height: 0,
 	};
 	const hamburgerDimensions: Dimensions = initDimensions;
-	const wh = tweened(initDimensions, { duration: 600, easing: Expo.easeInOut });
+	const wh = tweened(initDimensions, { duration: 800, easing: Expo.easeInOut });
 
 	$: ({ introOn, animationsOn } = $userSettings);
 	$: expandedDimensions = {
@@ -77,16 +77,16 @@
 		<div class="container flex h-full flex-col justify-between overflow-hidden border-solid">
 			<div class="nav-items flex flex-col text-end font-heading">
 				<NavItem href="">
-					<span class="text-3xl font-bold md:text-5xl">HOME</span>
+					<span class="text-3xl font-extrabold md:text-5xl">HOME</span>
 				</NavItem>
 				<NavItem href="about">
-					<span class="text-3xl font-bold md:text-5xl">ABOUT</span>
+					<span class="text-3xl font-extrabold md:text-5xl">ABOUT</span>
 				</NavItem>
 				<NavItem href="work">
-					<span class="text-3xl font-bold md:text-5xl">WORK</span>
+					<span class="text-3xl font-extrabold md:text-5xl">WORK</span>
 				</NavItem>
 				<NavItem href="contact">
-					<span class="text-3xl font-bold md:text-5xl">CONTACT</span>
+					<span class="text-3xl font-extrabold md:text-5xl">CONTACT</span>
 				</NavItem>
 			</div>
 			<div class="settings flex flex-col gap-4 p-4 font-sans">

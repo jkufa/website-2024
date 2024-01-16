@@ -4,9 +4,13 @@
 	import { userSettings } from '$lib/stores';
 
 	export let data;
-	$: ({ title, description, imgs, links } = data);
+	$: ({ title, description, imgs, links, meta } = data);
 </script>
 
+<svelte:head>
+	<title>HIRE JACK KUFA – {title.toLocaleUpperCase()}</title>
+	<meta name="description" content={meta} />
+</svelte:head>
 {#if $userSettings.animationsOn}
 	<Mug follow={true} />
 {/if}
@@ -19,7 +23,7 @@
 		<!-- Links -->
 		<div class="flex flex-col gap-2 md:flex-row">
 			{#each links as l}
-				<div class="w-full border border-pistachio font-extrabold">
+				<div class="w-full border border-pistachio">
 					<Link href={l.href}>
 						{l.label}
 					</Link>
@@ -35,9 +39,9 @@
 		</div>
 	</div>
 	<!-- Images -->
-	<div class="flex flex-col gap-8 lg:ms-auto lg:w-1/2 4xl:w-2/5">
+	<div class="flex flex-col gap-8 lg:ms-auto lg:w-1/2 lg:gap-16 4xl:w-2/5">
 		{#each imgs as i}
-			<img src={i.src} alt={i.alt} class="w-full" />
+			<img src="/images/{title.toLocaleLowerCase()}/{i.src}" alt={i.alt} class="w-full" />
 		{/each}
 	</div>
 </Section>
@@ -53,5 +57,8 @@
 	}
 	:global(.content > *:not(:first-child)) {
 		margin-top: 2em;
+	}
+	:global(.content > h2:not(:first-child)) {
+		margin-top: 1.25em;
 	}
 </style>

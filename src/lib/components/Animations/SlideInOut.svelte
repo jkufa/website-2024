@@ -20,7 +20,7 @@
 	function slideOut() {
 		if (disabled) return;
 
-		if ($slide <= 0.4) {
+		if ($slide <= 0.25) {
 			slide.set(-1); // 0 to -100%
 			return;
 		}

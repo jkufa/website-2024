@@ -10,9 +10,10 @@ export async function load({ params }) {
 	const compiled = await compile(data.description);
 
 	return {
-		title: data.title,
+		title: data.title as string,
 		description: compiled?.code,
 		imgs: data.imgs,
 		links: data.links,
+		meta: data.meta,
 	};
 }

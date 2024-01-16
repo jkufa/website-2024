@@ -16,7 +16,6 @@
 
 <a
 	{href}
-	role="row"
 	draggable="false"
 	class="
     flex
@@ -46,8 +45,7 @@
 >
 	<span
 		class="
-      text-clamp-base
-      font-medium
+      text-clamp-md
       transition-transform duration-500
       ease-out
     "
@@ -55,19 +53,24 @@
 	>
 		{title}
 	</span>
+	<!-- src={src} -->
+	<!-- <img -->
+	<!-- src='/static/images/{title.toLocaleLowerCase()}/thumbnail.webp' -->
+	<!-- src='/static/images/journey/thumbnail.webp' -->
+	<!-- TODO: unhardcode this -->
 	<img
-		{src}
+		src="/images/{title.toLocaleLowerCase()}/{src}"
 		{alt}
 		class="
-      max-h-20
-      transition-[opacity,transform]
-      delay-100
-      duration-300
-      ease-circular-in-out
-      md:max-h-32
-      lg:max-h-[6vw]
-
-    "
+        max-h-20
+        w-auto
+        transition-[opacity,transform]
+        delay-100
+        duration-300
+        ease-circular-in-out
+        md:max-h-32
+        lg:max-h-[6vw]
+      "
 		class:scale-100={showImg}
 		class:opacity-100={showImg}
 		class:opacity-0={!showImg}

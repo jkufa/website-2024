@@ -2,7 +2,7 @@
 	import { userSettings } from '$lib/stores';
 	import gsap from 'gsap';
 
-	export let follow: boolean | undefined;
+	export let follow: boolean | undefined = undefined;
 	/**
 	 * Workaround for loading Mug on pages other than main page
 	 */
@@ -59,7 +59,9 @@
 		}
 	}
 	function resetPos() {
-		gsap.to(ref!, {
+		if (!ref) return;
+
+		gsap.to(ref, {
 			x: 0,
 			y: 0,
 			scale: 1,
@@ -92,7 +94,6 @@
 
 		background-image: url('$lib/imgs/sprites.webp');
 		background-size: calc(192px * var(--scale));
-		filter: grayscale();
 		width: calc(64px * var(--scale));
 		height: calc(64px * var(--scale));
 		background-position: var(--x) var(--y);

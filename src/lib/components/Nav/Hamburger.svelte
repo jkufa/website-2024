@@ -10,6 +10,7 @@
 </script>
 
 <button
+	aria-label="navigation menu button"
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	class="
