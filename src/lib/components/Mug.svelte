@@ -94,7 +94,6 @@
 
 		background-image: url('$lib/imgs/sprites.webp');
 		background-size: calc(192px * var(--scale));
-		filter: grayscale();
 		width: calc(64px * var(--scale));
 		height: calc(64px * var(--scale));
 		background-position: var(--x) var(--y);

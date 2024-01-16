@@ -3,6 +3,8 @@
 	export let alt: string;
 	export let src: string;
 	export let href: string;
+	export let fileName: string;
+	let fileType = '.webp';
 
 	let showImg = false;
 
@@ -12,6 +14,13 @@
 	function transitionOut() {
 		showImg = false;
 	}
+	console.log(src);
+
+	console.log(new URL('$imgs/journey/thumbnail.webp', import.meta.url));
+	console.log(src);
+	// $: imgUrl = '/images/' + title.toLocaleLowerCase() + '/' + fileName + fileType
+	const imgUrl = new URL('/static/images/journey/thumbnail.webp', import.meta.url);
+	$: console.log(imgUrl.href);
 </script>
 
 <a
@@ -54,19 +63,24 @@
 	>
 		{title}
 	</span>
+	<!-- src={src} -->
+	<!-- <img -->
+	<!-- src='/static/images/{title.toLocaleLowerCase()}/thumbnail.webp' -->
+	<!-- src='/static/images/journey/thumbnail.webp' -->
+	<!-- TODO: unhardcode this -->
 	<img
-		{src}
+		src="/images/{title.toLocaleLowerCase()}/{src}"
 		{alt}
 		class="
-      max-h-20
-      transition-[opacity,transform]
-      delay-100
-      duration-300
-      ease-circular-in-out
-      md:max-h-32
-      lg:max-h-[6vw]
-
-    "
+        max-h-20
+        w-auto
+        transition-[opacity,transform]
+        delay-100
+        duration-300
+        ease-circular-in-out
+        md:max-h-32
+        lg:max-h-[6vw]
+      "
 		class:scale-100={showImg}
 		class:opacity-100={showImg}
 		class:opacity-0={!showImg}

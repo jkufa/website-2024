@@ -18,6 +18,6 @@
 
 <style lang="postcss">
 	h2 {
-		line-height: 0.9 !important;
+		line-height: 1 !important;
 	}
 </style>

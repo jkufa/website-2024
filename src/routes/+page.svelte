@@ -115,7 +115,13 @@
 	<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
 	<div class="z-0 border border-solid border-pistachio bg-off-black">
 		{#each WORK_DATA as wd}
-			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
+			<WorkItem
+				href={wd.slug}
+				title={wd.title}
+				alt={wd.imgs[0].alt}
+				src={wd.imgs[0].src}
+				fileName="thumbnail"
+			/>
 		{/each}
 	</div>
 </Section>
