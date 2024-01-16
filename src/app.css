@@ -27,8 +27,8 @@
 	@font-face {
 		font-family: 'Inter2';
 		src:
-			url('static/fonts/Inter-SemiBold.woff2') format('woff2'),
-			url('static/fonts/Inter-SemiBold.woff') format('woff');
+			url('$fonts/Inter-SemiBold.woff2') format('woff2'),
+			url('$fonts/Inter-SemiBold.woff') format('woff');
 		font-weight: 600;
 		font-style: normal;
 	}
