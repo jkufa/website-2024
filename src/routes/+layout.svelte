@@ -38,7 +38,7 @@
 
 <svelte:head>
 	<title>HIRE JACK KUFA</title>
-	<meta name="description" />ENTER NOW TO EXPERIENCE K.U.F.A MIND CONTROL<meta />
+	<meta name="description" content="ENTER NOW TO EXPERIENCE K.U.F.A MIND CONTROL" />
 </svelte:head>
 
 <Lenis>

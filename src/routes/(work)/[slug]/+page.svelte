@@ -9,7 +9,7 @@
 
 <svelte:head>
 	<title>HIRE JACK KUFA – {title.toLocaleUpperCase()}</title>
-	<meta name="description" />{meta}<meta />
+	<meta name="description" content={meta} />
 </svelte:head>
 {#if $userSettings.animationsOn}
 	<Mug follow={true} />
@@ -23,7 +23,7 @@
 		<!-- Links -->
 		<div class="flex flex-col gap-2 md:flex-row">
 			{#each links as l}
-				<div class="w-full border border-pistachio font-extrabold">
+				<div class="w-full border border-pistachio">
 					<Link href={l.href}>
 						{l.label}
 					</Link>

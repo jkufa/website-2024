@@ -53,7 +53,7 @@
   after:justify-center
   after:bg-pistachio
   after:text-clamp-lg
-  after:font-bold
+  after:font-semibold
   after:text-off-black
 
   after:content-empty

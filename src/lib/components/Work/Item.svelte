@@ -46,7 +46,6 @@
 	<span
 		class="
       text-clamp-md
-      font-medium
       transition-transform duration-500
       ease-out
     "
