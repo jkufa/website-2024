@@ -63,7 +63,7 @@
 		{#each words as word, i}
 			{#if i < 1}
 				<!-- Bind only first element's height to reduce overhead -->
-				<div class="w-fit pe-[2px]" bind:clientWidth={smallWRef} bind:clientHeight={textHeight}>
+				<div class="w-fit pe-[2px]" bind:clientWidth={largeWRef} bind:clientHeight={textHeight}>
 					{word}
 				</div>
 			{:else}
