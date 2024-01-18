@@ -12,11 +12,11 @@
 
 	let animating = false;
 
-	let smallW = 106;
-	let largeW = 193;
+	$: smallW = smallWRef;
+	$: largeW = largeWRef;
 
-	let bindedW: number;
-	let bindedW2: number;
+	let smallWRef: number;
+	let largeWRef: number;
 
 	containerW = largeW;
 
@@ -46,14 +46,11 @@
 	}
 
 	onMount(async () => {
-		smallW = bindedW2;
-		largeW = bindedW;
+		smallW = smallWRef;
+		largeW = largeWRef;
 		containerW = smallW;
 		animate();
 	});
-	// 116.33px
-	// 62.78
-	//
 </script>
 
 <div
@@ -66,7 +63,7 @@
 		{#each words as word, i}
 			{#if i < 1}
 				<!-- Bind only first element's height to reduce overhead -->
-				<div class="w-fit pe-[2px]" bind:clientWidth={bindedW} bind:clientHeight={textHeight}>
+				<div class="w-fit pe-[2px]" bind:clientWidth={smallWRef} bind:clientHeight={textHeight}>
 					{word}
 				</div>
 			{:else}
@@ -75,7 +72,7 @@
 		{/each}
 	</div>
 	<div
-		bind:clientWidth={bindedW2}
+		bind:clientWidth={smallWRef}
 		class="absolute bottom-0 -z-10 transition-opacity duration-300"
 		class:opacity-0={$count > 0}
 	>

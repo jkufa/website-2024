@@ -39,6 +39,7 @@ export const theme = {
 		fontSize: {
 			'10xl': '9.5rem',
 			huge: '12rem',
+			'clamp-sm': 'clamp(.875rem, .9vw, 1.25rem)',
 			'clamp-base': 'clamp(1rem, .9vw, 2rem)',
 			'clamp-md': 'clamp(1rem, 1.6vw, 2.25rem)',
 			'clamp-lg': 'clamp(1.25rem, 2.1vw, 4rem)',

@@ -16,7 +16,7 @@
 {/if}
 <Section id={title.toLocaleLowerCase()} styles="lg:flex-row mt-20 md:mt-40 gap-14 !justify-start">
 	<!-- Text content -->
-	<div class="flex flex-col gap-4 lg:fixed lg:w-4/12">
+	<div class="text flex flex-col gap-4 lg:fixed lg:w-4/12">
 		<H2>
 			{title}
 		</H2>
@@ -30,7 +30,7 @@
 				</div>
 			{/each}
 		</div>
-		<P class="content mt-8">
+		<P variant="small" class="content mt-8">
 			{@html description}
 		</P>
 		<!-- Back -->
@@ -45,20 +45,17 @@
 		{/each}
 	</div>
 </Section>
-<section
-	class="mx-8 mt-20 flex flex-col gap-14 bg-off-black md:mt-40 md:gap-6 lg:flex-row"
-></section>
 
 <style lang="postcss">
 	:global(.content > h2) {
 		text-transform: uppercase;
-		margin-bottom: -1em;
+		margin-bottom: -0.75em;
 		font-size: theme(fontSize.clamp-md);
 	}
 	:global(.content > *:not(:first-child)) {
-		margin-top: 2em;
+		margin-top: 1.5em;
 	}
 	:global(.content > h2:not(:first-child)) {
-		margin-top: 1.25em;
+		margin-top: 1em;
 	}
 </style>
