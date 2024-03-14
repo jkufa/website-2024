@@ -4,34 +4,37 @@
 	import { tweened } from 'svelte/motion';
 
 	export let showEnd = false;
-	export let start: string = '';
-	export let end: string = '';
+	export let start: string;
+	export let end: string;
 
 	let startW: number;
 	let endW: number;
 
-	let width: number;
 	let mounted = false;
 
-	let widths: [number, number] = [0, 0];
 	const vals = {
 		translate: 0,
 		width: 0,
 	};
+  const widths = {
+    from: 0,
+    to: 0,
+  }
 	const animations = tweened(vals, { duration: 800, easing: quartOut });
-	$: vals.width = width;
 	$: if (showEnd) animate();
-
+  
 	onMount(() => {
-		widths = [startW, endW];
-		width = widths[0];
+    // store initial start/end widths on mount to account for layout shifts from css (i.e: display: none)
+    widths.from = startW;
+    widths.to = endW;
+    $animations.width = widths.from;
 		mounted = true;
 	});
 
 	function animate() {
 		animations.set({
 			translate: 1,
-			width: widths[1],
+			width: widths.to,
 		});
 	}
 </script>

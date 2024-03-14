@@ -56,7 +56,7 @@
 <div
 	role="banner"
 	on:mouseenter={animate}
-	class="relative overflow-hidden font-semibold transition-[width] duration-500"
+	class="relative overflow-hidden transition-[width] duration-500"
 	style="width: {containerW}px;"
 >
 	<div style="transform: translateY(calc(100% - {multiplier}px));">
