@@ -33,7 +33,6 @@
     focus-within:shadow-outline
     focus-within:outline-none
     hover:cursor-pointer
-    hover:outline-pistachio
     
     md:ps-8
     xl:ps-[2%]
@@ -53,11 +52,6 @@
 	>
 		{title}
 	</span>
-	<!-- src={src} -->
-	<!-- <img -->
-	<!-- src='/static/images/{title.toLocaleLowerCase()}/thumbnail.webp' -->
-	<!-- src='/static/images/journey/thumbnail.webp' -->
-	<!-- TODO: unhardcode this -->
 	<img
 		src="/images/{title.toLocaleLowerCase()}/{src}"
 		{alt}

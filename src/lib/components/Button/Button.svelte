@@ -17,7 +17,7 @@
 		<button
 			class="
         w-full
-        border border-solid border-pistachio
+        border border-solid border-pistachio-lite
         p-4
         font-semibold
         text-off-black

@@ -67,7 +67,7 @@
 	aria-checked={checked}
 	class="
   track float-right flex h-[1em] min-h-[1.875rem] w-[2em] min-w-[3.25rem] cursor-pointer border border-solid
-  border-pistachio p-1
+  border-pistachio-lite p-1
 
   transition-[opacity,box-shadow]
   ease-circular-in-out

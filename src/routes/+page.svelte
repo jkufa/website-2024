@@ -113,7 +113,7 @@
 <!-- Work -->
 <Section id="work" styles="mt-1/4 justify-center">
 	<H2 variant="large">JACK KUFA<br />HAS WORKED ON</H2>
-	<div class="z-0 border border-solid border-pistachio bg-off-black">
+	<div class="z-0 border border-solid border-pistachio-lite bg-off-black">
 		{#each WORK_DATA as wd}
 			<WorkItem href={wd.slug} title={wd.title} alt={wd.imgs[0].alt} src={wd.imgs[0].src} />
 		{/each}
@@ -128,7 +128,7 @@
 	</H2>
 	<div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
 		<EmailContact href="mailto:jack@kufa.io" hoverText="Get in touch">JACK@KUFA.IO</EmailContact>
-		<div class="z-0 flex w-full flex-col border border-pistachio bg-off-black md:w-4/12">
+		<div class="z-0 flex w-full flex-col border border-pistachio-lite bg-off-black md:w-4/12">
 			<Link href="https://linkedin.com/in/jackkufa">LinkedIn</Link>
 			<Link href="https://github.com/jkufa">GitHub</Link>
 		</div>
@@ -137,7 +137,7 @@
 
 <!-- Footer -->
 <footer
-	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4% 2xl:max-w-[2450px] 4xl:mx-auto"
+	class="mx-4 mb-4 flex flex-col gap-8 border-t border-pistachio-lite pt-4 md:mx-8 md:mb-8 md:flex-row md:justify-between md:pt-8 xl:mx-4% 2xl:max-w-[2450px] 4xl:mx-auto"
 >
 	<P>Designed in Figma. Developed with SvelteKit, GSAP, Lenis, and Tailwind. Hosted on Vercel.</P>
 	<a
@@ -145,7 +145,7 @@
 		href="https://github.com/jkufa/website-2024"
 		class="
           w-fit
-          border-pistachio
+          border-pistachio-lite
           text-clamp-base
           transition-shadow ease-circular-in-out
           focus-within:shadow-outline
