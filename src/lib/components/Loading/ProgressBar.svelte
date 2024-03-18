@@ -15,7 +15,7 @@
 
 <div
 	class="
-  flex h-10 w-full justify-end border border-solid border-pistachio p-1 transition-all
+  flex h-10 w-full justify-end border border-solid border-pistachio-lite p-1 transition-all
   focus-within:outline-none
   "
 >

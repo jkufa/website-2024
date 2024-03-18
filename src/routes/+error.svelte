@@ -11,7 +11,7 @@
 	<div class="flex flex-col items-center gap-4">
 		<H1>404</H1>
 		<P variant="large">Page not found</P>
-		<div class="mt-2 w-fit border border-solid border-pistachio md:mt-4 lg:mt-8">
+		<div class="mt-2 w-fit border border-solid border-pistachio-lite md:mt-4 lg:mt-8">
 			<Link href="/" iconDirection="w" iconPos="start">Back to home</Link>
 		</div>
 	</div>

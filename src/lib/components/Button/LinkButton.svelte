@@ -9,7 +9,7 @@
 	<a
 		{href}
 		class="
-			h-full w-full border border-solid border-pistachio p-3 text-center
+			h-full w-full border border-solid border-pistachio-lite p-3 text-center
       font-semibold
 
 			focus-visible:outline-none

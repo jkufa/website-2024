@@ -34,7 +34,7 @@
   gap-4
   overflow-hidden
   border
-  border-pistachio
+  border-pistachio-lite
   bg-off-black
   py-4
 

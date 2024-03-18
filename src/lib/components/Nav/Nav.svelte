@@ -59,7 +59,7 @@
 	id="navigation"
 	class="
     fixed end-2 top-2 z-10 flex flex-col items-end
-    border border-solid border-pistachio bg-off-black
+    border border-solid border-pistachio-lite bg-off-black
     transition-opacity
     focus-within:opacity-100 hover:opacity-100 md:end-4
     md:top-4

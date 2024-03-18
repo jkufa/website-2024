@@ -7,6 +7,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 export const colors = {
 	'off-black': '#0B0904',
 	pistachio: '#B2B99F',
+	'pistachio-lite': '#6F7361',
 	ivory: '#F0F5E4',
 	stone: '#b2b99f66', // Opacity value of 0.4
 	'ivory-highlight': 'rgba(240, 245, 228, 0.25)',
